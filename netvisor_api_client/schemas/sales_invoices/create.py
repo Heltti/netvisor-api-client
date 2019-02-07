@@ -141,17 +141,6 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
 
     invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
 
-    @post_dump
-    def post_dump(self, data):
-        data = super().post_dump(data)
-
-        if data['sales_invoice_attachments']:
-            data['sales_invoice_attachments'] = [
-                {'sales_invoice_attachment': data['sales_invoice_attachments']}
-            ]
-
-        return data
-
     class Meta:
         ordered = True
 
