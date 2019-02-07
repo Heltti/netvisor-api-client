@@ -7,7 +7,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_version():
-    filename = os.path.join(HERE, 'netvisor', '__init__.py')
+    filename = os.path.join(HERE, 'netvisor_api_client', '__init__.py')
     contents = open(filename).read()
     pattern = r"^__version__ = '(.*?)'$"
 
