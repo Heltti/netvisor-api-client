@@ -35,6 +35,33 @@ class UnitPriceSchema(RejectUnknownFieldsSchema):
         }
 
 
+class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
+    mime_type = fields.String()
+    attachment_description = fields.String(attribute='description')
+    filename = fields.String(attribute='filename')
+    document_data = fields.String(attribute='data')
+
+    class Meta:
+        ordered = True
+
+    def __setattr__(self, attr, value):
+        if attr == 'ordered':
+            value = True
+
+        super().__setattr__(attr, value)
+
+    @post_dump
+    def post_dump(self, data):
+        document_data, document_type = data['document_data'].split('|')
+
+        data['document_data'] = {
+            '#text': document_data,
+            '@type': document_type
+        }
+
+        return data
+
+
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     product_identifier = fields.String(attribute='identifier', default='')
     product_name = fields.String(attribute='name')
@@ -71,23 +98,24 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_number = fields.Integer(attibute='number')
     sales_invoice_date = fields.Date(attribute='date')
     sales_invoice_delivery_date = fields.Date(attribute='delivery_date')
-    sales_invoice_reference_number = fields.String(
-        attribute='reference_number'
-    )
+    sales_invoice_reference_number = fields.String(attribute='reference_number')
     sales_invoice_amount = Decimal(attribute='amount')
+
     seller_identifier = fields.String()
     seller_name = fields.String()
+
     invoice_type = fields.String()
+
     sales_invoice_status = fields.String(attribute='status')
-    sales_invoice_free_text_before_lines = fields.String(
-        attribute='free_text_before_lines'
-    )
-    sales_invoice_free_text_after_lines = fields.String(
-        attribute='free_text_after_lines'
-    )
+    sales_invoice_free_text_before_lines = fields.String(attribute='free_text_before_lines')
+    sales_invoice_free_text_after_lines = fields.String(attribute='free_text_after_lines')
+
     sales_invoice_our_reference = fields.String(attribute='our_reference')
     sales_invoice_your_reference = fields.String(attribute='your_reference')
     sales_invoice_private_comment = fields.String(attribute='private_comment')
+
+    sales_invoice_attachments = List(fields.Nested(SalesInvoiceAttachmentLineSchema), default=list, attribute="attachments")
+
     invoicing_customer_identifier = fields.String()
     invoicing_customer_name = fields.String()
     invoicing_customer_name_extension = fields.String()
@@ -96,6 +124,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     invoicing_customer_post_number = fields.String()
     invoicing_customer_town = fields.String()
     invoicing_customer_country_code = fields.String()
+
     delivery_address_name = fields.String()
     delivery_address_name_extension = fields.String()
     delivery_address_line = fields.String()
@@ -104,13 +133,23 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     delivery_address_country_code = fields.String()
     delivery_method = fields.String()
     delivery_term = fields.String()
+
     payment_term_net_days = fields.Integer()
     payment_term_cash_discount_days = fields.Integer()
     payment_term_cash_discount = Decimal()
-    invoice_lines = List(
-        fields.Nested(SalesInvoiceProductLineSchema),
-        default=list
-    )
+
+    invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
+
+    @post_dump
+    def post_dump(self, data):
+        data = super().post_dump(data)
+
+        if data['sales_invoice_attachments']:
+            data['sales_invoice_attachments'] = [
+                {'sales_invoice_attachment': data['sales_invoice_attachments']}
+            ]
+
+        return data
 
     class Meta:
         ordered = True
@@ -129,6 +168,12 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
                 '@type': 'netvisor'
             }
 
+        # Only add to data if there are attachments, Netvisor API doesn't like empty lists
+        if 'sales_invoice_attachments' in data and data['sales_invoice_attachments']:
+            data['sales_invoice_attachments'] = [
+                {'sales_invoice_attachment': data['sales_invoice_attachments']}
+            ]
+
         if 'invoicing_customer_identifier' in data:
             data['invoicing_customer_identifier'] = {
                 '#text': data['invoicing_customer_identifier'],
@@ -143,8 +188,8 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
 
         data['invoice_lines'] = {
             'invoice_line': [
-                {'sales_invoice_product_line': line}
-                for line in data['invoice_lines']
+                {'sales_invoice_product_line': line} for line in data['invoice_lines']
             ]
         }
+
         return data
