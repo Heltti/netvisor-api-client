@@ -11,6 +11,18 @@ from ..common import RejectUnknownFieldsSchema
 from ..fields import Decimal, List
 
 
+class ProductIdentifierSchema(RejectUnknownFieldsSchema):
+    identifier = Decimal()
+    type = fields.String(default='netvisor')
+
+    @post_dump
+    def post_dump(self, data):
+        return {
+            '#text': data['identifier'],
+            '@type': data['type']
+        }
+
+
 class VatPercentageSchema(RejectUnknownFieldsSchema):
     percentage = Decimal()
     code = fields.String()
@@ -63,18 +75,15 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
 
 
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
-    product_identifier = fields.String(attribute='identifier', default='')
+    product_identifier = fields.Nested(ProductIdentifierSchema, attribute='identifier', default=dict(identifier=''))
     product_name = fields.String(attribute='name')
     product_unit_price = fields.Nested(UnitPriceSchema, attribute='unit_price')
-    product_vat_percentage = fields.Nested(
-        VatPercentageSchema,
-        attribute='vat_percentage'
-    )
+    product_vat_percentage = fields.Nested(VatPercentageSchema, attribute='vat_percentage')
+
     sales_invoice_product_line_quantity = Decimal(attribute='quantity')
-    sales_invoice_product_line_discount_percentage = Decimal(
-        attribute='discount_percentage'
-    )
+    sales_invoice_product_line_discount_percentage = Decimal(attribute='discount_percentage')
     sales_invoice_product_line_free_text = fields.String(attribute='free_text')
+
     accounting_account_suggestion = fields.String()
 
     class Meta:
@@ -84,14 +93,6 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
         if attr == 'ordered':
             value = True
         super(SalesInvoiceProductLineSchema, self).__setattr__(attr, value)
-
-    @post_dump
-    def post_dump(self, data):
-        data['product_identifier'] = {
-            '#text': data['product_identifier'],
-            '@type': 'netvisor'
-        }
-        return data
 
 
 class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
