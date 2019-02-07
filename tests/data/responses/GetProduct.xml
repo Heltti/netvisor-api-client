@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <Product>
+    <ProductBaseInformation>
+      <NetvisorKey>165</NetvisorKey>
+      <ProductCode>CC</ProductCode>
+      <ProductGroup>Kirjat</ProductGroup>
+      <Name>Code Complete</Name>
+      <Description>Toinen painos</Description>
+      <UnitPrice type="brutto">42,5</UnitPrice>
+      <Unit>kpl</Unit>
+      <UnitWeight>0,2</UnitWeight>
+      <PurchasePrice>25,0000</PurchasePrice>
+      <TariffHeading>Code Complete</TariffHeading>
+      <ComissionPercentage>11,0</ComissionPercentage>
+      <IsActive>1</IsActive>
+      <IsSalesProduct>0</IsSalesProduct>
+    </ProductBaseInformation>
+    <ProductBookKeepingDetails>
+      <DefaultVatPercent>22,0</DefaultVatPercent>
+      <DefaultDomesticAccountNumber>3000</DefaultDomesticAccountNumber>
+      <DefaultEuAccountNumber>3360</DefaultEuAccountNumber>
+      <DefaultOutsideEUAccountNumber>3380</DefaultOutsideEUAccountNumber>
+    </ProductBookKeepingDetails>
+    <ProductInventoryDetails>
+      <InventoryAmount>2,00</InventoryAmount>
+      <InventoryMidPrice>5,00</InventoryMidPrice>
+      <InventoryValue>10,0000</InventoryValue>
+      <InventoryReservedAmount>1,00</InventoryReservedAmount>
+      <InventoryOrderedAmount>0,00</InventoryOrderedAmount>
+    </ProductInventoryDetails>
+  </Product>
+</Root>

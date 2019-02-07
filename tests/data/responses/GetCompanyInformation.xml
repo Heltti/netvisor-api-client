@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <CompanyInformation>
+    <NetvisorDisclaimer>
+      <Information></Information>
+      <PRHDataUpdatedDate type="ansi">2009-12-31</PRHDataUpdatedDate>
+      <StatisticsFinlandDataUpdatedDate type="ansi">2009-12-31</StatisticsFinlandDataUpdatedDate>
+    </NetvisorDisclaimer>
+    <Company>
+      <Name>General Motors Finland</Name>
+      <FinnishOrganizationIdentifier>1234567-8</FinnishOrganizationIdentifier>
+      <Type>Osakeyhtiö</Type>
+      <ResponsiblePersonAuthorizationRule>Yhteisösääntöjen mukaan toiminimen kirjoittavat hallituksen puheenjohtaja, toimitusjohtaja ja toimitusjohtajan sijainen kukin yksin.</ResponsiblePersonAuthorizationRule>
+      <EstablishedDate type="ansi">2009-12-31</EstablishedDate>
+      <TerminatedDate type="ansi">2009-12-31</TerminatedDate>
+      <MostRecentChangeDate type="ansi">2009-12-31</MostRecentChangeDate>
+      <CurrentActivityStatus>active</CurrentActivityStatus>
+      <CurrentSpecialStatus></CurrentSpecialStatus>
+      <Domicile>Helsinki</Domicile>
+      <ActivityDescription>Kebab</ActivityDescription>
+      <StreetAddress>
+        <Street>Esimerkkikatu 123</Street>
+        <PostalCode>00100</PostalCode>
+        <PostalOffice>Helsinki</PostalOffice>
+      </StreetAddress>
+      <PostalAddress>
+        <Street></Street>
+        <PostalCode>00002</PostalCode>
+        <PostalOffice>Helsinki</PostalOffice>
+      </PostalAddress>
+      <Email>info@generalmotors.fi</Email>
+      <Phone>020 1234567</Phone>
+      <Fax>(09) 5551234</Fax>
+      <RegisteredPersonRoles>
+        <Role>
+          <Type>Yhtiön muu johto</Type>
+          <Identifier>Toimitusjohtaja</Identifier>
+          <EstablishedDate type="ansi">2009-12-31</EstablishedDate>
+          <Name>Gunnar Peterson</Name>
+          <Nationality type="ISO-3166">FI</Nationality>
+        </Role>
+      </RegisteredPersonRoles>
+      <RegisteredNames>
+        <RegisteredName>
+          <Type>Päätoiminimi</Type>
+          <Name>Pekan yritys Oy</Name>
+          <CurrentActivityStatus>active</CurrentActivityStatus>
+          <EstablishedDate type="ansi">2009-12-31</EstablishedDate>
+          <TerminatedDate type="ansi">2009-12-31</TerminatedDate>
+        </RegisteredName>
+      </RegisteredNames>
+      <StatVatRegisterStatus>currently_registered</StatVatRegisterStatus>
+      <StatTaxPrepaymentRegisterStatus>previously_registered</StatTaxPrepaymentRegisterStatus>
+      <StatEmployerRegisterStatus>never_registered</StatEmployerRegisterStatus>
+      <StatStandardIndustrialClassification2008>Kaivostoiminta</StatStandardIndustrialClassification2008>
+      <StatStaffSize>4-9</StatStaffSize>
+      <StatRevenueSize>100-200</StatRevenueSize>
+    </Company>
+  </CompanyInformation>
+</Root>

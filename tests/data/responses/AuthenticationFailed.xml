@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>FAILED</Status>
+    <Status>AUTHENTICATION_FAILED :: Integraatiokumppania ei löydy, katso dokumentaatio</Status>
+    <TimeStamp>7.4.2009 13:46:07</TimeStamp>
+  </ResponseStatus>
+</Root>

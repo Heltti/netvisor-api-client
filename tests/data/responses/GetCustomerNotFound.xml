@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>FAILED</Status>
+        <Status>INVALID_DATA :: Data form incorrect:. Customer not found with Netvisor identifier: 123</Status>
+        <TimeStamp>10.3.2014 18:33:05</TimeStamp>
+    </ResponseStatus>
+</Root>

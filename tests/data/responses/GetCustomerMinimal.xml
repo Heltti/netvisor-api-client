@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>7.4.2009 15:53:44</TimeStamp>
+  </ResponseStatus>
+  <Customer>
+    <CustomerBaseInformation>
+      <InternalIdentifier />
+      <ExternalIdentifier />
+      <CustomerGroupNetvisorKey>1</CustomerGroupNetvisorKey>
+      <CustomerGroupName>Asiakasryhmä 1</CustomerGroupName>
+      <Name>Maija Mallikas</Name>
+      <NameExtension />
+      <StreetAddress />
+      <City />
+      <PostNumber />
+      <Country type="ISO-3166">FI</Country>
+      <PhoneNumber />
+      <FaxNumber />
+      <Email />
+      <EmailInvoicingAddress />
+      <HomePageUri />
+      <IsActive>0</IsActive>
+    </CustomerBaseInformation>
+    <CustomerFinvoiceDetails>
+      <FinvoiceAddress />
+      <FinvoiceRouterCode />
+    </CustomerFinvoiceDetails>
+    <CustomerDeliveryDetails>
+      <DeliveryName />
+      <DeliveryStreetAddress />
+      <DeliveryCity />
+      <DeliveryPostNumber />
+    </CustomerDeliveryDetails>
+    <CustomerContactDetails>
+      <ContactPerson />
+      <ContactPersonEmail />
+      <ContactPersonPhone />
+    </CustomerContactDetails>
+    <CustomerAdditionalInformation>
+      <Comment />
+      <ReferenceNumber />
+      <BalanceLimit />
+    </CustomerAdditionalInformation>
+  </Customer>
+</Root>

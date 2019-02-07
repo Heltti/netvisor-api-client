@@ -1,0 +1,20 @@
+<Root>
+  <Product>
+    <ProductCode>CC</ProductCode>
+    <ProductGroup>Kirjat</ProductGroup>
+    <Name>Code Complete</Name>
+    <Description>Toinen painos</Description>
+    <UnitPrice type="brutto">42,5</UnitPrice>
+    <Unit>kpl</Unit>
+    <UnitWeight>1</UnitWeight>
+    <PurchasePrice>25</PurchasePrice>
+    <TariffHeading>Code Complete</TariffHeading>
+    <ComissionPercentage>11</ComissionPercentage>
+    <IsActive>1</IsActive>
+    <IsSalesProduct>0</IsSalesProduct>
+    <InventoryEnabled></InventoryEnabled>
+    <ProductBookKeepingDetails>
+      <DefaultVatPercent>22</DefaultVatPercent>
+    </ProductBookKeepingDetails>
+  </Product>
+</Root>

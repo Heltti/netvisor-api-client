@@ -1,0 +1,61 @@
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <Vouchers>
+    <Voucher Status="valid">
+      <NetvisorKey>12</NetvisorKey>
+      <VoucherDate>1.1.2000</VoucherDate>
+      <VoucherNumber>13</VoucherNumber>
+      <VoucherDescription>Invoice 14</VoucherDescription>
+      <VoucherClass>PI Purchase Invoice</VoucherClass>
+      <LinkedSourceNetvisorKey type="purchaseinvoice">15</LinkedSourceNetvisorKey>
+      <VoucherNetvisorURI>https:/netvisor.com/voucher/16</VoucherNetvisorURI>
+      <VoucherLine>
+        <LineSum>-17,18</LineSum>
+        <Description>Invoice 19</Description>
+        <AccountNumber>100</AccountNumber>
+        <VatPercent>20</VatPercent>
+      </VoucherLine>
+      <VoucherLine>
+        <LineSum>-21,22</LineSum>
+        <Description>Invoice 23</Description>
+        <AccountNumber>200</AccountNumber>
+        <VatPercent>24</VatPercent>
+      </VoucherLine>
+    </Voucher>
+    <Voucher Status="invalidated">
+      <NetvisorKey>25</NetvisorKey>
+      <VoucherDate>2.1.2000</VoucherDate>
+      <VoucherNumber>26</VoucherNumber>
+      <VoucherDescription>Invoice 27</VoucherDescription>
+      <VoucherClass>SA Sales Invoice</VoucherClass>
+      <LinkedSourceNetvisorKey type="salesinvoice">28</LinkedSourceNetvisorKey>
+      <VoucherNetvisorURI>https:/netvisor.com/voucher/29</VoucherNetvisorURI>
+      <VoucherLine>
+        <LineSum>-30,31</LineSum>
+        <Description>Invoice 32</Description>
+        <AccountNumber>300</AccountNumber>
+        <VatPercent>33</VatPercent>
+        <Dimension>
+            <DimensionName>Sales</DimensionName>
+            <DimensionItem>Mike</DimensionItem>
+        </Dimension>
+        <Dimension>
+            <DimensionName>Purchase</DimensionName>
+            <DimensionItem>Matt</DimensionItem>
+        </Dimension>
+      </VoucherLine>
+    </Voucher>
+    <Voucher>
+      <NetvisorKey>36</NetvisorKey>
+      <VoucherDate>3.1.2000</VoucherDate>
+      <VoucherNumber>37</VoucherNumber>
+      <VoucherDescription>Invoice 38</VoucherDescription>
+      <VoucherClass>Placeholder</VoucherClass>
+      <LinkedSourceNetvisorKey type="salesinvoice">38</LinkedSourceNetvisorKey>
+      <VoucherNetvisorURI>https:/netvisor.com/voucher/39</VoucherNetvisorURI>
+    </Voucher>
+  </Vouchers>
+</Root>

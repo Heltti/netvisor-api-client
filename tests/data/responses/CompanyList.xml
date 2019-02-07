@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <CompanyList>
+    <IsMore>0</IsMore>
+    <Company>
+      <Id>125</Id>
+      <IsActive>1</IsActive>
+      <Name>ACME</Name>
+      <FinnishOrganizationIdentifier>1234567-8</FinnishOrganizationIdentifier>
+    </Company>
+  </CompanyList>
+</Root>

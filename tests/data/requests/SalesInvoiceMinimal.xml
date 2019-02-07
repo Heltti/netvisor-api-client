@@ -1,0 +1,22 @@
+<Root>
+  <SalesInvoice>
+    <SalesInvoiceDate>2008-12-12</SalesInvoiceDate>
+    <SalesInvoiceAmount>244,00</SalesInvoiceAmount>
+    <SalesInvoiceStatus type="netvisor">unsent</SalesInvoiceStatus>
+    <InvoicingCustomerIdentifier type="netvisor">1</InvoicingCustomerIdentifier>
+    <PaymentTermNetDays>14</PaymentTermNetDays>
+    <PaymentTermCashDiscountDays>5</PaymentTermCashDiscountDays>
+    <PaymentTermCashDiscount type="percentage">9</PaymentTermCashDiscount>
+    <InvoiceLines>
+      <InvoiceLine>
+        <SalesInvoiceProductLine>
+          <ProductIdentifier type="netvisor">1697</ProductIdentifier>
+          <ProductName>Omena</ProductName>
+          <ProductUnitPrice type="net">6,90</ProductUnitPrice>
+          <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+          <SalesInvoiceProductLineQuantity>2</SalesInvoiceProductLineQuantity>
+        </SalesInvoiceProductLine>
+      </InvoiceLine>
+    </InvoiceLines>
+  </SalesInvoice>
+</Root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <SalesPaymentList>
+    <SalesPayment>
+      <NetvisorKey>165</NetvisorKey>
+      <Name>Matti Mallikas</Name>
+      <Date>7.2.2014</Date>
+      <Sum>249,90</Sum>
+      <ReferenceNumber>1094</ReferenceNumber>
+      <ForeignCurrencyAmount/>
+      <InvoiceNumber>1</InvoiceNumber>
+      <BankStatus>FAILED</BankStatus>
+      <BankStatusErrorDescription code="ERROR_IN_DUE_DATE">Eräpäivä virheellinen</BankStatusErrorDescription>
+    </SalesPayment>
+    <SalesPayment>
+      <NetvisorKey>166</NetvisorKey>
+      <Name>Assi Asiakas</Name>
+      <Date>10.3.2014</Date>
+      <Sum>200</Sum>
+      <ReferenceNumber>1106</ReferenceNumber>
+      <ForeignCurrencyAmount/>
+      <InvoiceNumber>2</InvoiceNumber>
+      <BankStatus>OK</BankStatus>
+    </SalesPayment>
+  </SalesPaymentList>
+</Root>

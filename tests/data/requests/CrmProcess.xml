@@ -1,0 +1,13 @@
+<Root>
+  <CrmProcess>
+    <ProcessIdentifier></ProcessIdentifier>
+    <Name></Name>
+    <Description></Description>
+    <ProcessTemplateName></ProcessTemplateName>
+    <CustomerIdentifier></CustomerIdentifier>
+    <DueDate format="ansi">2012-02-13</DueDate>
+    <InvoicingStatusIdentifier></InvoicingStatusIdentifier>
+    <IsClosed>0</IsClosed>
+  </CrmProcess>
+</Root>
+

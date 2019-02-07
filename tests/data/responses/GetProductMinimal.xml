@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <Product>
+    <ProductBaseInformation>
+      <NetvisorKey>165</NetvisorKey>
+      <ProductCode></ProductCode>
+      <ProductGroup></ProductGroup>
+      <Name>Code Complete</Name>
+      <Description></Description>
+      <UnitPrice type="brutto">0,0000</UnitPrice>
+      <Unit></Unit>
+      <UnitWeight></UnitWeight>
+      <PurchasePrice></PurchasePrice>
+      <TariffHeading></TariffHeading>
+      <ComissionPercentage></ComissionPercentage>
+      <IsActive>0</IsActive>
+      <IsSalesProduct></IsSalesProduct>
+    </ProductBaseInformation>
+    <ProductBookKeepingDetails>
+      <DefaultVatPercent>0</DefaultVatPercent>
+      <DefaultDomesticAccountNumber>3000</DefaultDomesticAccountNumber>
+      <DefaultEuAccountNumber>3360</DefaultEuAccountNumber>
+      <DefaultOutsideEUAccountNumber>3380</DefaultOutsideEUAccountNumber>
+    </ProductBookKeepingDetails>
+    <ProductInventoryDetails>
+      <InventoryAmount>0,00</InventoryAmount>
+      <InventoryMidPrice>0,0000</InventoryMidPrice>
+      <InventoryValue>0,00</InventoryValue>
+      <InventoryReservedAmount>0,00</InventoryReservedAmount>
+      <InventoryOrderedAmount>0,00</InventoryOrderedAmount>
+    </ProductInventoryDetails>
+  </Product>
+</Root>

@@ -1,0 +1,43 @@
+<Root>
+  <Customer>
+    <CustomerBaseInformation>
+      <InternalIdentifier>MM</InternalIdentifier>
+      <ExternalIdentifier>1967543-8</ExternalIdentifier>
+      <Name>Matti Meikäläinen</Name>
+      <NameExtension>Toimitusjohtaja</NameExtension>
+      <StreetAddress>c/o Yritys Oy</StreetAddress>
+      <AdditionalAddressLine>Pajukuja 1</AdditionalAddressLine>
+      <City>Lappeenranta</City>
+      <PostNumber>53100</PostNumber>
+      <Country>FI</Country>
+      <CustomerGroupName>Alennusasiakkaat</CustomerGroupName>
+      <PhoneNumber>040 123456</PhoneNumber>
+      <FaxNumber>05 123456</FaxNumber>
+      <Email>matti.meikalainen@firma.fi</Email>
+      <HomePageUri>www.firma.fi</HomePageUri>
+      <IsActive>1</IsActive>
+      <EmailInvoicingAddress>maija.meikalainen@firma.fi</EmailInvoicingAddress>
+    </CustomerBaseInformation>
+    <CustomerFinvoiceDetails>
+      <FinvoiceAddress>FI109700021497</FinvoiceAddress>
+      <FinvoiceRouterCode>NDEAFIHH</FinvoiceRouterCode>
+    </CustomerFinvoiceDetails>
+    <CustomerDeliveryDetails>
+      <DeliveryName>Maija Mehiläinen</DeliveryName>
+      <DeliveryStreetAddress>Pajukuja 2</DeliveryStreetAddress>
+      <DeliveryCity>Lappeenranta</DeliveryCity>
+      <DeliveryPostNumber>53900</DeliveryPostNumber>
+      <DeliveryCountry>FI</DeliveryCountry>
+    </CustomerDeliveryDetails>
+    <CustomerContactDetails>
+      <ContactPerson>Matti Meikäläinen</ContactPerson>
+      <ContactPersonEmail>matti.meikalainen@firma.fi</ContactPersonEmail>
+      <ContactPersonPhone>040 987 254</ContactPersonPhone>
+    </CustomerContactDetails>
+    <CustomerAdditionalInformation>
+      <Comment>Kommentti</Comment>
+      <CustomerReferenceNumber>1070</CustomerReferenceNumber>
+      <InvoicingLanguage>FI</InvoicingLanguage>
+    </CustomerAdditionalInformation>
+  </Customer>
+</Root>

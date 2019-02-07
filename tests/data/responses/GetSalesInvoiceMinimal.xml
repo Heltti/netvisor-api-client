@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <SalesInvoice>
+    <SalesInvoiceNumber>3</SalesInvoiceNumber>
+    <SalesInvoiceDate format="ansi">2012-01-27</SalesInvoiceDate>
+    <SalesInvoiceDeliveryDate format="ansi">2012-01-27</SalesInvoiceDeliveryDate>
+    <SalesInvoiceDueDate format="ansi">2012-02-11</SalesInvoiceDueDate>
+    <SalesInvoiceReferencenumber>1070</SalesInvoiceReferencenumber>
+    <SalesInvoiceAmount>244,00</SalesInvoiceAmount>
+    <SellerIdentifier type="name" />
+    <InvoiceStatus>Unsent</InvoiceStatus>
+    <SalesInvoiceFreeTextBeforeLines />
+    <SalesInvoiceFreeTextAfterLines />
+    <SalesInvoiceOurReference />
+    <SalesInvoiceYourReference />
+    <SalesInvoicePrivateComment />
+    <InvoicingCustomerName>Matti Mallikas</InvoicingCustomerName>
+    <InvoicingCustomerAddressline />
+    <InvoicingCustomerPostnumber />
+    <InvoicingCustomerTown />
+    <InvoicingCustomerCountryCode>FINLAND</InvoicingCustomerCountryCode>
+    <MatchPartialPaymentsByDefault>No</MatchPartialPaymentsByDefault>
+    <DeliveryAddressName />
+    <DeliveryAddressLine />
+    <DeliveryAddressPostnumber />
+    <DeliveryAddressTown />
+    <DeliveryAddressCountryCode />
+    <DeliveryMethod />
+    <DeliveryTerm />
+    <PaymentTermNetDays />
+    <PaymentTermCashDiscountDays />
+    <PaymentTermCashDiscount type="percentage" />
+    <InvoiceLines>
+      <InvoiceLine>
+        <SalesInvoiceProductLine>
+          <productidentifier type="customer">OMENA</productidentifier>
+          <ProductName>Omena</ProductName>
+          <ProductUnitPrice>6,9000</ProductUnitPrice>
+          <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+          <SalesInvoiceProductLineQuantity>2</SalesInvoiceProductLineQuantity>
+          <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+          <SalesInvoiceProductLineFreeText />
+          <SalesInvoiceProductLineVatSum>3,04</SalesInvoiceProductLineVatSum>
+          <SalesInvoiceProductLineSum>16,84</SalesInvoiceProductLineSum>
+          <AccountingAccountSuggestion />
+        </SalesInvoiceProductLine>
+      </InvoiceLine>
+    </InvoiceLines>
+  </SalesInvoice>
+</Root>
