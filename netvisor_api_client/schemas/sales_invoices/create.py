@@ -12,7 +12,7 @@ from ..fields import Decimal, List
 
 
 class ProductIdentifierSchema(RejectUnknownFieldsSchema):
-    identifier = Decimal()
+    identifier = fields.String()
     type = fields.String(default='netvisor')
 
     @post_dump
