@@ -1,5 +1,6 @@
 <Root>
   <SalesInvoice>
+    <SalesInvoiceNumber>107</SalesInvoiceNumber>
     <SalesInvoiceDate>2008-12-12</SalesInvoiceDate>
     <SalesInvoiceDeliveryDate>2008-07-25</SalesInvoiceDeliveryDate>
     <SalesInvoiceReferenceNumber>1070</SalesInvoiceReferenceNumber>
