@@ -18,10 +18,7 @@ setup(
     name='netvisor-api-client',
     version=get_version(),
     description='Python client for the Netvisor API',
-    long_description=(
-            open('README.md').read() + '\n' +
-            open('CHANGES.rst').read()
-    ),
+    long_description="",
     author='Heltti Oy',
     author_email='dev@heltti.fi',
     url='https://github.com/Heltti/netvisor-api-client',
@@ -33,7 +30,7 @@ setup(
     platforms='any',
     install_requires=[
         'inflection',
-        'marshmallow>=2.0.0,!=2.10.0',
+        'marshmallow>=2.15.1',
         'requests',
         'xmltodict>=0.10.1',
     ],

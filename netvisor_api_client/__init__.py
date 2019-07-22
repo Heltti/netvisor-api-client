@@ -6,6 +6,6 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__version__ = '0.8.4'
+__version__ = '0.8.5'
 
 from .core import Netvisor  # flake8: noqa

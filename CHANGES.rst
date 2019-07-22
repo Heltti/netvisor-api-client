@@ -3,11 +3,15 @@ Changelog
 
 Here you can see the full list of changes between each Netvisor.py release.
 
+0.8.5 (June 26th, 2019)
+^^^^^^^^^^^^^^^^^^^^^^^
+- PR #1: Typo fix in sales invoice number and version bump - @ajmyyra
+
 
 0.8.0 (February 7th, 2019)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 - Added support for Invoice attachments
--
+
 
 
 0.7.0 (September 19th, 2016)
