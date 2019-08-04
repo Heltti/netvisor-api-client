@@ -98,6 +98,7 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
 class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_number = fields.Integer(attribute='number')
     sales_invoice_date = fields.Date(attribute='date')
+    sales_invoice_value_date = fields.Date(attribute='value_date')
     sales_invoice_delivery_date = fields.Date(attribute='delivery_date')
     sales_invoice_reference_number = fields.String(attribute='reference_number')
     sales_invoice_amount = Decimal(attribute='amount')
