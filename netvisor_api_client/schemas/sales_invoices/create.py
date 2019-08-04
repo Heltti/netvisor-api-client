@@ -102,6 +102,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_delivery_date = fields.Date(attribute='delivery_date')
     sales_invoice_reference_number = fields.String(attribute='reference_number')
     sales_invoice_amount = Decimal(attribute='amount')
+    amount_currency = fields.String(attribute='currency')
 
     seller_identifier = fields.String()
     seller_name = fields.String()
@@ -158,6 +159,13 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
                 '#text': data['sales_invoice_status'],
                 '@type': 'netvisor'
             }
+
+        if 'amount_currency' in data:
+            data['sales_invoice_amount'] = {
+                '#text': data['sales_invoice_amount'],
+                '@iso4217currencycode': data['amount_currency']
+            }
+            del data['amount_currency']
 
         # Only add to data if there are attachments, Netvisor API doesn't like empty lists
         if 'sales_invoice_attachments' in data and data['sales_invoice_attachments']:

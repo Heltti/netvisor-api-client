@@ -5,7 +5,7 @@
     <SalesInvoiceValueDate>2008-11-31</SalesInvoiceValueDate>
     <SalesInvoiceDeliveryDate>2008-07-25</SalesInvoiceDeliveryDate>
     <SalesInvoiceReferenceNumber>1070</SalesInvoiceReferenceNumber>
-    <SalesInvoiceAmount>244,00</SalesInvoiceAmount>
+    <SalesInvoiceAmount iso4217currencycode="EUR">244,00</SalesInvoiceAmount>
     <SellerIdentifier type="netvisor">32</SellerIdentifier>
     <SalesInvoiceStatus type="netvisor">unsent</SalesInvoiceStatus>
     <InvoicingCustomerIdentifier type="netvisor">1</InvoicingCustomerIdentifier>
