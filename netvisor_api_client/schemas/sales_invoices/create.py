@@ -165,7 +165,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
                 '#text': data['sales_invoice_amount'],
                 '@iso4217currencycode': data['sales_invoice_amount_currency']
             }
-            del data['amount_currency']
+            del data['sales_invoice_amount_currency']
 
         # Only add to data if there are attachments, Netvisor API doesn't like empty lists
         if 'sales_invoice_attachments' in data and data['sales_invoice_attachments']:
