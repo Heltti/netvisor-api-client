@@ -102,7 +102,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_delivery_date = fields.Date(attribute='delivery_date')
     sales_invoice_reference_number = fields.String(attribute='reference_number')
     sales_invoice_amount = Decimal(attribute='amount')
-    amount_currency = fields.String(attribute='currency')
+    sales_invoice_amount_currency = fields.String(attribute='currency')
 
     seller_identifier = fields.String()
     seller_name = fields.String()
