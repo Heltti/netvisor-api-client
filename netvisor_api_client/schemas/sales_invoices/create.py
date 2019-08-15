@@ -163,7 +163,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
         if 'amount_currency' in data:
             data['sales_invoice_amount'] = {
                 '#text': data['sales_invoice_amount'],
-                '@iso4217currencycode': data['amount_currency']
+                '@iso4217currencycode': data['sales_invoice_amount_currency']
             }
             del data['amount_currency']
 
