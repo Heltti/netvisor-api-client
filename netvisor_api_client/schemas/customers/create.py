@@ -5,7 +5,7 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
-from marshmallow import fields
+from marshmallow import fields, post_dump
 
 from ..common import RejectUnknownFieldsSchema
 from ..fields import Boolean
@@ -65,9 +65,18 @@ class CustomerAdditionalInformationSchema(RejectUnknownFieldsSchema):
     comment = fields.String()
     customer_reference_number = fields.String()
     invoicing_language = fields.String()
+    invoice_print_channel_format = fields.Integer()
 
     class Meta:
         ordered = True
+
+    @post_dump
+    def post_dump(self, data):
+        if 'invoice_print_channel_format' in data:
+            data['invoice_print_channel_format'] = {
+                '#text': str(data['invoice_print_channel_format']),
+                '@type': 'netvisor'
+            }
 
 
 class CreateCustomerSchema(RejectUnknownFieldsSchema):

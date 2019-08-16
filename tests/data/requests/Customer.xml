@@ -38,6 +38,7 @@
       <Comment>Kommentti</Comment>
       <CustomerReferenceNumber>1070</CustomerReferenceNumber>
       <InvoicingLanguage>FI</InvoicingLanguage>
+      <InvoicePrintChannelFormat type="netvisor">1</InvoicePrintChannelFormat>
     </CustomerAdditionalInformation>
   </Customer>
 </Root>
