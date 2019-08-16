@@ -30,5 +30,5 @@ Creating a Netvisor client::
 Resources
 ---------
 
-* `Bug Tracker <https://github.com/Heltti/netvisor-api-client/issues>`_
-* `Code <https://github.com/Heltti/netvisor-api-client>`_
+* Bug Tracker <https://github.com/Heltti/netvisor-api-client/issues>
+* Code <https://github.com/Heltti/netvisor-api-client>
