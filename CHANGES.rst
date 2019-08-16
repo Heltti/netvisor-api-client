@@ -3,6 +3,11 @@ Changelog
 
 Here you can see the full list of changes between each Netvisor.py release.
 
+0.8.6 (August 16th, 2019)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+- PR #3: Value date and currency for invoices, invoice print format for customers - @ajmyyra
+
+
 0.8.5 (June 26th, 2019)
 ^^^^^^^^^^^^^^^^^^^^^^^
 - PR #1: Typo fix in sales invoice number and version bump - @ajmyyra
