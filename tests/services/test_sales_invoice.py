@@ -2,6 +2,7 @@ import decimal
 from datetime import date
 
 import pytest
+import xmltodict
 from marshmallow import ValidationError
 
 from netvisor_api_client.exc import InvalidData
@@ -244,10 +245,13 @@ class TestSalesInvoiceService(object):
             match_querystring=True
         )
         netvisor_id = netvisor.sales_invoices.create({
+            'number': '107',
             'date': date(2008, 12, 12),
+            'value_date': date(2008, 11, 30),
             'delivery_date': date(2008, 7, 25),
             'reference_number': '1070',
             'amount': decimal.Decimal('244.00'),
+            'currency': 'EUR',
             'seller_identifier': 32,
             'status': 'unsent',
             'invoicing_customer_identifier': u'1',
@@ -259,8 +263,7 @@ class TestSalesInvoiceService(object):
             'invoicing_customer_town': u'Lappeenranta',
             'invoicing_customer_country_code': u'FI',
             'delivery_address_name': u'Netvisor Oy',
-            'delivery_address_name_extension':
-                u'Ohjelmistokehitys ja tuotanto',
+            'delivery_address_name_extension': u'Ohjelmistokehitys ja tuotanto',
             'delivery_address_line': u'Snelmanninkatu 12',
             'delivery_address_post_number': u'53100',
             'delivery_address_town': u'LPR',
@@ -270,7 +273,7 @@ class TestSalesInvoiceService(object):
             'payment_term_cash_discount': decimal.Decimal('9'),
             'invoice_lines': [
                 {
-                    'identifier': '1697',
+                    'identifier': dict(identifier="1697", type="netvisor"),
                     'name': 'Omena',
                     'unit_price': {
                         'amount': decimal.Decimal('6.90'),
@@ -286,7 +289,7 @@ class TestSalesInvoiceService(object):
                     'accounting_account_suggestion': '3000'
                 },
                 {
-                    'identifier': '1697',
+                    'identifier': dict(identifier="1697", type="netvisor"),
                     'name': 'Banaani',
                     'unit_price': {
                         'amount': decimal.Decimal('100.00'),
@@ -304,7 +307,7 @@ class TestSalesInvoiceService(object):
         })
         request = responses.calls[0].request
         assert netvisor_id == 8
-        assert request.body == get_request_content('SalesInvoice.xml')
+        assert xmltodict.parse(request.body) == xmltodict.parse(get_request_content('SalesInvoice.xml'))
 
     def test_create_minimal(self, netvisor, responses):
         responses.add(
@@ -324,7 +327,7 @@ class TestSalesInvoiceService(object):
             'payment_term_cash_discount': decimal.Decimal('9'),
             'invoice_lines': [
                 {
-                    'identifier': '1697',
+                    'identifier': dict(identifier="1697", type="netvisor"),
                     'name': 'Omena',
                     'unit_price': {
                         'amount': decimal.Decimal('6.90'),
@@ -340,7 +343,7 @@ class TestSalesInvoiceService(object):
         })
         request = responses.calls[0].request
         assert netvisor_id == 8
-        assert request.body == get_request_content('SalesInvoiceMinimal.xml')
+        assert xmltodict.parse(request.body) == xmltodict.parse(get_request_content('SalesInvoiceMinimal.xml'))
 
     @pytest.mark.parametrize('data', [
         {'foo': 'bar'},
@@ -360,10 +363,13 @@ class TestSalesInvoiceService(object):
             match_querystring=True
         )
         data = {
+            'number': '107',
             'date': date(2008, 12, 12),
+            'value_date': date(2008, 11, 30),
             'delivery_date': date(2008, 7, 25),
             'reference_number': '1070',
             'amount': decimal.Decimal('244.00'),
+            'currency': 'EUR',
             'seller_identifier': 32,
             'status': 'unsent',
             'invoicing_customer_identifier': u'1',
@@ -386,7 +392,7 @@ class TestSalesInvoiceService(object):
             'payment_term_cash_discount': decimal.Decimal('9'),
             'invoice_lines': [
                 {
-                    'identifier': '1697',
+                    'identifier': dict(identifier="1697", type="netvisor"),
                     'name': 'Omena',
                     'unit_price': {
                         'amount': decimal.Decimal('6.90'),
@@ -402,7 +408,7 @@ class TestSalesInvoiceService(object):
                     'accounting_account_suggestion': '3000'
                 },
                 {
-                    'identifier': '1697',
+                    'identifier': dict(identifier="1697", type="netvisor"),
                     'name': 'Banaani',
                     'unit_price': {
                         'amount': decimal.Decimal('100.00'),
