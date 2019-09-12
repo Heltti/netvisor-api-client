@@ -39,6 +39,9 @@ class CustomerAdditionalInformationSchema(Schema):
     balance_limit = Decimal(allow_none=True)
     comment = fields.String(allow_none=True)
     reference_number = fields.String(allow_none=True)
+    your_default_reference = fields.String(allow_none=True)
+    default_text_before_invoice_lines = fields.String(allow_none=True)
+    default_text_after_invoice_lines = fields.String(allow_none=True)
 
 
 class CustomerContactDetailsSchema(Schema):

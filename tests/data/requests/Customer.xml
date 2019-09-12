@@ -39,6 +39,9 @@
       <CustomerReferenceNumber>1070</CustomerReferenceNumber>
       <InvoicingLanguage>FI</InvoicingLanguage>
       <InvoicePrintChannelFormat type="netvisor">1</InvoicePrintChannelFormat>
+      <YourDefaultReference>Default reference</YourDefaultReference>
+      <DefaultTextBeforeInvoiceLines>Default text before invoice lines</DefaultTextBeforeInvoiceLines>
+      <DefaultTextAfterInvoiceLines>Default text after invoice lines</DefaultTextAfterInvoiceLines>
     </CustomerAdditionalInformation>
   </Customer>
 </Root>

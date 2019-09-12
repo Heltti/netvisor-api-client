@@ -55,6 +55,9 @@ class TestCustomerService(object):
                 'comment': u'Great customer!',
                 'reference_number': u'1070',
                 'balance_limit': decimal.Decimal('200.3'),
+                'your_default_reference': 'Default reference',
+                'default_text_before_invoice_lines': 'Default test before invoice lines',
+                'default_text_after_invoice_lines': 'Default test after invoice lines',
             }
         }
 
@@ -230,6 +233,10 @@ class TestCustomerService(object):
                 'comment': u'Kommentti',
                 'customer_reference_number': u'1070',
                 'invoicing_language': u'FI',
+                'invoice_print_channel_format': u'1',
+                'your_default_reference': u'Default reference',
+                'default_text_before_invoice_lines': u'Default text before invoice lines',
+                'default_text_after_invoice_lines': u'Default text after invoice lines',
             }
         })
         request = responses.calls[0].request
@@ -312,6 +319,10 @@ class TestCustomerService(object):
                 'comment': u'Kommentti',
                 'customer_reference_number': u'1070',
                 'invoicing_language': u'FI',
+                'invoice_print_channel_format': u'1',
+                'your_default_reference': 'Default reference',
+                'default_text_before_invoice_lines': 'Default text before invoice lines',
+                'default_text_after_invoice_lines': 'Default text after invoice lines',
             }
         }
         assert netvisor.customers.update(id=8, data=data) is None

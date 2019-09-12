@@ -66,6 +66,9 @@ class CustomerAdditionalInformationSchema(RejectUnknownFieldsSchema):
     customer_reference_number = fields.String()
     invoicing_language = fields.String()
     invoice_print_channel_format = fields.Integer()
+    your_default_reference = fields.String()
+    default_text_before_invoice_lines = fields.String()
+    default_text_after_invoice_lines = fields.String()
 
     class Meta:
         ordered = True
