@@ -3,6 +3,11 @@ Changelog
 
 Here you can see the full list of changes between each Netvisor.py release.
 
+0.8.7 (September 12th, 2019)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Customer schema: add default reference, default text before / after invoice lines support
+
+
 0.8.6 (August 16th, 2019)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 - PR #3: Value date and currency for invoices, invoice print format for customers - @ajmyyra
