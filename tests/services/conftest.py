@@ -4,7 +4,8 @@ from responses import RequestsMock
 
 @pytest.fixture
 def netvisor():
-    from netvisor import Netvisor
+    from netvisor_api_client import Netvisor
+
     kwargs = dict(
         sender='Test client',
         partner_id='xxx_yyy',
@@ -14,6 +15,7 @@ def netvisor():
         organization_id='1967543-8',
         language='EN'
     )
+
     return Netvisor(host='http://koulutus.netvisor.fi', **kwargs)
 
 

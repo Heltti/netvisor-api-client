@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from ..utils import get_response_content
+from tests.utils import get_response_content
 
 
 class TestAccountingService(object):

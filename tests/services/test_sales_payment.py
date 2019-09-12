@@ -1,7 +1,7 @@
 import decimal
 from datetime import date
 
-from ..utils import get_response_content
+from tests.utils import get_response_content
 
 
 class TestSalesPaymentService(object):

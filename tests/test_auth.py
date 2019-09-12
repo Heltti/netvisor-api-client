@@ -14,7 +14,8 @@ def make_auth(
         organization_id='1967543-8',
         **kwargs
 ):
-    from netvisor.auth import NetvisorAuth
+    from netvisor_api_client.auth import NetvisorAuth
+
     return NetvisorAuth(
         sender,
         partner_id,

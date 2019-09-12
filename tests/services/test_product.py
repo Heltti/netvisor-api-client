@@ -2,8 +2,8 @@ import decimal
 
 import pytest
 
-from netvisor.exc import InvalidData
-from ..utils import get_response_content
+from netvisor_api_client.exc import InvalidData
+from tests.utils import get_response_content
 
 
 class TestProductService(object):
