@@ -3,6 +3,12 @@ Changelog
 
 Here you can see the full list of changes between each Netvisor.py release.
 
+0.9.0 (October 2nd, 2019)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Breaking change in SalesInvoiceAttachmentLineSchema: the document data and type have own fields now instead of using hacky concatenated string
+- Fix schema parsing to work with never versions of deps (tested with marshmallow 2.20.4 and xmltodict 0.12.0, upgrading to marshmallow 3.x.x pending)
+
+
 0.8.7 (September 12th, 2019)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - Customer schema: add default reference, default text before / after invoice lines support
