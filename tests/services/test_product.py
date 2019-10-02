@@ -109,6 +109,19 @@ class TestProductService(object):
             'Product not found with Netvisor identifier: 123'
         )
 
+    def test_empty_list(self, netvisor, responses):
+        responses.add(
+            method='GET',
+            url='http://koulutus.netvisor.fi/ProductList.nv',
+            body=get_response_content('ProductListEmpty.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+
+        products = netvisor.products.list()
+
+        assert products == []
+
     def test_list(self, netvisor, responses):
         responses.add(
             method='GET',
