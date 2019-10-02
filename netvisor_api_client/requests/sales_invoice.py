@@ -7,7 +7,7 @@
 """
 from marshmallow import ValidationError
 
-from .base import Request
+from .base import Request, ListRequest
 from ..exc import InvalidData
 from ..responses.sales_invoices import (
     CreateSalesInvoiceResponse,
@@ -23,22 +23,28 @@ class GetSalesInvoiceRequest(Request):
     uri = 'GetSalesInvoice.nv'
     response_cls = GetSalesInvoiceResponse
 
+    def _raise_exception(self):
+        raise InvalidData(
+            'Data form incorrect:. '
+            'Sales invoice not found with Netvisor identifier: {0}'.format(
+                self.params['NetvisorKey']
+            )
+        )
+
     def parse_response(self, response):
         try:
-            data = super(GetSalesInvoiceRequest, self).parse_response(response)
+            result = super(GetSalesInvoiceRequest, self).parse_response(response=response)
+
+            if not result:
+                self._raise_exception()
+
+            return result
 
         except ValidationError:
-            raise InvalidData(
-                'Data form incorrect:. '
-                'Sales invoice not found with Netvisor identifier: {0}'.format(
-                    self.params['NetvisorKey']
-                )
-            )
-
-        return data
+            self._raise_exception()
 
 
-class SalesInvoiceListRequest(Request):
+class SalesInvoiceListRequest(ListRequest):
     method = 'GET'
     uri = 'SalesInvoiceList.nv'
     response_cls = SalesInvoiceListResponse

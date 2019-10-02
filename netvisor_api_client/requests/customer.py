@@ -5,7 +5,7 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
-from .base import Request
+from .base import Request, ListRequest
 from ..responses.customers import (
     CreateCustomerResponse,
     CustomerListResponse,
@@ -21,7 +21,7 @@ class GetCustomerRequest(Request):
     response_cls = GetCustomerResponse
 
 
-class CustomerListRequest(Request):
+class CustomerListRequest(ListRequest):
     method = 'GET'
     uri = 'CustomerList.nv'
     response_cls = CustomerListResponse
