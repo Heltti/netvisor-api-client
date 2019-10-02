@@ -17,10 +17,12 @@ from ..requests.customer import (
 class CustomerService(Service):
     def get(self, id):
         request = GetCustomerRequest(self.client, params={'id': id})
+
         return request.make_request()
 
     def list(self, query=None):
         request = CustomerListRequest(self.client, params={'Keyword': query})
+
         return request.make_request()
 
     def create(self, data):
@@ -29,6 +31,7 @@ class CustomerService(Service):
             params={'method': 'add'},
             data=data
         )
+
         return request.make_request()
 
     def update(self, id, data):
@@ -37,4 +40,5 @@ class CustomerService(Service):
             params={'id': id, 'method': 'edit'},
             data=data
         )
+
         return request.make_request()

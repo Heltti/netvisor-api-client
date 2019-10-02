@@ -12,6 +12,7 @@ from ..requests.product import GetProductRequest, ProductListRequest
 class ProductService(Service):
     def get(self, id):
         request = GetProductRequest(self.client, params={'id': id})
+
         return request.make_request()
 
     def list(self):
