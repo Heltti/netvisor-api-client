@@ -50,5 +50,13 @@
         </SalesInvoiceProductLine>
       </InvoiceLine>
     </InvoiceLines>
+    <SalesInvoiceAttachments>
+      <SalesInvoiceAttachment>
+        <MimeType>application/pdf</MimeType>
+        <AttachmentDescription>This is a file</AttachmentDescription>
+        <Filename>invoice-attachment.pdf</Filename>
+        <DocumentData type="pdf">SSdtIG5vdCBtYWRlIGJ5IGRlc2lnbg==</DocumentData>
+      </SalesInvoiceAttachment>
+    </SalesInvoiceAttachments>
   </SalesInvoice>
 </Root>

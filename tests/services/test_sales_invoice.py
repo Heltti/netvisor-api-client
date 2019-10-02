@@ -303,6 +303,15 @@ class TestSalesInvoiceService(object):
                     'free_text': 'Keltainen',
                     'accounting_account_suggestion': '3200'
                 }
+            ],
+            'attachments': [
+                {
+                    'mime_type': "application/pdf",
+                    'description': 'This is a file',
+                    'filename': 'invoice-attachment.pdf',
+                    'data': 'SSdtIG5vdCBtYWRlIGJ5IGRlc2lnbg==',
+                    'type': 'pdf',
+                }
             ]
         })
         request = responses.calls[0].request
@@ -421,6 +430,15 @@ class TestSalesInvoiceService(object):
                     'quantity': decimal.Decimal('1'),
                     'free_text': 'Keltainen',
                     'accounting_account_suggestion': '3200'
+                }
+            ],
+            'attachments': [
+                {
+                    'mime_type': "application/pdf",
+                    'description': 'This is a file',
+                    'filename': 'invoice-attachment.pdf',
+                    'data': 'SSdtIG5vdCBtYWRlIGJ5IGRlc2lnbg==',
+                    'type': 'pdf',
                 }
             ]
         }

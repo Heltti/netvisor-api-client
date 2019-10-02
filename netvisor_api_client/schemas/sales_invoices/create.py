@@ -73,6 +73,8 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
             '@type': document_type
         }
 
+        del data["document_type"]
+
         return data
 
 
@@ -119,8 +121,6 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_your_reference = fields.String(attribute='your_reference')
     sales_invoice_private_comment = fields.String(attribute='private_comment')
 
-    sales_invoice_attachments = List(fields.Nested(SalesInvoiceAttachmentLineSchema), default=list, attribute="attachments")
-
     invoicing_customer_identifier = fields.String()
     invoicing_customer_name = fields.String()
     invoicing_customer_name_extension = fields.String()
@@ -144,6 +144,8 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     payment_term_cash_discount = Decimal()
 
     invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
+
+    sales_invoice_attachments = List(fields.Nested(SalesInvoiceAttachmentLineSchema), default=list, attribute="attachments")
 
     class Meta:
         ordered = True
