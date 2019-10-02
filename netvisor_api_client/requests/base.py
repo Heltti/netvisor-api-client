@@ -10,6 +10,14 @@ import xmltodict
 
 
 class Request(object):
+    method = None
+    uri = None
+    schema_cls = None
+    response_cls = None
+    tag_name = None
+
+    raw_data = None
+
     def __init__(self, client, params=None, data=None):
         self.client = client
         self.params = params
@@ -24,20 +32,23 @@ class Request(object):
             headers={'content-type': 'text/xml; charset=utf-8'},
             data=self.unparse()
         )
+
         return self.parse_response(response)
 
     def serialize(self):
-        try:
+        if self.schema_cls:
             schema = self.schema_cls(strict=True)
-        except AttributeError:
-            self.raw_data = None
-        else:
+
             result = schema.dump(self.data)
+
             self.raw_data = {
                 'root': {
                     self.tag_name: result.data
                 }
             }
+
+        else:
+            self.raw_data = None
 
     def unparse(self):
         if self.raw_data is not None:
@@ -57,4 +68,12 @@ class Request(object):
 
     def parse_response(self, response):
         response = self.response_cls(response)
+
         return response.data
+
+
+class ListRequest(Request):
+    def parse_response(self, response):
+        response = super(ListRequest, self).parse_response(response=response)
+
+        return response if response is not None else []
