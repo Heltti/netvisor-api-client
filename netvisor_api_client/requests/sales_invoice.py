@@ -5,6 +5,8 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
+from marshmallow import ValidationError
+
 from .base import Request
 from ..exc import InvalidData
 from ..responses.sales_invoices import (
@@ -22,18 +24,18 @@ class GetSalesInvoiceRequest(Request):
     response_cls = GetSalesInvoiceResponse
 
     def parse_response(self, response):
-        data = super(GetSalesInvoiceRequest, self).parse_response(response)
-        self.ensure_not_empty(data)
-        return data
+        try:
+            data = super(GetSalesInvoiceRequest, self).parse_response(response)
 
-    def ensure_not_empty(self, data):
-        if data is None:
+        except ValidationError:
             raise InvalidData(
                 'Data form incorrect:. '
                 'Sales invoice not found with Netvisor identifier: {0}'.format(
                     self.params['NetvisorKey']
                 )
             )
+
+        return data
 
 
 class SalesInvoiceListRequest(Request):
