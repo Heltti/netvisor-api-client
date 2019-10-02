@@ -52,6 +52,7 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
     attachment_description = fields.String(attribute='description')
     filename = fields.String(attribute='filename')
     document_data = fields.String(attribute='data')
+    document_type = fields.String(attribute='type')
 
     class Meta:
         ordered = True
@@ -64,7 +65,8 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
 
     @post_dump
     def post_dump(self, data):
-        document_data, document_type = data['document_data'].split('|')
+        document_data = data['document_data']
+        document_type = data["document_type"]
 
         data['document_data'] = {
             '#text': document_data,
