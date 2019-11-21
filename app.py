@@ -1,7 +1,7 @@
 from netvisor_api_client import Netvisor
 
 client = Netvisor(
-    host='https://isvapi.netvisor.fi',
+    host='https://integration.netvisor.fi',
     sender='Likvidi Robotti',
     partner_id='Lik_558',
     partner_key='11608A6225D8D4A601320F55984A586A',
@@ -11,4 +11,4 @@ client = Netvisor(
     language='EN'
 )
 
-print(client.purchase_invoices.list(status='Open'))
+print(client.purchase_invoices.list())

@@ -30,9 +30,9 @@ class PurchaseInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
     number = fields.Integer(load_from='invoice_number')
     date = fields.Nested(DateSchema, load_from='invoicedate')
-    vendor = fields.String()
-    #payments = fields.Integer()
+    vendor = fields.String(allow_none=True)
     sum = Decimal(load_from='invoice_sum')
+    payments = Decimal(load_from='payments')
     open_sum = Decimal(load_from='open_sum')
 
     @post_load
@@ -42,11 +42,11 @@ class PurchaseInvoiceSchema(Schema):
 
 
 class PurchaseInvoiceListSchema(Schema):
-    sales_invoices = List(
+    purchase_invoices = List(
         fields.Nested(PurchaseInvoiceSchema),
-        load_from='sales_invoice'
+        load_from='purchase_invoice'
     )
 
     @post_load
-    def preprocess_sales_invoice_list(self, input_data):
-        return input_data['sales_invoices'] if input_data else []
+    def preprocess_purchase_invoice_list(self, input_data):
+        return input_data['purchase_invoices'] if input_data else []
