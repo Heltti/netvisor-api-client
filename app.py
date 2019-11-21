@@ -11,4 +11,4 @@ client = Netvisor(
     language='EN'
 )
 
-print(client.purchase_invoices.list())
+print(client.purchase_invoices.list(status='open')[0])

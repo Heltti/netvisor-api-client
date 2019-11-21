@@ -28,7 +28,6 @@ class StatusSchema(Schema):
 
 class PurchaseInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
-    number = fields.Integer(load_from='invoice_number')
     date = fields.Nested(DateSchema, load_from='invoicedate')
     vendor = fields.String(allow_none=True)
     sum = Decimal(load_from='invoice_sum')
@@ -36,8 +35,8 @@ class PurchaseInvoiceSchema(Schema):
     open_sum = Decimal(load_from='open_sum')
 
     @post_load
-    def preprocess_sales_invoice(self, input_data):
-        input_data.update(input_data['status'])
+    def preprocess_purchase_invoice(self, input_data):
+#        input_data.update(input_data['status'])
         return input_data
 
 
