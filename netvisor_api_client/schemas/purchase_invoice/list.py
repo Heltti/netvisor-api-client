@@ -35,6 +35,7 @@ class PurchaseInvoiceSchema(Schema):
     open_sum = Decimal(load_from='open_sum')
 
     @post_load
+    # Ei tee nyt mitään preprocessia
     def preprocess_purchase_invoice(self, input_data):
 #        input_data.update(input_data['status'])
         return input_data

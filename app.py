@@ -10,5 +10,14 @@ client = Netvisor(
     organization_id='0937054-2',
     language='EN'
 )
+'''
+Api ei handlaa nyt substatusta osto- ja myyntilaskuissa
+'''
+# Erääntyneet
+overdue_list = client.sales_invoices.list(status='overdue')
+print(len(overdue_list))
+sum = 0
+for invoice in overdue_list:
+    sum = sum + invoice['sum']
 
-print(client.purchase_invoices.list(status='open')[0])
+print(sum)
