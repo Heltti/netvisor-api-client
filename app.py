@@ -2,6 +2,7 @@
 Api ei handlaa nyt substatusta osto- ja myyntilaskuissa
 '''
 
+from datetime import datetime
 from netvisor_api_client import Netvisor
 
 client = Netvisor(
@@ -19,16 +20,23 @@ data = {'Myyntilaskut': {},
         'Ostolaskut': {}}
 
 
+def current_month():
+    # Hakee kuukauden alusta vain
+    return datetime.now().strftime('%Y-%m') + '-1'
+
+def data_handler():
+    pass
+
 def main():
     ### Myyntlaskut
     # Erääntyneet, hakee seuraavat substatusalaiset OVERDUE, REMINDED, REQUESTED, COLLECTED
     overdue_sales_list = client.sales_invoices.list(status='overdue')
     data['Myyntilaskut']['Erääntyneiden myyntilaskujen määrä'] = len(overdue_sales_list)
 
-    sum = 0
+    invoice_sum = 0
     for invoice in overdue_sales_list:
-        sum = sum + invoice['sum']
-    data['Myyntilaskut']['Erääntyneiden summa'] = sum
+        invoice_sum += invoice['sum']
+    data['Myyntilaskut']['Erääntyneiden summa'] = invoice_sum
 
     # Avoimet, OPEN, OVERDUE, REMINDED, REQUESTED, COLLECTED
     open_sales_list = client.sales_invoices.list(status='open')
@@ -40,12 +48,11 @@ def main():
 
     ### Ostolaskut
     '''
-    Ostolaskun statusrajaus 
-    - Open, Approved = hyväksynnässä
-    - Accepted = hyväksytty
+    Hakee Kuukauden alusta hyväksytyt ostolaskut 
     '''
-    open_purchase_list = client.purchase_invoices.list(status='Approved')
-    data['Ostolaskut']['Avointen määrä'] = len(open_purchase_list)
+    id_list = client.purchase_invoices.list(status='Accepted', start_date=current_month())
+    for company in id_list:
+        data['Ostolaskut']['Avointen määrä'] = len(open_purchase_list)
 
     print(data)
 
