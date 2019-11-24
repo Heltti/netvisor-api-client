@@ -49,7 +49,7 @@ class InvoiceLinesSchema(Schema):
             return input_data['invoice_line']
 
 
-class GetPurchaseInvoice(Schema):
+class GetPurchaseInvoiceSchema(Schema):
     number = fields.Integer(
         required=True,
         load_from='purchase_invoice_number'
@@ -113,4 +113,39 @@ class GetPurchaseInvoice(Schema):
         required=False,
         load_from='purchase_invoice_description'
     )
-    vendor_name
+    vendor_name = fields.String(
+        required=False,
+        load_from='vendor_name'
+    )
+    vendor_addresline = fields.String(
+        required=False,
+        load_from='vendor_addresline'
+    )
+    vendor_postnumber = fields.String(
+        required=False,
+        load_from='vendor_postnumber'
+    )
+    vendor_town = fields.String(
+        required=False,
+        load_from='vendor_town'
+    )
+    vendor_country = fields.String(
+        required=False,
+        load_from='vendor_country'
+    )
+    voucher_id = fields.Integer(
+        required=False,
+        allow_none=True,
+        load_from='voucher_id'
+    )
+    accounted = Boolean(
+        true = 'yes',
+        false = 'no',
+        required=True,
+        load_from='is_accounted'
+    )
+    comment = fields.String(
+        required=False,
+        load_from='comment'
+    )
+    invoice_lines = fields.Nested(InvoiceLinesSchema)

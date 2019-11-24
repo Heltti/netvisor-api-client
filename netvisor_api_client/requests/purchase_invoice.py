@@ -8,7 +8,7 @@ from ..responses.purchase_invoices import (
 )
 
 
-class GetSalesInvoiceRequest(Request):
+class GetPurchaseInvoiceRequest(Request):
     method = 'GET'
     uri = 'getpurchaseinvoice.nv'
     response_cls = GetPurchaseInvoiceResponse

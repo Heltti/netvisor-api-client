@@ -1,10 +1,18 @@
 from .base import Service
 from ..requests.purchase_invoice import (
-    PurchaseInvoiceListRequest
+    PurchaseInvoiceListRequest,
+    GetPurchaseInvoiceRequest
 )
 
 
 class PurchaseInvoiceService(Service):
+    def get(self, id):
+        request = GetPurchaseInvoiceRequest(
+            self.client,
+            params={'NetvisorKey': id}
+        )
+        return request.make_request()
+
     def list(self, status=None, invoice_number=None, start_date=None, end_date=None):
         request = PurchaseInvoiceListRequest(
             self.client,
