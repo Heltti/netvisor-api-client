@@ -1,11 +1,15 @@
 """
-Esimerkki tuloste:
-
+:return:
 {'Myyntilaskut': {'Avoimien määrä': 11,
                   'Erääntyneiden myyntilaskujen määrä': 0,
                   'Erääntyneiden summa': 0,
                   'Hylättyjen määrä': 0},
  'Ostolaskut': {'Hyväksytyt ei tiliöidyt': 3}}
+"""
+
+"""
+Palauttaa nyt lukumäärät, jatkossa id:t tai laskujen datat? 
+Riippuen siitä miten halutaan esittää / ilmoittaa 
 """
 
 from datetime import datetime
@@ -37,7 +41,7 @@ def main():
     overdue_sales_list = client.sales_invoices.list(status='overdue', start_date=current_month())
     data['Myyntilaskut']['Erääntyneiden myyntilaskujen määrä'] = len(overdue_sales_list)
 
-    # TÄTÄ EI TAIDA TARVITA
+    # Erääntyneiden summa
     invoice_sum = 0
     for invoice in overdue_sales_list:
         invoice_sum += invoice['sum']
