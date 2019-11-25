@@ -50,7 +50,7 @@ class InvoiceLinesSchema(Schema):
 
 
 class GetPurchaseInvoiceSchema(Schema):
-    number = fields.Integer(
+    number = fields.String( # Jollakin laskulla heitti, että ei Int (Meneekö yli, oli kyseessä vakuutusyhtiö paljon laskuja?)
         required=True,
         load_from='purchase_invoice_number'
     )
@@ -75,7 +75,8 @@ class GetPurchaseInvoiceSchema(Schema):
         load_from='purchase_invoice_value_date'
     )
     reference_number = fields.String(
-        required=True,
+        required=False,
+        allow_none=True,
         load_from='purchase_invoice_reference_number'
     )
     amount = fields.Nested(
@@ -102,15 +103,18 @@ class GetPurchaseInvoiceSchema(Schema):
         load_from='invoice_status' # Currently returns always 'Open'
     )
     our_reference = fields.String(
-        required=True,
+        required=False,
+        allow_none=True,
         load_from='purchase_invoice_our_reference'
     )
     your_reference = fields.String(
-        required=False, # ?
+        required=False,
+        allow_none=True,# ?
         load_from='purchase_invoice_your_reference'
     )
     description = fields.String(
         required=False,
+        allow_none=True,
         load_from='purchase_invoice_description'
     )
     vendor_name = fields.String(
@@ -123,14 +127,17 @@ class GetPurchaseInvoiceSchema(Schema):
     )
     vendor_postnumber = fields.String(
         required=False,
+        allow_none=True,
         load_from='vendor_postnumber'
     )
     vendor_town = fields.String(
         required=False,
+        allow_none=True,
         load_from='vendor_town'
     )
     vendor_country = fields.String(
         required=False,
+        allow_none=True,
         load_from='vendor_country'
     )
     voucher_id = fields.Integer(
@@ -138,10 +145,9 @@ class GetPurchaseInvoiceSchema(Schema):
         allow_none=True,
         load_from='voucher_id'
     )
-    accounted = Boolean(
-        true = 'yes',
-        false = 'no',
+    accounted = fields.Boolean(
         required=True,
+        allow_none=True,
         load_from='is_accounted'
     )
     comment = fields.String(

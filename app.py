@@ -1,6 +1,12 @@
-'''
-Api ei handlaa nyt substatusta osto- ja myyntilaskuissa
-'''
+"""
+Esimerkki tuloste:
+
+{'Myyntilaskut': {'Avoimien määrä': 11,
+                  'Erääntyneiden myyntilaskujen määrä': 0,
+                  'Erääntyneiden summa': 0,
+                  'Hylättyjen määrä': 0},
+ 'Ostolaskut': {'Hyväksytyt ei tiliöidyt': 3}}
+"""
 
 from datetime import datetime
 from netvisor_api_client import Netvisor
@@ -13,7 +19,7 @@ client = Netvisor(
     customer_id='TK_16987_1082',
     customer_key='D2A1A66AB1A26DFA8463B392CB2964DA',
     organization_id='0937054-2',
-    language='EN'
+    language='FI'
 )
 
 data = {'Myyntilaskut': {},
@@ -24,37 +30,40 @@ def current_month():
     # Hakee kuukauden alusta vain
     return datetime.now().strftime('%Y-%m') + '-1'
 
-def data_handler():
-    pass
 
 def main():
     ### Myyntlaskut
     # Erääntyneet, hakee seuraavat substatusalaiset OVERDUE, REMINDED, REQUESTED, COLLECTED
-    overdue_sales_list = client.sales_invoices.list(status='overdue')
+    overdue_sales_list = client.sales_invoices.list(status='overdue', start_date=current_month())
     data['Myyntilaskut']['Erääntyneiden myyntilaskujen määrä'] = len(overdue_sales_list)
 
+    # TÄTÄ EI TAIDA TARVITA
     invoice_sum = 0
     for invoice in overdue_sales_list:
         invoice_sum += invoice['sum']
     data['Myyntilaskut']['Erääntyneiden summa'] = invoice_sum
 
-    # Avoimet, OPEN, OVERDUE, REMINDED, REQUESTED, COLLECTED
-    open_sales_list = client.sales_invoices.list(status='open')
+    # Avoimet
+    open_sales_list = client.sales_invoices.list(status='open', start_date=current_month())
     data['Myyntilaskut']['Avoimien määrä'] = len(open_sales_list)
 
     # Hylätyt
-    rejected_sales_list = client.sales_invoices.list(status='rejected')
+    rejected_sales_list = client.sales_invoices.list(status='rejected', start_date=current_month())
     data['Myyntilaskut']['Hylättyjen määrä'] = len(rejected_sales_list)
 
     ### Ostolaskut
     '''
-    Hakee Kuukauden alusta hyväksytyt ostolaskut 
+    Tarkista Nonen ja Falsen erot
     '''
-    id_list = client.purchase_invoices.list(status='Accepted', start_date=current_month())
-    for company in id_list:
-        data['Ostolaskut']['Avointen määrä'] = len(open_purchase_list)
+    accepted_purchase_list = []
+    invoices = client.purchase_invoices.list(status='Accepted', start_date=current_month())
+    for invoice in invoices:
+        invoice_data = client.purchase_invoices.get(id=invoice['netvisor_key'])
+        if invoice_data['accounted'] is False:
+            accepted_purchase_list.append(invoice_data)
+    data['Ostolaskut']['Hyväksytyt ei tiliöidyt'] = len(accepted_purchase_list)
 
-    print(data)
+    return data
 
 
 if __name__ == '__main__':

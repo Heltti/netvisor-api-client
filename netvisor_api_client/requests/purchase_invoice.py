@@ -23,7 +23,7 @@ class GetPurchaseInvoiceRequest(Request):
 
     def parse_response(self, response):
         try:
-            result = super(GetPurchaseInvoiceResponse, self).parse_response(response=response)
+            result = super(GetPurchaseInvoiceRequest, self).parse_response(response=response)
 
             if not result:
                 self._raise_exception()

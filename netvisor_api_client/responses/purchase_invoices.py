@@ -5,11 +5,11 @@ from ..schemas import (
 )
 
 
-class GetPurchaseInvoiceResponse(Response):
-    schema_cls = GetPurchaseInvoiceSchema
-    tag_name = 'purchase_invoice'
-
-
 class PurchaseInvoiceListResponse(Response):
     schema_cls = PurchaseInvoiceListSchema
     tag_name = 'purchase_invoice_list'
+
+
+class GetPurchaseInvoiceResponse(Response):
+    schema_cls = GetPurchaseInvoiceSchema
+    tag_name = 'purchase_invoice'
