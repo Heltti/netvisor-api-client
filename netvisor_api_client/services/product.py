@@ -6,7 +6,7 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Service
-from ..requests.product import GetProductRequest, ProductListRequest
+from ..requests.product import GetProductRequest, ProductListRequest, CreateProductRequest
 
 
 class ProductService(Service):
@@ -17,4 +17,8 @@ class ProductService(Service):
 
     def list(self):
         request = ProductListRequest(self.client)
+        return request.make_request()
+
+    def create(self): # Lisää parametrit jos tarvetta
+        request = CreateProductRequest(self.client, params={'method': 'add'})
         return request.make_request()

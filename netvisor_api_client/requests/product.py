@@ -9,7 +9,7 @@ from marshmallow import ValidationError
 
 from .base import Request, ListRequest
 from ..exc import InvalidData
-from ..responses.products import GetProductResponse, ProductListResponse
+from ..responses.products import GetProductResponse, ProductListResponse, CreateProductResponse
 
 
 class GetProductRequest(Request):
@@ -37,6 +37,31 @@ class GetProductRequest(Request):
         except ValidationError:
             self._raise_validation_error()
 
+
+class CreateProductRequest(Request):
+    method = 'POST'
+    uri = 'product.nv'
+    response_cls = CreateProductResponse
+
+    def _raise_validation_error(self):
+        raise InvalidData(
+            'Data form incorrect:. '
+            'Product not found with Netvisor identifier: {0}'.format(
+                self.params['id']
+            )
+        )
+
+    def parse_response(self, response):
+        try:
+            result = super(CreateProductRequest, self).parse_response(response)
+
+            if not result:
+                self._raise_validation_error()
+
+            return result
+
+        except ValidationError:
+            self._raise_validation_error()
 
 class ProductListRequest(ListRequest):
     method = 'GET'

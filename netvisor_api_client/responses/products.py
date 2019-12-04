@@ -6,7 +6,7 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Response
-from ..schemas import GetProductSchema, ProductListSchema
+from ..schemas import GetProductSchema, ProductListSchema, CreateProductSchema
 
 
 class ProductListResponse(Response):
@@ -16,4 +16,8 @@ class ProductListResponse(Response):
 
 class GetProductResponse(Response):
     schema_cls = GetProductSchema
+    tag_name = 'product'
+
+class CreateProductResponse(Response):
+    schema_cls = CreateProductSchema
     tag_name = 'product'
