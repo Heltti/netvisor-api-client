@@ -19,6 +19,10 @@ class ProductService(Service):
         request = ProductListRequest(self.client)
         return request.make_request()
 
-    def create(self): # Lisää parametrit jos tarvetta
-        request = CreateProductRequest(self.client, params={'method': 'add'})
+    def create(self, data):
+        request = CreateProductRequest(
+            self.client,
+            params={'method': 'add'},
+            data=data
+        )
         return request.make_request()

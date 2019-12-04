@@ -10,7 +10,6 @@ class UnitPriceSchema(Schema):
 
 
 class ProductBaseInformationSchema(Schema):
-    netvisor_key = fields.Integer()
     name = fields.String()
     product_code = fields.String(allow_none=True)
     product_group = fields.String(allow_none=True)
