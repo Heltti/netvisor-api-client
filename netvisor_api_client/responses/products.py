@@ -20,4 +20,4 @@ class GetProductResponse(Response):
 
 class CreateProductResponse(Response):
     schema_cls = CreateProductSchema
-    tag_name = 'product'
+    tag_name = 'replies'

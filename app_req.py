@@ -1,5 +1,5 @@
 from netvisor_api_client import Netvisor
-from decimal import Decimal
+import decimal
 
 client = Netvisor(
             host='https://isvapi.netvisor.fi',
@@ -14,16 +14,30 @@ client = Netvisor(
 
 
 product = {
-    "product_code": "cc",
-    "name": 'Puuta',
-    "description": "Paaaljon puuuta",
-    "unit_price": {
-        "amount": Decimal(30.23),
-        "type": "M3"
-    },
-    "is_active": 1,
-    "default_vat_percentage": Decimal(24.00),
-}
-print(client.purchase_invoices.list())
+            'product_base_information': {
+                'product_code': u'CC',
+                'product_group': u'Kirjat',
+                'name': u'Code Complete',
+                'description': u'Toinen painos',
+                'unit_price': {
+                    'amount': decimal.Decimal('42.5'),
+                    'type': 'brutto'
+                },
+                'unit': u'kpl',
+                'unit_weight': decimal.Decimal('0.2'),
+                'purchase_price': decimal.Decimal('25'),
+                'tariff_heading': u'Code Complete',
+                'comission_percentage': decimal.Decimal('11'),
+                'is_active': True,
+                'is_sales_product': False,
+            },
+            'product_book_keeping_details': {
+                'default_vat_percent': decimal.Decimal('22'),
+                'default_domestic_account_number': u'3000',
+                'default_eu_account_number': u'3360',
+                'default_outside_eu_account_number': u'3380',
+            }
+        }
+
 client.products.create(product)
 

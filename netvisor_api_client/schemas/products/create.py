@@ -1,15 +1,17 @@
 from marshmallow import Schema, fields
+from ..common import RejectUnknownFieldsSchema
 
 from ..fields import Decimal
 
 # Tarkista kaikki fieldit
+
 
 class UnitPriceSchema(Schema):
     amount = Decimal(load_from='#text')
     type = fields.String(load_from='@type')
 
 
-class ProductBaseInformationSchema(Schema):
+class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     name = fields.String()
     product_code = fields.String(allow_none=True)
     product_group = fields.String(allow_none=True)
@@ -30,7 +32,8 @@ class ProductBookKeepingDetailsSchema(Schema):
     default_outside_eu_account_number = fields.String()
     default_vat_percent = Decimal()
 
-class CreateProductSchema():
+
+class CreateProductSchema(RejectUnknownFieldsSchema):
     product_base_information = fields.Nested(ProductBaseInformationSchema)
     product_book_keeping_details = fields.Nested(
         ProductBookKeepingDetailsSchema
