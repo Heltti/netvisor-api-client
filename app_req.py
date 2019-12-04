@@ -83,8 +83,7 @@ def main(id):
             accepted_purchase_list.append(invoice_data)
     data['Ostolaskut']['Hyväksytyt ei tiliöidyt'] = len(accepted_purchase_list)
 
-    from pprint import pprint
-    pprint(data)
+    return data
 
 
 if __name__ == '__main__':
