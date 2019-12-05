@@ -41,7 +41,7 @@ class GetProductRequest(Request):
 
 class CreateProductRequest(Request):
     method = 'POST'
-    uri = 'product.nv'
+    uri = 'Product.nv'
     response_cls = CreateProductResponse
     schema_cls = CreateProductSchema
     tag_name = 'product'

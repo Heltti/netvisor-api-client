@@ -25,4 +25,14 @@ class ProductService(Service):
             params={'method': 'add'},
             data=data
         )
+
+        return request.make_request()
+
+    def update(self, data):
+        request = CreateProductRequest(
+            self.client,
+            params={'method': 'edit'},
+            data=data
+        )
+
         return request.make_request()
