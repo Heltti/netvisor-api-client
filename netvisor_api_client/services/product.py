@@ -17,6 +17,7 @@ class ProductService(Service):
 
     def list(self):
         request = ProductListRequest(self.client)
+
         return request.make_request()
 
     def create(self, data):
@@ -28,10 +29,10 @@ class ProductService(Service):
 
         return request.make_request()
 
-    def update(self, data):
+    def update(self, id, data):
         request = CreateProductRequest(
             self.client,
-            params={'method': 'edit'},
+            params={'id': id, 'method': 'edit'},
             data=data
         )
 

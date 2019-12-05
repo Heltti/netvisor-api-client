@@ -27,8 +27,11 @@ product = {
                 'comission_percentage': decimal.Decimal('11'),
                 'is_active': True,
                 'is_sales_product': False,
+            },
+            'product_book_keeping_details': {
+                'default_vat_percentage': decimal.Decimal('24')
+                }
             }
-        }
 
 client.products.create(product)
 

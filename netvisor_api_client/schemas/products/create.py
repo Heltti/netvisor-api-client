@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields, post_dump
 from ..common import RejectUnknownFieldsSchema
 
-from ..fields import Decimal
+from ..fields import Decimal, Boolean
 
 
 class UnitPriceSchema(Schema):
@@ -21,14 +21,14 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     product_group = fields.String(allow_none=True)
     name = fields.String()
     description = fields.String(allow_none=True)
-    unit_price = fields.Nested(UnitPriceSchema)
+    unit_price = fields.Nested(UnitPriceSchema, attribute='unit_price')
     unit = fields.String(allow_none=True)
     purchase_price = fields.Decimal(allow_none=True)
     tariff_heading = fields.String(allow_none=True)
     comission_percentage = fields.Decimal(allow_none=True)
-    is_active = fields.Boolean()
-    is_sales_product = fields.Boolean(allow_none=True)
-    inventory_enabled = fields.Boolean(allow_none=True)
+    is_active = Boolean(true='1', false='0')
+    is_sales_product = Boolean(allow_none=True, true='1', false='0')
+    inventory_enabled = Boolean(allow_none=True, true='1', false='0')
     country_of_origin = fields.String(allow_none=True)
 
     class Meta:
@@ -36,7 +36,7 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
 
 
 class ProductBookKeepingDetailsSchema(Schema):
-    default_vat_percent = Decimal()
+    default_vat_percentage = Decimal()
 
 
 class CreateProductSchema(RejectUnknownFieldsSchema):
