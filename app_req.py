@@ -27,11 +27,15 @@ product = {
                 'comission_percentage': decimal.Decimal('11'),
                 'is_active': True,
                 'is_sales_product': False,
+                'inventory_enabled': True,
+                'country_of_origin': 'FI'
             },
             'product_book_keeping_details': {
                 'default_vat_percentage': decimal.Decimal('24')
                 }
             }
 
-client.products.create(product)
+print(client.products.list())
+print('\n\n')
+print(client.products.create(product))
 

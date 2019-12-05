@@ -4,7 +4,7 @@ from ..common import RejectUnknownFieldsSchema
 from ..fields import Decimal, Boolean
 
 
-class UnitPriceSchema(Schema):
+class UnitPriceSchema(RejectUnknownFieldsSchema):
     amount = Decimal()
     type = fields.String()
 
@@ -17,26 +17,41 @@ class UnitPriceSchema(Schema):
 
 
 class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
-    product_code = fields.String(allow_none=True)
-    product_group = fields.String(allow_none=True)
+    product_code = fields.String()
+    product_group = fields.String()
     name = fields.String()
-    description = fields.String(allow_none=True)
+    description = fields.String()
     unit_price = fields.Nested(UnitPriceSchema, attribute='unit_price')
-    unit = fields.String(allow_none=True)
-    purchase_price = fields.Decimal(allow_none=True)
-    tariff_heading = fields.String(allow_none=True)
-    comission_percentage = fields.Decimal(allow_none=True)
+    unit = fields.String()
+    purchase_price = fields.Decimal()
+    tariff_heading = fields.String()
+    comission_percentage = fields.Decimal()
     is_active = Boolean(true='1', false='0')
-    is_sales_product = Boolean(allow_none=True, true='1', false='0')
-    inventory_enabled = Boolean(allow_none=True, true='1', false='0')
-    country_of_origin = fields.String(allow_none=True)
+    is_sales_product = Boolean(true='1', false='0')
+    inventory_enabled = Boolean(true='1', false='0')
+    country_of_origin = fields.String()
 
     class Meta:
         ordered = True
 
 
-class ProductBookKeepingDetailsSchema(Schema):
+class ProductBookKeepingDetailsSchema(RejectUnknownFieldsSchema):
     default_vat_percentage = Decimal()
+
+    class Meta:
+        ordered = True
+
+
+class ProductAdditionalInformationSchema(RejectUnknownFieldsSchema):
+    product_net_weight = fields.Decimal()
+    product_gross_weight = fields.Decimal()
+    product_weight_unit = fields.Decimal()
+
+
+class ProductPackageInformation(RejectUnknownFieldsSchema):
+    package_width = fields.Decimal()
+    package_height = fields.Decimal()
+    package_length = fields.Decimal()
 
 
 class CreateProductSchema(RejectUnknownFieldsSchema):
@@ -44,6 +59,8 @@ class CreateProductSchema(RejectUnknownFieldsSchema):
     product_book_keeping_details = fields.Nested(
         ProductBookKeepingDetailsSchema
     )
+    product_additional_information = fields.Nested(ProductAdditionalInformationSchema)
+    product_package_information = fields.Nested(ProductPackageInformation)
 
     class Meta:
         ordered = True
