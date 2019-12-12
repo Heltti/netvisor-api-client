@@ -104,6 +104,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_date = fields.Date(attribute='date')
     sales_invoice_value_date = fields.Date(attribute='value_date')
     sales_invoice_delivery_date = fields.Date(attribute='delivery_date')
+    sales_invoice_due_date = fields.Date(attribute='due_date')
     sales_invoice_reference_number = fields.String(attribute='reference_number')
     sales_invoice_amount = Decimal(attribute='amount')
     sales_invoice_amount_currency = fields.String(attribute='currency')
@@ -114,6 +115,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     invoice_type = fields.String()
 
     sales_invoice_status = fields.String(attribute='status')
+
     sales_invoice_free_text_before_lines = fields.String(attribute='free_text_before_lines')
     sales_invoice_free_text_after_lines = fields.String(attribute='free_text_after_lines')
 
@@ -180,7 +182,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
         if 'invoicing_customer_identifier' in data:
             data['invoicing_customer_identifier'] = {
                 '#text': data['invoicing_customer_identifier'],
-                '@type': 'netvisor'
+                '@type': 'customer'
             }
 
         if 'payment_term_cash_discount' in data:
