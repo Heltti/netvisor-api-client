@@ -3,21 +3,21 @@ from ..fields import List
 
 
 class DimensionDetailSchema(Schema):
-    netvisor_key = fields.Integer(required=True)
-    name = fields.String(required=True)
-    item = fields.String(required=True)
-    old_item = fields.String(required=True)
-    father_id = fields.Integer(required=True)
-    father_name = fields.String(required=True)
+    netvisor_key = fields.Integer()
+    name = fields.String()
+    item = fields.String()
+    old_item = fields.String()
+    father_id = fields.Integer()
+    father_name = fields.String()
     is_hidden = fields.Boolean(true='1', false='0')
 
 
 class DimensionNameSchema(Schema):
-    netvisor_key = fields.Integer(required=True)
-    name = fields.String(required=True)
+    netvisor_key = fields.Integer()
+    name = fields.String()
     is_hidden = fields.Boolean(true='1', false='0')
-    link_type = fields.Integer(required=True)
-    dimension_details = fields.Nested(DimensionDetailSchema, load_from='dimension_detail')
+    link_type = fields.Integer()
+    #dimension_details = fields.Nested(DimensionDetailSchema, load_from='dimension_detail')
 
 
 class DimensionNameListSchema(Schema):

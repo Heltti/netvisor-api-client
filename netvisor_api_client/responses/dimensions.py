@@ -5,7 +5,7 @@ from ..schemas.dimensions import DimensionNameListSchema
 
 class DimensionListResponse(Response):
     schema_cls = DimensionNameListSchema
-    tag_name = 'dimensionlist'
+    tag_name = 'dimension_name_list'
 
 
 class CreateDimensionResponse(Response):

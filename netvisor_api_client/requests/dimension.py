@@ -5,13 +5,13 @@ from ..schemas.dimensions import CreateDimensionItemSchema
 
 class ListDimensionsRequest(Request):
     method = 'GET'
-    uri = 'dimensionlist.nv'
+    uri = 'DimensionList.nv'
     response_cls = DimensionListResponse
 
 
 class CreateDimensionsRequest(Request):
     method = 'POST'
-    uri = 'dimensionitem.nv'
+    uri = 'DimensionItem.nv'
     response_cls = CreateDimensionResponse
     schema_cls = CreateDimensionItemSchema
     tag_name = 'dimension'
