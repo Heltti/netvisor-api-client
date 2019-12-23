@@ -14,6 +14,7 @@ from .services.product import ProductService
 from .services.purchase_invoice import PurchaseInvoiceService
 from .services.sales_invoice import SalesInvoiceService
 from .services.sales_payment import SalesPaymentService
+from .services.dimension import DimensionService
 
 
 class Netvisor(object):
@@ -33,3 +34,4 @@ class Netvisor(object):
         self.sales_invoices = SalesInvoiceService(self._client)
         self.sales_payments = SalesPaymentService(self._client)
         self.accounting = AccountingService(self._client)
+        self.dimensions = DimensionService(self._client)
