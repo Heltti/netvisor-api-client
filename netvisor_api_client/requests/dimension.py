@@ -8,7 +8,7 @@ class ListDimensionsRequest(Request):
     uri = 'DimensionList.nv'
     response_cls = DimensionListResponse
 
-
+# Check namea remove -s ending
 class CreateDimensionsRequest(Request):
     method = 'POST'
     uri = 'DimensionItem.nv'
