@@ -14,6 +14,6 @@ class CreateDimensionsRequest(Request):
     uri = 'DimensionItem.nv'
     response_cls = CreateDimensionResponse
     schema_cls = CreateDimensionItemSchema
-    tag_name = 'dimension'
+    tag_name = 'dimensionitem'
 
 

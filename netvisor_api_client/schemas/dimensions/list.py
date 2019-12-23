@@ -17,8 +17,10 @@ class DimensionNameSchema(Schema):
     name = fields.String()
     is_hidden = fields.Boolean(true='1', false='0')
     link_type = fields.Integer()
-    #dimension_details = fields.Nested(DimensionDetailSchema, load_from='dimension_detail')
-
+    #dimension_details = fields.Nested(DimensionDetailSchema, load_from='dimension_detail', required=False)
+    '''
+    marshmallow.exceptions.ValidationError: {'dimension_name': {0: {'dimension_details': ['Field may not be null.']}}}
+    '''
 
 class DimensionNameListSchema(Schema):
     dimensions = List(

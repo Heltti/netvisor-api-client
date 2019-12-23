@@ -13,7 +13,12 @@ class DimensionItemSchema(RejectUnknownFieldsSchema):
 
 
 class CreateDimensionItemSchema(RejectUnknownFieldsSchema):
-    dimension_item = fields.Nested(DimensionItemSchema)
+    name = fields.String(required=True)
+    item = fields.String(required=True)
+    old_item = fields.String()
+    father_id = fields.Integer()
+    father_name = fields.String()
+    is_hidden = fields.Boolean(true='1', false='0')
 
     class Meta:
         ordered = True
