@@ -32,6 +32,7 @@ class TestAccountingService(object):
                         'description': 'Invoice 19',
                         'account_number': 100,
                         'vat_percent': 20,
+                        'vat_code': '-',
                         'dimensions': []
                     },
                     {
@@ -39,6 +40,7 @@ class TestAccountingService(object):
                         'description': 'Invoice 23',
                         'account_number': 200,
                         'vat_percent': 24,
+                        'vat_code': 'KOMY',
                         'dimensions': []
                     }
                 ]
@@ -58,6 +60,7 @@ class TestAccountingService(object):
                         'description': 'Invoice 32',
                         'account_number': 300,
                         'vat_percent': 33,
+                        'vat_code': '-',
                         'dimensions': [
                             {
                                 'name': 'Sales',

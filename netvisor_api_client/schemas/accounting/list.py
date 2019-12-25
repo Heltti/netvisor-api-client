@@ -20,6 +20,7 @@ class VoucherLineSchema(Schema):
     description = fields.String(allow_none=True)
     account_number = fields.Integer()
     vat_percent = fields.Integer()
+    vat_code = fields.String(allow_none=True)
     dimensions = List(
         fields.Nested(DimensionSchema),
         load_from='dimension',

@@ -17,12 +17,14 @@
         <Description>Invoice 19</Description>
         <AccountNumber>100</AccountNumber>
         <VatPercent>20</VatPercent>
+        <VatCode>-</VatCode>
       </VoucherLine>
       <VoucherLine>
         <LineSum>-21,22</LineSum>
         <Description>Invoice 23</Description>
         <AccountNumber>200</AccountNumber>
         <VatPercent>24</VatPercent>
+        <VatCode>KOMY</VatCode>
       </VoucherLine>
     </Voucher>
     <Voucher Status="invalidated">
@@ -38,6 +40,7 @@
         <Description>Invoice 32</Description>
         <AccountNumber>300</AccountNumber>
         <VatPercent>33</VatPercent>
+        <VatCode>-</VatCode>
         <Dimension>
             <DimensionName>Sales</DimensionName>
             <DimensionItem>Mike</DimensionItem>
