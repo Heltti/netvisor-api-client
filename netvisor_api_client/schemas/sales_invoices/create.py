@@ -78,6 +78,11 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
         return data
 
 
+class SalesInvoiceProductDimensionSchema(RejectUnknownFieldsSchema):
+    dimension_name = fields.String(required=True)
+    dimension_item = fields.String(required=True)
+
+
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     product_identifier = fields.Nested(ProductIdentifierSchema, attribute='identifier', default=dict(identifier=''))
     product_name = fields.String(attribute='name')
@@ -89,6 +94,8 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     sales_invoice_product_line_free_text = fields.String(attribute='free_text')
 
     accounting_account_suggestion = fields.String()
+
+    dimension = fields.Nested(SalesInvoiceProductDimensionSchema, attribute='dimension', required=False)
 
     class Meta:
         ordered = True
