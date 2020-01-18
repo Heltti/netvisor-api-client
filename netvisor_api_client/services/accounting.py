@@ -6,7 +6,7 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Service
-from ..requests.accounting import AccountingListRequest
+from ..requests.accounting import AccountingListRequest, CreateAccountingRequest
 
 
 class AccountingService(Service):
@@ -38,4 +38,11 @@ class AccountingService(Service):
         if changed_since is not None:
             query['ChangedSince'] = changed_since.isoformat()
         request = AccountingListRequest(self.client, params=query)
+        return request.make_request()
+
+    def create(self, data):
+        request = CreateAccountingRequest(
+            self.client,
+            data=data)
+
         return request.make_request()
