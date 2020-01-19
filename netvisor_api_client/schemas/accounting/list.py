@@ -16,6 +16,7 @@ class DimensionSchema(Schema):
 
 
 class VoucherLineSchema(Schema):
+    key = fields.Integer(load_from='netvisor_key')
     line_sum = Decimal()
     description = fields.String(allow_none=True)
     account_number = fields.Integer()

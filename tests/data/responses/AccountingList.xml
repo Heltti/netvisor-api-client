@@ -13,6 +13,7 @@
       <LinkedSourceNetvisorKey type="purchaseinvoice">15</LinkedSourceNetvisorKey>
       <VoucherNetvisorURI>https:/netvisor.com/voucher/16</VoucherNetvisorURI>
       <VoucherLine>
+        <NetvisorKey>121</NetvisorKey>
         <LineSum>-17,18</LineSum>
         <Description>Invoice 19</Description>
         <AccountNumber>100</AccountNumber>
@@ -20,6 +21,7 @@
         <VatCode>-</VatCode>
       </VoucherLine>
       <VoucherLine>
+        <NetvisorKey>122</NetvisorKey>
         <LineSum>-21,22</LineSum>
         <Description>Invoice 23</Description>
         <AccountNumber>200</AccountNumber>
@@ -36,6 +38,7 @@
       <LinkedSourceNetvisorKey type="salesinvoice">28</LinkedSourceNetvisorKey>
       <VoucherNetvisorURI>https:/netvisor.com/voucher/29</VoucherNetvisorURI>
       <VoucherLine>
+        <NetvisorKey>251</NetvisorKey>
         <LineSum>-30,31</LineSum>
         <Description>Invoice 32</Description>
         <AccountNumber>300</AccountNumber>

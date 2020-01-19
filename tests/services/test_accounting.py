@@ -28,6 +28,7 @@ class TestAccountingService(object):
                 'uri': 'https:/netvisor.com/voucher/16',
                 'lines': [
                     {
+                        'key': 121,
                         'line_sum': Decimal('-17.18'),
                         'description': 'Invoice 19',
                         'account_number': 100,
@@ -36,6 +37,7 @@ class TestAccountingService(object):
                         'dimensions': []
                     },
                     {
+                        'key': 122,
                         'line_sum': Decimal('-21.22'),
                         'description': 'Invoice 23',
                         'account_number': 200,
@@ -56,6 +58,7 @@ class TestAccountingService(object):
                 'uri': 'https:/netvisor.com/voucher/29',
                 'lines': [
                     {
+                        'key': 251,
                         'line_sum': Decimal('-30.31'),
                         'description': 'Invoice 32',
                         'account_number': 300,
