@@ -7,7 +7,7 @@
 """
 from .base import Request
 from ..responses.accounting import AccountingListResponse, CreateAccountingResponse
-from ..schemas.accounting import CreateAccountingSchema
+from ..schemas.accounting import CreateAccountingVoucherSchema
 
 
 class AccountingListRequest(Request):
@@ -20,5 +20,5 @@ class CreateAccountingRequest(Request):
     method = 'POST'
     uri = 'Accounting.nv'
     response_cls = CreateAccountingResponse
-    schema_cls = CreateAccountingSchema
-    tag_name = 'voucher'
+    schema_cls = CreateAccountingVoucherSchema
+    tag_name = 'Voucher'

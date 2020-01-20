@@ -1,7 +1,6 @@
 from marshmallow import Schema, fields, post_load
 from ..fields import Decimal, FinnishDate, List
 
-
 from marshmallow import Schema, fields, post_load, post_dump
 from ..common import RejectUnknownFieldsSchema
 from ..fields import Decimal, FinnishDate, List
@@ -31,22 +30,38 @@ class AccountingDimensionSchema(Schema):
         }
 
 
+class LineSumSchema(Schema):
+    sum = Decimal()
+    type = fields.String()
+
+    @post_dump
+    def post_dump(self, data):
+        return {
+            '#text': data['sum'],
+            '@type': data['type']
+        }
+
+
 class DimensionSchema(Schema):
-    name = fields.String(load_from='dimension_name')
-    item = fields.String(load_from='dimension_item')
+    dimension_name = fields.String(attribute='name')
+    dimension_item = fields.String(attribute='item')
 
 
 class VoucherLineSchema(Schema):
-    line_sum = Decimal()
+    line_sum = fields.Nested(LineSumSchema)
     description = fields.String(allow_none=True)
     account_number = fields.Integer()
     vat_percent = fields.Nested(VatPercentageSchema)
     account_dimension = fields.Nested(AccountingDimensionSchema)
-    dimensions = List(
-        fields.Nested(DimensionSchema),
-        load_from='dimension',
-        missing=list
-    )
+    dimension = fields.Nested(DimensionSchema)
+
+    class Meta:
+        ordered = True
+
+    def __setattr__(self, attr, value):
+        if attr == 'ordered':
+            value = True
+        super(VoucherLineSchema, self).__setattr__(attr, value)
 
 
 class AccountingAttachmentLineSchema(RejectUnknownFieldsSchema):
@@ -55,23 +70,42 @@ class AccountingAttachmentLineSchema(RejectUnknownFieldsSchema):
     filename = fields.String(attribute='filename')
     document_data = fields.String(attribute='data')
 
+    class Meta:
+        ordered = True
 
-class AccountingVoucherSchema(Schema):
-    mode = fields.String(load_from='calculation_mode')
-    date = FinnishDate(load_from='voucher_date')
-    number = fields.Integer(load_from='voucher_number')
+    def __setattr__(self, attr, value):
+        if attr == 'ordered':
+            value = True
+        super(AccountingAttachmentLineSchema, self).__setattr__(attr, value)
+
+
+class CreateAccountingVoucherSchema(Schema):
+    calculation_mode = fields.String(attribute='mode')
+    voucher_date = FinnishDate(attribute='date')
+    voucher_number = fields.Integer(attribute='number')
     description = fields.String(
-        load_from='voucher_description',
         allow_none=True
     )
-    class_ = fields.String(attribute='class', load_from='voucher_class')
-    lines = List(
+    voucher_class = fields.String(attribute='class')
+    voucher_line = List(
         fields.Nested(VoucherLineSchema),
-        load_from='voucher_line',
-        missing=list
+        default=list
     )
-    attachments = List(
+    voucher_attachments = List(
         fields.Nested(AccountingAttachmentLineSchema),
-        load_from='voucher_attachments',
-        missing=list
+        default=list,
+        attribute="attachments"
     )
+
+    class Meta:
+        ordered = True
+
+    @post_dump
+    def post_dump(self, data):
+        if 'voucher_attachments' in data and data['voucher_attachments']:
+            data['voucher_attachments'] = [
+                {'voucher_attachment': data['voucher_attachments']}
+            ]
+
+        if 'voucher_line' in data and data['voucher_line']:
+            data['voucher_line']

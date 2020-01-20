@@ -1,2 +1,2 @@
 from .list import AccountingListSchema  # noqa
-from .create import AccountingVoucherSchema
+from .create import CreateAccountingVoucherSchema
