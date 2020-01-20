@@ -177,6 +177,10 @@ class TestAccountingService(object):
                     "description": u"Test Company Oy, invoice 1",
                     "account_number": 3000,
                     "vat_percent": dict(percentage=Decimal("24"), code="KOMY"),
+                    "account_dimension": {
+                        "dimension": "Test account",
+                        "type": "name"
+                    },
                     "dimension": {
                         "name": "Projects",
                         "item": "Project X"

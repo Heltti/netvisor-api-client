@@ -25,7 +25,7 @@ class AccountingDimensionSchema(Schema):
     @post_dump()
     def post_dump(self, data):
         return {
-            'text': data['dimension'],
+            '#text': data['dimension'],
             '@type': data['type']
         }
 

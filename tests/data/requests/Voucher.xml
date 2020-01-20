@@ -9,6 +9,7 @@
             <Description>Test Company Oy, invoice 1</Description>
             <AccountNumber>3000</AccountNumber>
             <VatPercent vatcode="KOMY">24</VatPercent>
+            <AccountDimension type="name">Test account</AccountDimension>
             <Dimension>
                 <DimensionName>Projects</DimensionName>
                 <DimensionItem>Project X</DimensionItem>
