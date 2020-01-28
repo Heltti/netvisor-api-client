@@ -3,7 +3,8 @@ import decimal
 import pytest
 
 from netvisor_api_client.exc import InvalidData
-from tests.utils import get_response_content
+from tests.utils import get_response_content, get_request_content
+import xmltodict
 
 
 class TestProductService(object):
@@ -157,3 +158,41 @@ class TestProductService(object):
                 'unit_price': decimal.Decimal('1.96'),
             }
         ]
+
+    def test_create_product(self, netvisor, responses):
+        responses.add(
+            method='POST',
+            url='http://koulutus.netvisor.fi/Product.nv?method=add',
+            body=get_response_content('ProductCreate.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+        netvisor_id = netvisor.products.create(
+            {
+                "product_base_information": {
+                    "product_code": u"CC",
+                    "product_group": u"Books",
+                    "name": u"Code Complete",
+                    "description": u"Second Edition",
+                    "unit_price": {
+                        "type": u"net",
+                        "amount": decimal.Decimal("42.5")
+                    },
+                    "unit": u"pcs",
+                    "purchase_price": 25,
+                    "tariff_heading": u"Code Complete",
+                    "comission_percentage": 11,
+                    "is_active": True,
+                    "is_sales_product": True,
+                    "inventory_enabled": True
+                },
+                "product_book_keeping_details": {
+                    "default_vat_percentage": 24
+                }
+            }
+        )
+
+        request = responses.calls[0].request
+
+        assert netvisor_id == 8
+        assert request.body == get_request_content('Product.xml')
