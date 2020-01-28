@@ -169,25 +169,24 @@ class TestProductService(object):
         )
         netvisor_id = netvisor.products.create(
             {
-                "product_base_information": {
-                    "product_code": u"CC",
-                    "product_group": u"Books",
-                    "name": u"Code Complete",
-                    "description": u"Second Edition",
-                    "unit_price": {
-                        "type": u"net",
-                        "amount": decimal.Decimal("42.5")
+                'product_base_information': {
+                    'product_code': u'CC',
+                    'product_group': u'Kirjat',
+                    'name': u'Code Complete',
+                    'description': u'Toinen painos',
+                    'unit_price': {
+                        'amount': decimal.Decimal('42.5'),
+                        'type': u'brutto'
                     },
-                    "unit": u"pcs",
-                    "purchase_price": 25,
-                    "tariff_heading": u"Code Complete",
-                    "comission_percentage": 11,
-                    "is_active": True,
-                    "is_sales_product": True,
-                    "inventory_enabled": True
+                    'unit': u'kpl',
+                    'purchase_price': decimal.Decimal('25.00'),
+                    'tariff_heading': u'Code Complete',
+                    'comission_percentage': decimal.Decimal('11'),
+                    'is_active': True,
+                    'is_sales_product': False,
                 },
-                "product_book_keeping_details": {
-                    "default_vat_percentage": 24
+                'product_book_keeping_details': {
+                    'default_vat_percentage': decimal.Decimal('22'),
                 }
             }
         )
@@ -195,4 +194,4 @@ class TestProductService(object):
         request = responses.calls[0].request
 
         assert netvisor_id == 8
-        assert request.body == get_request_content('Product.xml')
+        assert xmltodict.parse(request.body) == xmltodict.parse(get_request_content('Product.xml'))

@@ -2,20 +2,19 @@
   <Product>
     <ProductBaseInformation>
       <ProductCode>CC</ProductCode>
-      <ProductGroup>Books</ProductGroup>
+      <ProductGroup>Kirjat</ProductGroup>
       <Name>Code Complete</Name>
-      <Description>Second Edition</Description>
-      <UnitPrice type="net">42,5</UnitPrice>
-      <Unit>pcs</Unit>
-      <PurchasePrice>25</PurchasePrice>
+      <Description>Toinen painos</Description>
+      <UnitPrice type="brutto">42,5</UnitPrice>
+      <Unit>kpl</Unit>
+      <PurchasePrice>25,00</PurchasePrice>
       <TariffHeading>Code Complete</TariffHeading>
       <ComissionPercentage>11</ComissionPercentage>
       <IsActive>1</IsActive>
-      <IsSalesProduct>1</IsSalesProduct>
-      <InventoryEnabled>1</InventoryEnabled>
+      <IsSalesProduct>0</IsSalesProduct>
     </ProductBaseInformation>
     <ProductBookKeepingDetails>
-      <DefaultVatPercentage>24</DefaultVatPercentage>
+      <DefaultVatPercentage>22</DefaultVatPercentage>
     </ProductBookKeepingDetails>
   </Product>
 </Root>
