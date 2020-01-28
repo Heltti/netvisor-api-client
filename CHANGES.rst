@@ -1,7 +1,12 @@
 Changelog
 ---------
 
-Here you can see the full list of changes between each Netvisor.py release.
+Here you can see the full list of changes between each release
+
+0.9.1 (January 28th, 2020)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- PR #4: Added VAT code and voucher line NetvisorKey for accounting model - @kiuru
+
 
 0.9.0 (October 2nd, 2019)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
