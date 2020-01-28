@@ -216,7 +216,5 @@ class TestAccountingService(object):
         )
         request = responses.calls[0].request
 
-        print(request.body)
-
         assert netvisor_id == 8
         assert xmltodict.parse(request.body) == xmltodict.parse(get_request_content('Voucher.xml'))
