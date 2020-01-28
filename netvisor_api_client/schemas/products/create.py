@@ -23,7 +23,7 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     description = fields.String()
     unit_price = fields.Nested(UnitPriceSchema)
     unit = fields.String()
-    purchase_price = fields.Decimal()
+    purchase_price = Decimal()
     tariff_heading = fields.String()
     comission_percentage = fields.Decimal()
     is_active = Boolean(true='1', false='0')
