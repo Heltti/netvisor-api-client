@@ -21,7 +21,7 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     product_group = fields.String()
     name = fields.String()
     description = fields.String()
-    unit_price = fields.Nested(UnitPriceSchema, attribute='unit_price')
+    unit_price = fields.Nested(UnitPriceSchema)
     unit = fields.String()
     purchase_price = fields.Decimal()
     tariff_heading = fields.String()
