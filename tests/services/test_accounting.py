@@ -28,17 +28,21 @@ class TestAccountingService(object):
                 'uri': 'https:/netvisor.com/voucher/16',
                 'lines': [
                     {
+                        'key': 121,
                         'line_sum': Decimal('-17.18'),
                         'description': 'Invoice 19',
                         'account_number': 100,
                         'vat_percent': 20,
+                        'vat_code': '-',
                         'dimensions': []
                     },
                     {
+                        'key': 122,
                         'line_sum': Decimal('-21.22'),
                         'description': 'Invoice 23',
                         'account_number': 200,
                         'vat_percent': 24,
+                        'vat_code': 'KOMY',
                         'dimensions': []
                     }
                 ]
@@ -54,10 +58,12 @@ class TestAccountingService(object):
                 'uri': 'https:/netvisor.com/voucher/29',
                 'lines': [
                     {
+                        'key': 251,
                         'line_sum': Decimal('-30.31'),
                         'description': 'Invoice 32',
                         'account_number': 300,
                         'vat_percent': 33,
+                        'vat_code': '-',
                         'dimensions': [
                             {
                                 'name': 'Sales',
