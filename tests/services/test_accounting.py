@@ -154,7 +154,7 @@ class TestAccountingService(object):
         request = responses.calls[0].request
         assert request.url == url
 
-    def test_create(self, netvisor, responses):
+    def test_create_voucher(self, netvisor, responses):
         responses.add(
             method='POST',
             url='http://koulutus.netvisor.fi/Accounting.nv',
