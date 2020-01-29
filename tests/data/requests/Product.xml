@@ -5,16 +5,28 @@
       <ProductGroup>Kirjat</ProductGroup>
       <Name>Code Complete</Name>
       <Description>Toinen painos</Description>
-      <UnitPrice type="brutto">42,5</UnitPrice>
+      <UnitPrice type="gross">42,5</UnitPrice>
       <Unit>kpl</Unit>
       <PurchasePrice>25,00</PurchasePrice>
       <TariffHeading>Code Complete</TariffHeading>
       <ComissionPercentage>11</ComissionPercentage>
       <IsActive>1</IsActive>
       <IsSalesProduct>0</IsSalesProduct>
+      <InventoryEnabled>no</InventoryEnabled>
+      <CountryOfOrigin type="ISO-3166">FI</CountryOfOrigin>
     </ProductBaseInformation>
     <ProductBookKeepingDetails>
       <DefaultVatPercentage>22</DefaultVatPercentage>
     </ProductBookKeepingDetails>
+    <ProductAdditionalInformation>
+      <ProductNetWeight>11,2</ProductNetWeight>
+      <ProductGrossWeight>12,6</ProductGrossWeight>
+      <ProductWeightUnit>kg</ProductWeightUnit>
+    </ProductAdditionalInformation>
+    <ProductPackageInformation>
+      <PackageWidth>7,3</PackageWidth>
+      <PackageHeight>15,0</PackageHeight>
+      <PackageLength>36,1</PackageLength>
+    </ProductPackageInformation>
   </Product>
 </Root>
