@@ -28,7 +28,7 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     comission_percentage = fields.Decimal()
     is_active = Boolean(true='1', false='0')
     is_sales_product = Boolean(true='1', false='0')
-    inventory_enabled = Boolean(true='1', false='0')
+    inventory_enabled = Boolean(true='yes', false='no')
     country_of_origin = fields.String()
 
     class Meta:
@@ -43,15 +43,15 @@ class ProductBookKeepingDetailsSchema(RejectUnknownFieldsSchema):
 
 
 class ProductAdditionalInformationSchema(RejectUnknownFieldsSchema):
-    product_net_weight = fields.Decimal()
-    product_gross_weight = fields.Decimal()
-    product_weight_unit = fields.Decimal()
+    product_net_weight = Decimal()
+    product_gross_weight = Decimal()
+    product_weight_unit = fields.String()
 
 
 class ProductPackageInformation(RejectUnknownFieldsSchema):
-    package_width = fields.Decimal()
-    package_height = fields.Decimal()
-    package_length = fields.Decimal()
+    package_width = Decimal()
+    package_height = Decimal()
+    package_length = Decimal()
 
 
 class CreateProductSchema(RejectUnknownFieldsSchema):
