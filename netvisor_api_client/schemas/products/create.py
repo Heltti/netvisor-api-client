@@ -64,3 +64,12 @@ class CreateProductSchema(RejectUnknownFieldsSchema):
 
     class Meta:
         ordered = True
+
+    @post_dump
+    def post_dump(self, data):
+        if 'country_of_origin' in data['product_base_information']:
+            data['product_base_information']['country_of_origin'] = {
+                '#text': data['product_base_information']['country_of_origin'],
+                '@type': 'ISO-3166'
+            }
+        return data
