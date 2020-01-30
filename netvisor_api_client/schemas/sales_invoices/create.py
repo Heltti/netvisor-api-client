@@ -186,10 +186,11 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
                 {'sales_invoice_attachment': data['sales_invoice_attachments']}
             ]
 
+        # TARKASTA TÄMÄ
         if 'invoicing_customer_identifier' in data:
             data['invoicing_customer_identifier'] = {
                 '#text': data['invoicing_customer_identifier'],
-                '@type': 'customer'
+                '@type': 'netvisor'
             }
 
         if 'payment_term_cash_discount' in data:
