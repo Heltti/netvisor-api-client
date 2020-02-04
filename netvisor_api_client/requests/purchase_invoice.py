@@ -10,7 +10,7 @@ from ..responses.purchase_invoices import (
 
 class GetPurchaseInvoiceRequest(Request):
     method = 'GET'
-    uri = 'getpurchaseinvoice.nv'
+    uri = 'GetPurchaseInvoice.nv'
     response_cls = GetPurchaseInvoiceResponse
 
     def _raise_exception(self):
