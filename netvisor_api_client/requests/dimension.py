@@ -3,12 +3,12 @@ from ..responses.dimensions import CreateDimensionResponse, DimensionListRespons
 from ..schemas.dimensions import CreateDimensionItemSchema
 
 
-class ListDimensionsRequest(Request):
+class DimensionsListRequest(ListRequest):
     method = 'GET'
     uri = 'DimensionList.nv'
     response_cls = DimensionListResponse
 
-# Check namea remove -s ending
+
 class CreateDimensionsRequest(Request):
     method = 'POST'
     uri = 'DimensionItem.nv'

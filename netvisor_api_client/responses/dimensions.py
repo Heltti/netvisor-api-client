@@ -1,5 +1,5 @@
 from .base import Response
-from ..schemas import RepliesSchema
+from ..schemas.replies import DimensionRepliesSchema
 from ..schemas.dimensions import DimensionNameListSchema
 
 
@@ -9,5 +9,8 @@ class DimensionListResponse(Response):
 
 
 class CreateDimensionResponse(Response):
-    schema_cls = RepliesSchema
-    tag_name = 'replies'
+    '''
+    Dimeonsins response does not have element 'replies'
+    '''
+    schema_cls = DimensionRepliesSchema
+    tag_name = 'response_status'

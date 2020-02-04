@@ -1,5 +1,5 @@
 from .base import Service
-from ..requests.dimension import CreateDimensionsRequest, ListDimensionsRequest
+from ..requests.dimension import CreateDimensionsRequest, DimensionsListRequest
 
 
 class DimensionService(Service):
@@ -12,7 +12,8 @@ class DimensionService(Service):
 
         return request.make_request()
 
-    def list(self, query=None):
-        request = ListDimensionsRequest(self.client, params={'Keyword': query})
+    def list(self, showhidden=None):
+        request = DimensionsListRequest(self.client,
+                                        params={'showhidden': showhidden})
 
         return request.make_request()

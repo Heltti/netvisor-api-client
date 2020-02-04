@@ -3,30 +3,41 @@ from ..fields import List
 
 
 class DimensionDetailSchema(Schema):
-    netvisor_key = fields.Integer()
-    name = fields.String()
-    item = fields.String()
-    old_item = fields.String()
-    father_id = fields.Integer()
-    father_name = fields.String()
-    is_hidden = fields.Boolean(true='1', false='0')
+    netvisor_key = fields.Integer(load_from='netvisorkey', required=True)
+    name = fields.String(required=True)
+    is_hidden = fields.Boolean(required=True)
+    level = fields.Integer(required=True)
+    sort = fields.Integer(required=True)
+    end_sort = fields.Integer(required=True)
+    father_id = fields.Integer(required=True)
+
+
+class DimensionDetailsSchema(Schema):
+    dimension_detail = List(fields.Nested(DimensionDetailSchema),
+                            allow_none=True)
+
+    @post_load
+    def preprocess_deteils_list(self, input_data):
+        return input_data['dimension_detail'] if input_data else []
 
 
 class DimensionNameSchema(Schema):
-    netvisor_key = fields.Integer()
+    netvisor_key = fields.Integer(load_from='netvisorkey', required=True)
     name = fields.String()
-    is_hidden = fields.Boolean(true='1', false='0')
-    link_type = fields.Integer()
-    #dimension_details = fields.Nested(DimensionDetailSchema, load_from='dimension_detail', required=False)
-    '''
-    marshmallow.exceptions.ValidationError: {'dimension_name': {0: {'dimension_details': ['Field may not be null.']}}}
-    '''
+    is_hidden = fields.Boolean(required=True)
+    link_type = fields.Integer(required=True)
+    dimension_details = fields.Nested(DimensionDetailsSchema, allow_none=True)
+
+    class Meta:
+        ordered = True
+
 
 class DimensionNameListSchema(Schema):
     dimensions = List(
         fields.Nested(DimensionNameSchema),
         load_from='dimension_name'
     )
+
 
     @post_load
     def preprocess_dimension_list(self, input_data):
