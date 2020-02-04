@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load
 
-from ..common import DateSchema, DecimalSchema, StringSchema
+from ..common import DateSchema, DecimalSchema
 from ..fields import Boolean, Decimal, List
 
 
@@ -10,26 +10,23 @@ class VatPercentageSchema(Schema):
 
 
 class PurchaseInvoiceLineSchema(Schema):
-    name = fields.String(load_from='product_name')
-    identifier = fields.Nested(
-        StringSchema,
-        load_from='product_code'
-    )
-    unit_price = Decimal(load_from='unit_price')
-    order_amount = Decimal(load_from='order_amount')
-    discount_percentage = Decimal(
-        load_from='discount_percentage'
-    )
-    accounting_account_suggestion = fields.String(allow_none=True)
-    line_sum = Decimal(load_from='line_sum')
-    vat_percentage = fields.Nested(
-        VatPercentageSchema,
-        load_from='vat_percent'
-    )
+    netvisor_key = fields.Integer(load_from="netvisorkey")
+    line_sum = Decimal()
+    unit_price = Decimal()
+    vat_percentage = fields.Nested(VatPercentageSchema, load_from='vat_percent')
+    vat_code = fields.String()
+    description = fields.String()
+    unit = fields.String()
+    order_amount = fields.Integer()
+    purchase_price = Decimal()
+    delivered_amount = fields.Integer()
+    product_code = fields.String()
+    discount_percentage = Decimal()
+    product_name = fields.String()
 
 
 class InvoiceLineSchema(Schema):
-    product_lines = List(
+    invoice_lines = List(
         fields.Nested(PurchaseInvoiceLineSchema),
         load_from='purchase_invoice_line'
     )
@@ -37,7 +34,7 @@ class InvoiceLineSchema(Schema):
     @post_load
     def preprocess_invoice_line(self, input_data):
         if input_data:
-            return input_data['product_lines']
+            return input_data['invoice_lines']
 
 
 class InvoiceLinesSchema(Schema):
@@ -49,109 +46,66 @@ class InvoiceLinesSchema(Schema):
             return input_data['invoice_line']
 
 
+class PurchaseInvoiceDimensionSchema(Schema):
+    """
+    Levels 4 -5 -6 when version parameter is2
+    In other case levels 3-4-5
+    """
+    dimension_name = fields.String()
+    dimension_detail_name = fields.String()
+
+
+class InvoiceDimensionSchema(Schema):
+    dimensions = List(
+        fields.Nested(PurchaseInvoiceDimensionSchema,
+                      load_from='purchase_invoice_dimensions')
+    )
+
+    @post_load
+    def preprocess_dimensions(self, input_data):
+        if input_data:
+            return input_data['dimensions']
+
+
+class InvoiceDimensionsSchema(Schema):
+    invoice_dimension = List(fields.Nested(InvoiceDimensionSchema))
+
+    @post_load
+    def preprocess_invoice_dimension(self, input_data):
+        if input_data:
+            return input_data['invoice_dimension']
+
+
 class GetPurchaseInvoiceSchema(Schema):
-    number = fields.String( # Jollakin laskulla heitti, että ei Int (Meneekö yli, oli kyseessä vakuutusyhtiö paljon laskuja?)
-        required=True,
-        load_from='purchase_invoice_number'
-    )
-    date = fields.Nested(
-        DateSchema,
-        required=True,
-        load_from='purchase_invoice_date'
-    )
-    delivery_date = fields.Nested(
-        DateSchema,
-        required=True,
-        load_from='purchase_invoice_delivery_date'
-    )
-    due_date = fields.Nested(
-        DateSchema,
-        required=True,
-        load_from='purchase_invoice_due_date'
-    )
-    value_date = fields.Nested(
-        DateSchema,
-        required=True,
-        load_from='purchase_invoice_value_date'
-    )
-    reference_number = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='purchase_invoice_reference_number'
-    )
-    amount = fields.Nested(
-        DecimalSchema(),
-        required=True,
-        load_from='purchase_invoice_amount'
-    )
-    paid_amount = fields.Nested(
-        DecimalSchema(),
-        required=True,
-        load_from='purchase_invoice_paid_amount'
-    )
-    foreign_currency_amount = fields.Nested(
-        DecimalSchema(),
-        required=False,
-        load_from='foreign_currency_amount'
-    )
-    currency_name_id = fields.String(
-        required=False,
-        load_from='foreign_currecy_name_id'
-    )
-    status = fields.String(
-        required=True,
-        load_from='invoice_status' # Currently returns always 'Open'
-    )
-    our_reference = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='purchase_invoice_our_reference'
-    )
-    your_reference = fields.String(
-        required=False,
-        allow_none=True,# ?
-        load_from='purchase_invoice_your_reference'
-    )
-    description = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='purchase_invoice_description'
-    )
-    vendor_name = fields.String(
-        required=False,
-        load_from='vendor_name'
-    )
-    vendor_addresline = fields.String(
-        required=False,
-        load_from='vendor_addresline'
-    )
-    vendor_postnumber = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='vendor_postnumber'
-    )
-    vendor_town = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='vendor_town'
-    )
-    vendor_country = fields.String(
-        required=False,
-        allow_none=True,
-        load_from='vendor_country'
-    )
-    voucher_id = fields.Integer(
-        required=False,
-        allow_none=True,
-        load_from='voucher_id'
-    )
-    accounted = fields.Boolean(
-        required=True,
-        allow_none=True,
-        load_from='is_accounted'
-    )
-    comment = fields.String(
-        required=False,
-        load_from='comment'
-    )
-    invoice_lines = fields.Nested(InvoiceLinesSchema)
+    netvisor_key = fields.Integer(load_from='purchase_invoice_netvisor_key')
+    number = fields.String(load_from='purchase_invoice_number')
+    date = fields.Nested(DateSchema, load_from='purchase_invoice_date')
+    delivery_date = fields.Nested(DateSchema, load_from='purchase_invoice_delivery_date')
+    due_date = fields.Nested(DateSchema, load_from='purchase_invoice_due_date')
+    value_date = fields.Nested(DateSchema, load_from='purchase_invoice_value_date')
+    reference_number = fields.String(load_from='purchase_invoice_reference_number')
+    amount = fields.Nested(DecimalSchema(), load_from='purchase_invoice_amount')
+    paid_amount = fields.Nested(DecimalSchema(), load_from='purchase_invoice_paid_amount')
+    foreign_currency_amount = fields.Nested(DecimalSchema())
+    foreign_currency_name_id = fields.String()
+    status = fields.String(load_from='invoice_status')
+    our_reference = fields.String(allow_none=True, load_from='purchase_invoice_our_reference')
+    your_reference = fields.String(allow_none=True, load_from='purchase_invoice_your_reference')
+    description = fields.String(allow_none=True, load_from='purchase_invoice_description')
+    vendor_name = fields.String()
+    vendor_addresline = fields.String(allow_none=True)
+    vendor_postnumber = fields.String(allow_none=True)
+    vendor_town = fields.String(allow_none=True)
+    vendor_country = fields.String(allow_none=True)
+    voucher_id = fields.Integer(allow_none=True)
+    accounted = fields.Boolean(load_from='is_accounted')
+    comment = fields.String()
+    try:
+        invoice_lines = fields.Nested(InvoiceLinesSchema)
+        dimensions = fields.Nested(InvoiceDimensionsSchema)
+    except:
+        print("paskaa")
+
+
+    class Meta:
+        ordered = True
