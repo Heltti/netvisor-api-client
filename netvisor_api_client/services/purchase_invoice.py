@@ -6,10 +6,13 @@ from ..requests.purchase_invoice import (
 
 
 class PurchaseInvoiceService(Service):
-    def get(self, id):
+    def get(self, id, version=None, include=None, omit_attachments=None):
         request = GetPurchaseInvoiceRequest(
             self.client,
-            params={'NetvisorKey': id}
+            params={'NetvisorKey': id,
+                    'Version': version,
+                    'Include': include,
+                    'Omitattachments': omit_attachments}
         )
         return request.make_request()
 
