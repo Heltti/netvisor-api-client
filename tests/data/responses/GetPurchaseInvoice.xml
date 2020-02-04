@@ -5,6 +5,7 @@
     <TimeStamp>1.10.2009 16:03:24</TimeStamp>
   </ResponseStatus>
 <PurchaseInvoice>
+    <PurchaseInvoiceNetvisorKey>1025</PurchaseInvoiceNetvisorKey>
     <PurchaseInvoiceNumber>152212</PurchaseInvoiceNumber>
     <PurchaseInvoiceDate format="ansi">2018-01-02</PurchaseInvoiceDate>
     <PurchaseInvoiceDeliveryDate format="ansi">2014-10-02</PurchaseInvoiceDeliveryDate>
@@ -30,6 +31,7 @@
     <VendorPostnumber>53100</VendorPostnumber>
     <VendorTown>Lappeenranta</VendorTown>
     <VendorCountry>FI</VendorCountry>
+    <VendorBankAccountNumber>FI000111234567</VendorBankAccountNumber>
     <Fingerprint>FEF2041B3EF7ED8DC14E85B51081E9B1EB3C867B3160E2F48757605819B9B1CE</Fingerprint>
     <VoucherID />
     <IsAccounted>False</IsAccounted>

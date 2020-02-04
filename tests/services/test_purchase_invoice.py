@@ -12,64 +12,62 @@ class TestPurchaseInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method='GET',
-            url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=11110',
+            url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025',
             body=get_response_content('GetPurchaseInvoice.xml'),
             content_type='text/html; charset=utf-8',
             match_querystring=True
         )
 
-        purchase_invoice = netvisor.purchase_invoices.get(11110)
+        purchase_invoice = netvisor.purchase_invoices.get(1025)
+        from pprint import pprint
+        pprint(purchase_invoice)
         assert purchase_invoice == {
-            "PurchaseInvoiceNetvisorKey": 1025,
-            "PurchaseInvoiceNumber": 152212,
-            "PurchaseInvoiceDate": date(2018, 1, 2),
-            "PurchaseInvoiceDeliveryDate": date(2014, 10, 2),
-            "PurchaseInvoiceDueDate": date(2018, 1, 31),
-            "PurchaseInvoiceValueDate": date(2018, 1, 15),
-            "PurchaseInvoiceReferencenumber": "011234",
-            "PurchaseInvoiceVendorBankAccountNumber": "FI000111234567",
-            "IsPurchaseInvoiceVendorBankAccountDeleted": False,
-            "IsPurchaseInvoiceVendorBankAccountFromSEPARegion": True,
-            "PurchaseInvoiceAmount": Decimal(100.00),
-            "PurchaseInvoicePaidAmount": Decimal(0,00),
-            "ForeignCurrencyAmount": Decimal(100),
-            "ForeignCurrencyNameID": "EUR",
-            "InvoiceStatus": "Avoin",
-            "ApprovalStatus": "open",
-            "PurchaseInvoiceOurReference": "111234",
-            "PurchaseInvoiceYourReference": "21134",
-            "PurchaseInvoiceDescription": "Comment text",
-            "VendorName": "Vendor Oy Ab",
-            "VendorAddressline": "Pajukuja 5",
-            "VendorPostnumber": "53100",
-            "VendorTown": "Lappeenranta",
-            "VendorCountry": "FI",
-            "IsAccounted": False,
-            "InvoiceLines": {
-              "PurchaseInvoiceLine": {
-                "NetvisorKey": 1051,
-                "LineSum": Decimal(125.25),
-                "LineNetSum": Decimal(102.6639),
-                "UnitPrice": Decimal(5.480000000000),
-                "VatPercent": Decimal(22),
-                "VatCode": "KOOS",
-                "Description": "Description text",
-                "Unit": "kpl",
-                "OrderedAmount": Decimal(15),
-                "DeliveredAmount": "10",
-                "ProductCode": "15243",
-                "DiscountPercentage": "1,5",
-                "ProductName": "Test Product",
-                "AccountingSuggestionBookkeepingAccountNetvisorKey": "643",
-                "AccountingSuggestionBookkeepingAccount": "4000 Ostot"
-              },
-              "PurchaseInvoiceLineDimensions": {
-                "Dimension": {
-                  "DimensionName": "Projects",
-                  "DimensionNameNetvisorKey": "3",
-                  "DimensionDetailName": "Project 1",
-                  "DimensionDetailNetvisorKey": "3"
-                }
-              }
+            "netvisor_key": 1025,
+            "number": 152212,
+            "date": date(2018, 1, 2),
+            "delivery_date": date(2014, 10, 2),
+            "due_date": date(2018, 1, 31),
+            "value_date": date(2018, 1, 15),
+            "reference_number": "011234",
+            "vendor_bank_account_number": "FI000111234567",
+            "amount": Decimal('100.00'),
+            "paid_amount": Decimal('0.00'),
+            "foreign_currency_amount": Decimal('100'),
+            "foreign_currency_name_id": "EUR",
+            "status": "Avoin",
+            "approval_status": "open",
+            "our_reference": "111234",
+            "your_reference": "21134",
+            "description": "Comment text",
+            "vendor_name": "Vendor Oy Ab",
+            "vendor_addressline": "Pajukuja 5",
+            "vendor_postnumber": "53100",
+            "vendor_town": "Lappeenranta",
+            "vendor_country": "FI",
+            'vendor_bank_account_number': 'FI000111234567',
+            "voucher_id": None,
+            "accounted": False,
+            "invoice_lines": [{
+                "netvisor_key": 1051,
+                "line_sum": Decimal('125.25'),
+                "line_net_sum": Decimal('102.6639'),
+                "unit_price": Decimal('5.480000000000'),
+                "vat_percentage": {
+                    "percentage": Decimal('22'),
+                    "code": "KOOS"
+                },
+                "description": "Description text",
+                "unit": "kpl",
+                "order_amount": Decimal('15'),
+                "delivered_amount": Decimal('10'),
+                "product_code": "15243",
+                "discount_percentage": Decimal('1.5'),
+                "product_name": "Test Product",
+                "bookkeeping_account_netvisor_key": "643",
+                "bookkeeping_account": "4000 Ostot"
+              }],
+                "dimension": [{
+                  "name": "Projects",
+                  "detail_name": "Project 1",
+                }]
             }
-        }
