@@ -4,21 +4,16 @@ from ..common import DateSchema, DecimalSchema
 from ..fields import Boolean, Decimal, List
 
 
-class VatPercentageSchema(Schema):
-    percentage = Decimal(required=True, load_from='#text')
-    code = fields.String(required=True, load_from='@vatcode')
-
-
 class PurchaseInvoiceLineSchema(Schema):
     netvisor_key = fields.Integer(load_from="netvisorkey")
     line_sum = Decimal()
     line_net_sum = Decimal()
     unit_price = Decimal()
-    vat_percentage = fields.Nested(VatPercentageSchema)
+    vat_percent = Decimal()
     vat_code = fields.String()
     description = fields.String()
     unit = fields.String()
-    order_amount = fields.Integer()
+    ordered_amount = Decimal()
     purchase_price = Decimal(allow_none=True)
     delivered_amount = Decimal()
     product_code = fields.String()
@@ -28,37 +23,38 @@ class PurchaseInvoiceLineSchema(Schema):
     bookkeeping_account = fields.String(load_from='accounting_suggestion_bookkeeping_account')
 
 
-class InvoiceLineSchema(Schema):
-    invoice_lines = List(
-        fields.Nested(PurchaseInvoiceLineSchema),
-        load_from='purchase_invoice_line'
-    )
-
-    @post_load
-    def preprocess_invoice_line(self, input_data):
-        if input_data:
-            return input_data['invoice_lines']
-
-
 class PurchaseInvoiceDimensionSchema(Schema):
     """
     Levels 4 -5 -6 when version parameter is2
     In other case levels 3-4-5
     """
     name = fields.String(load_from='dimension_name')
+    netvisor_key = fields.Integer(load_from='dimension_name_netvisor_key')  # Not in documentation
     detail_name = fields.String(load_from='dimension_detail_name')
+    detail_netvisor_key = fields.Integer(load_from='dimension_detail_netvisor_key') # Not in documentation
 
 
-class InvoiceDimensionSchema(Schema):
+class InvoiceDimensionLineSchema(Schema):
     dimensions = List(
-        fields.Nested(PurchaseInvoiceDimensionSchema,
-                      load_from='purchase_invoice_dimensions')
+        fields.Nested(PurchaseInvoiceDimensionSchema),
+        load_from='dimension',
+        required=False
     )
 
     @post_load
-    def preprocess_dimensions(self, input_data):
+    def preprocess_dimension_list(self, input_data):
         if input_data:
             return input_data['dimensions']
+
+
+class InvoiceLineSchema(Schema):
+    items = List(
+        fields.Nested(PurchaseInvoiceLineSchema),
+        load_from='purchase_invoice_line'
+    )
+
+    dimensions = fields.Nested(InvoiceDimensionLineSchema,
+                               load_from='purchase_invoice_line_dimensions')
 
 
 class GetPurchaseInvoiceSchema(Schema):
@@ -87,9 +83,10 @@ class GetPurchaseInvoiceSchema(Schema):
     voucher_id = fields.Integer(allow_none=True)
     accounted = fields.Boolean(load_from='is_accounted')
     comment = fields.String()
-    invoice_lines = fields.Nested(InvoiceLineSchema)
-    dimensions = fields.Nested(InvoiceDimensionSchema)
+    lines = fields.Nested(InvoiceLineSchema, load_from='invoice_lines')
 
 
-    class Meta:
-        ordered = True
+    @post_load
+    def preprocess_lines(self, data):
+        if 'lines' in data:
+            data['lines'] = data['lines']
