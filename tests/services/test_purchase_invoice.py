@@ -8,6 +8,7 @@ from marshmallow import ValidationError
 from netvisor_api_client.exc import InvalidData
 from tests.utils import get_request_content, get_response_content
 
+
 class TestPurchaseInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
@@ -19,8 +20,6 @@ class TestPurchaseInvoiceService(object):
         )
 
         purchase_invoice = netvisor.purchase_invoices.get(1025)
-        from pprint import pprint
-        pprint(purchase_invoice)
         assert purchase_invoice == {
             "netvisor_key": 1025,
             "number": 152212,
@@ -47,27 +46,30 @@ class TestPurchaseInvoiceService(object):
             'vendor_bank_account_number': 'FI000111234567',
             "voucher_id": None,
             "accounted": False,
-            "invoice_lines": [{
-                "netvisor_key": 1051,
-                "line_sum": Decimal('125.25'),
-                "line_net_sum": Decimal('102.6639'),
-                "unit_price": Decimal('5.480000000000'),
-                "vat_percentage": {
-                    "percentage": Decimal('22'),
-                    "code": "KOOS"
-                },
-                "description": "Description text",
-                "unit": "kpl",
-                "order_amount": Decimal('15'),
-                "delivered_amount": Decimal('10'),
-                "product_code": "15243",
-                "discount_percentage": Decimal('1.5'),
-                "product_name": "Test Product",
-                "bookkeeping_account_netvisor_key": "643",
-                "bookkeeping_account": "4000 Ostot"
-              }],
-                "dimension": [{
-                  "name": "Projects",
-                  "detail_name": "Project 1",
-                }]
+            "lines": {
+                "items": [{
+                    "netvisor_key": 1051,
+                    "line_sum": Decimal('125.25'),
+                    "line_net_sum": Decimal('102.6639'),
+                    "unit_price": Decimal('5.480000000000'),
+                    "vat_percent": Decimal('22'),
+                    "vat_code": "KOOS",
+                    "description": "Description text",
+                    "unit": "kpl",
+                    "ordered_amount": Decimal('15'),
+                    "delivered_amount": Decimal('10'),
+                    "product_code": "15243",
+                    "discount_percentage": Decimal('1.5'),
+                    "product_name": "Test Product",
+                    "purchase_price": None,
+                    "bookkeeping_account_netvisor_key": "643",
+                    "bookkeeping_account": "4000 Ostot"
+                  }],
+                "dimensions": [{
+                    "name": "Projects",
+                    "netvisor_key": 3,
+                    "detail_name": "Project 1",
+                    "detail_netvisor_key": 3
+                }],
             }
+        }
