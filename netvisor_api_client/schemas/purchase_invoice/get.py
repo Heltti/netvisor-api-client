@@ -170,6 +170,7 @@ class GetPurchaseInvoiceSchema(Schema):
     voucher_id = fields.Integer(allow_none=True)
     accounted = fields.Boolean(
         required=True,
+        allow_none=True,
         load_from='is_accounted'
     )
     preview_image = fields.String(
