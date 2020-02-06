@@ -6,23 +6,27 @@ from ..fields import Boolean, Decimal, List
 
 class PurchaseInvoiceLineSchema(Schema):
     netvisor_key = fields.Integer(required=True, load_from="netvisorkey")
-    line_sum = Decimal(required=True)
-    line_net_sum = Decimal(required=True)
-    unit_price = Decimal(required=True)
-    vat_percent = Decimal(required=True)
-    vat_code = fields.String(required=True)
-    description = fields.String(required=True)
-    unit = fields.String(required=True)
-    ordered_amount = Decimal(required=True)
+    line_sum = Decimal(required=True, allow_none=True)
+    line_net_sum = Decimal(required=True, allow_none=True)
+    unit_price = Decimal(required=True, allow_none=True)
+    vat_percent = Decimal(required=True, allow_none=True)
+    vat_code = fields.String(required=True, allow_none=True)
+    description = fields.String(required=True, allow_none=True)
+    unit = fields.String(required=True, allow_none=True)
+    ordered_amount = Decimal(required=True, allow_none=True)
     purchase_price = Decimal(allow_none=True)
-    delivered_amount = Decimal(required=True)
-    product_code = fields.String(required=True)
-    discount_percentage = Decimal(required=True)
-    product_name = fields.String(required=True)
-    bookkeeping_account_netvisor_key = fields.String(required=True,
-                                                     load_from='accounting_suggestion_bookkeeping_account_netvisor_key')
-    bookkeeping_account = fields.String(required=True,
-                                        load_from='accounting_suggestion_bookkeeping_account')
+    delivered_amount = Decimal(required=True, allow_none=True)
+    product_code = fields.String(required=True, allow_none=True)
+    discount_percentage = Decimal(required=True, allow_none=True)
+    product_name = fields.String(required=True, allow_none=True)
+    bookkeeping_account_netvisor_key = fields.String(
+        required=True,
+        allow_none=True,
+        load_from='accounting_suggestion_bookkeeping_account_netvisor_key')
+    bookkeeping_account = fields.String(
+        required=True,
+        allow_none=True,
+        load_from='accounting_suggestion_bookkeeping_account')
 
 
 class PurchaseInvoiceDimensionSchema(Schema):
@@ -30,11 +34,13 @@ class PurchaseInvoiceDimensionSchema(Schema):
     Levels 4 -5 -6 when version parameter is2
     In other case levels 3-4-5
     """
-    name = fields.String(required=True, load_from='dimension_name')
-    netvisor_key = fields.Integer(required=True, load_from='dimension_name_netvisor_key')  # Not in documentation
-    detail_name = fields.String(required=True, load_from='dimension_detail_name')
-    detail_netvisor_key = fields.Integer(required=True,
-                                         load_from='dimension_detail_netvisor_key')  # Not in documentation
+    name = fields.String(required=True, allow_none=True, load_from='dimension_name')
+    netvisor_key = fields.Integer(required=True, allow_none=True, load_from='dimension_name_netvisor_key')  # Not in documentation
+    detail_name = fields.String(required=True, allow_none=True, load_from='dimension_detail_name')
+    detail_netvisor_key = fields.Integer(
+        required=True,
+        allow_none=True,
+        load_from='dimension_detail_netvisor_key')  # Not in documentation
 
 
 class InvoiceDimensionLineSchema(Schema):
@@ -164,7 +170,6 @@ class GetPurchaseInvoiceSchema(Schema):
         allow_none=True
     )
     vendor_bank_account_number = fields.String(
-        required=True,
         allow_none=True
     )
     voucher_id = fields.Integer(allow_none=True)
