@@ -30,7 +30,7 @@ class SalesInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
     number = fields.Integer(load_from='invoice_number')
     date = fields.Nested(DateSchema, load_from='invoicedate')
-    #status = fields.Nested(StatusSchema, load_from='invoice_status')
+    status = fields.Nested(StatusSchema, load_from='invoice_status')
     customer_code = fields.String(allow_none=True)
     customer_name = fields.String()
     reference_number = fields.String()
@@ -39,7 +39,7 @@ class SalesInvoiceSchema(Schema):
 
     @post_load
     def preprocess_sales_invoice(self, input_data):
-#        input_data.update(input_data['status'])
+        input_data.update(input_data['status'])
         return input_data
 
 
