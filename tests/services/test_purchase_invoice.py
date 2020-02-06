@@ -113,41 +113,40 @@ class TestPurchaseInvoiceService(object):
         }
 
     def test_get_minimal(self, netvisor, responses):
-        def test_get(self, netvisor, responses):
-            responses.add(
-                method='GET',
-                url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2',
-                body=get_response_content('GetPurchaseInvoiceMinimal.xml'),
-                content_type='text/html; charset=utf-8',
-                match_querystring=True
-            )
+        responses.add(
+            method='GET',
+            url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2',
+            body=get_response_content('GetPurchaseInvoiceMinimal.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
 
-            purchase_invoice = netvisor.purchase_invoices.get(1025)
-            assert purchase_invoice == {
-                "netvisor_key": 1025,
-                "number": 152212,
-                "date": date(2018, 1, 2),
-                "delivery_date": date(2014, 10, 2),
-                "due_date": date(2018, 1, 31),
-                "value_date": date(2018, 1, 15),
-                "reference_number": "011234",
-                "vendor_bank_account_number": "FI000111234567",
-                "amount": Decimal('100.00'),
-                "paid_amount": Decimal('0.00'),
-                "foreign_currency_amount": Decimal('100'),
-                "foreign_currency_name_id": "EUR",
-                "status": "Avoin",
-                "approval_status": "open",
-                "our_reference": "111234",
-                "your_reference": "21134",
-                "description": "Comment text",
-                "vendor_name": "Vendor Oy Ab",
-                "vendor_addressline": "Pajukuja 5",
-                "vendor_postnumber": "53100",
-                "vendor_town": "Lappeenranta",
-                "vendor_country": "FI",
-                "accounted": False,
-            }
+        purchase_invoice = netvisor.purchase_invoices.get(1025)
+        assert purchase_invoice == {
+            "netvisor_key": 1025,
+            "number": 152212,
+            "date": date(2018, 1, 2),
+            "delivery_date": date(2014, 10, 2),
+            "due_date": date(2018, 1, 31),
+            "value_date": date(2018, 1, 15),
+            "reference_number": "011234",
+            "vendor_bank_account_number": "FI000111234567",
+            "amount": Decimal('100.00'),
+            "paid_amount": Decimal('0.00'),
+            "foreign_currency_amount": Decimal('100'),
+            "foreign_currency_name_id": "EUR",
+            "status": "Avoin",
+            "approval_status": "open",
+            "our_reference": "111234",
+            "your_reference": "21134",
+            "description": "Comment text",
+            "vendor_name": "Vendor Oy Ab",
+            "vendor_addressline": "Pajukuja 5",
+            "vendor_postnumber": "53100",
+            "vendor_town": "Lappeenranta",
+            "vendor_country": "FI",
+            "accounted": False,
+        }
 
     def test_get_raises_error_if_sales_invoice_not_found(
             self, netvisor, responses
@@ -168,3 +167,51 @@ class TestPurchaseInvoiceService(object):
             'Data form incorrect:. '
             'Purchase invoice not found with Netvisor identifier: 123'
         )
+
+    def test_list(self, netvisor, responses):
+        responses.add(
+            method='GET',
+            url='http://koulutus.netvisor.fi/PurchaseInvoiceList.nv',
+            body=get_response_content('PurchaseInvoiceList.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+
+        purchase_invoice_list = netvisor.purchase_invoices.list()
+        from pprint import pprint
+        pprint(purchase_invoice_list)
+        assert purchase_invoice_list == [
+            {
+                "netvisor_key": 1,
+                "number": 123,
+                "date": date(2017, 11, 16),
+                "vendor": "Simon Supplier",
+                "vendor_organization_identifier": "1234567-8",
+                "sum": Decimal("25"),
+                "payments": Decimal("25"),
+                "open_sum": Decimal("0"),
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
+            },
+            {
+                "netvisor_key": 2,
+                "number": 234,
+                "date": date(2017, 11, 23),
+                "vendor": "Simon Supplier",
+                "vendor_organization_identifier": "1234567-8",
+                "sum": Decimal("30"),
+                "payments": Decimal("0"),
+                "open_sum": Decimal("30"),
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
+            },
+            {
+                "netvisor_key": 3,
+                "number": 345,
+                "date": date(2017, 11, 16),
+                "vendor": "Sara Supplier",
+                "vendor_organization_identifier": None,
+                "sum": Decimal("30"),
+                "payments": Decimal("0"),
+                "open_sum": Decimal("30"),
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
+            }
+        ]
