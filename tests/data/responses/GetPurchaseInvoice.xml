@@ -35,6 +35,7 @@
         <Fingerprint>FEF2041B3EF7ED8DC14E85B51081E9B1EB3C867B3160E2F48757605819B9B1CE</Fingerprint>
         <VoucherID>1</VoucherID>
         <IsAccounted>False</IsAccounted>
+        <PreviewImage>Text</PreviewImage>
         <InvoiceLines>
             <PurchaseInvoiceLine>
                 <NetvisorKey>1051</NetvisorKey>

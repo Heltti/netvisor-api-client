@@ -46,6 +46,7 @@ class TestPurchaseInvoiceService(object):
             'vendor_bank_account_number': 'FI000111234567',
             "voucher_id": 1,
             "accounted": False,
+            "preview_image": "Text",
             "lines": {
                 "items": [
                     {
@@ -116,7 +117,7 @@ class TestPurchaseInvoiceService(object):
             responses.add(
                 method='GET',
                 url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2',
-                body=get_response_content('GetPurchaseInvoice.xml'),
+                body=get_response_content('GetPurchaseInvoiceMinimal.xml'),
                 content_type='text/html; charset=utf-8',
                 match_querystring=True
             )
@@ -145,33 +146,5 @@ class TestPurchaseInvoiceService(object):
                 "vendor_postnumber": "53100",
                 "vendor_town": "Lappeenranta",
                 "vendor_country": "FI",
-                'vendor_bank_account_number': 'FI000111234567',
-                "voucher_id": 1,
                 "accounted": False,
-                "lines": {
-                    "items": [{
-                        "netvisor_key": 1051,
-                        "line_sum": Decimal('125.25'),
-                        "line_net_sum": Decimal('102.6639'),
-                        "unit_price": Decimal('5.480000000000'),
-                        "vat_percent": Decimal('22'),
-                        "vat_code": "KOOS",
-                        "description": "Description text",
-                        "unit": "kpl",
-                        "ordered_amount": Decimal('15'),
-                        "delivered_amount": Decimal('10'),
-                        "product_code": "15243",
-                        "discount_percentage": Decimal('1.5'),
-                        "product_name": "Test Product",
-                        "purchase_price": Decimal('24.00'),
-                        "bookkeeping_account_netvisor_key": "643",
-                        "bookkeeping_account": "4000 Ostot"
-                    }],
-                    "dimensions": [{
-                        "name": "Projects",
-                        "netvisor_key": 3,
-                        "detail_name": "Project 1",
-                        "detail_netvisor_key": 3
-                    }],
-                }
             }
