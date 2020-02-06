@@ -6,7 +6,7 @@ from ..requests.purchase_invoice import (
 
 
 class PurchaseInvoiceService(Service):
-    def get(self, id, version=None, include=None, omit_attachments=None):
+    def get(self, id, version=2, include=None, omit_attachments=None):
         request = GetPurchaseInvoiceRequest(
             self.client,
             params={'NetvisorKey': id,

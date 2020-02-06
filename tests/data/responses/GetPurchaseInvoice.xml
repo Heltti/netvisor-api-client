@@ -55,6 +55,25 @@
                 </AccountingSuggestionBookkeepingAccountNetvisorKey>
                 <AccountingSuggestionBookkeepingAccount>4000 Ostot</AccountingSuggestionBookkeepingAccount>
             </PurchaseInvoiceLine>
+            <PurchaseInvoiceLine>
+                <NetvisorKey>1052</NetvisorKey>
+                <LineSum>125,25</LineSum>
+                <LineNetSum>102,6639</LineNetSum>
+                <UnitPrice>5,480000000000</UnitPrice>
+                <VatPercent>22</VatPercent>
+                <VatCode>KOOS</VatCode>
+                <Description>Description text</Description>
+                <Unit>kpl</Unit>
+                <OrderedAmount>15</OrderedAmount>
+                <PurchasePrice>24,00</PurchasePrice>
+                <DeliveredAmount>10</DeliveredAmount>
+                <ProductCode>15243</ProductCode>
+                <DiscountPercentage>1,5</DiscountPercentage>
+                <ProductName>Test Product</ProductName>
+                <AccountingSuggestionBookkeepingAccountNetvisorKey>643
+                </AccountingSuggestionBookkeepingAccountNetvisorKey>
+                <AccountingSuggestionBookkeepingAccount>4000 Ostot</AccountingSuggestionBookkeepingAccount>
+            </PurchaseInvoiceLine>
             <PurchaseInvoiceLineDimensions>
                 <Dimension>
                     <DimensionName>Projects</DimensionName>
@@ -62,7 +81,23 @@
                     <DimensionDetailName>Project 1</DimensionDetailName>
                     <DimensionDetailNetvisorKey>3</DimensionDetailNetvisorKey>
                 </Dimension>
+                <Dimension>
+                    <DimensionName>Projects</DimensionName>
+                    <DimensionNameNetvisorKey>4</DimensionNameNetvisorKey>
+                    <DimensionDetailName>Project 2</DimensionDetailName>
+                    <DimensionDetailNetvisorKey>4</DimensionDetailNetvisorKey>
+                </Dimension>
             </PurchaseInvoiceLineDimensions>
         </InvoiceLines>
+        <LinkedPurchaseOrders>
+            <PurchaseOrder>
+                <OrderNumber>1</OrderNumber>
+                <NetvisorKey>123</NetvisorKey>
+            </PurchaseOrder>
+            <PurchaseOrder>
+                <OrderNumber>2</OrderNumber>
+                <NetvisorKey>456</NetvisorKey>
+            </PurchaseOrder>
+        </LinkedPurchaseOrders>
     </PurchaseInvoice>
 </Root>

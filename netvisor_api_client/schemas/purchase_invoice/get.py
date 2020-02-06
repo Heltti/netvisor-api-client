@@ -57,6 +57,23 @@ class InvoiceLineSchema(Schema):
                                load_from='purchase_invoice_line_dimensions')
 
 
+class PurchaseOrderSchema(Schema):
+    number = fields.Integer(load_from='order_number')
+    netvisor_key = fields.Integer()
+
+
+class LinkedPurchaseOrdersSchema(Schema):
+    purchase_orders = List(
+        fields.Nested(PurchaseOrderSchema),
+        load_from='purchase_order'
+    )
+
+    @post_load
+    def preprocess_order_list(self, input_data):
+        if input_data:
+            return input_data['purchase_orders']
+
+
 class GetPurchaseInvoiceSchema(Schema):
     netvisor_key = fields.Integer(load_from='purchase_invoice_netvisor_key')
     number = fields.Integer(load_from='purchase_invoice_number')
@@ -82,9 +99,11 @@ class GetPurchaseInvoiceSchema(Schema):
     vendor_bank_account_number = fields.String(allow_none=True)
     voucher_id = fields.Integer(allow_none=True)
     accounted = fields.Boolean(load_from='is_accounted')
+    preview_image = fields.String(allow_none=True)
+    attachments = fields.Nested()
     comment = fields.String()
     lines = fields.Nested(InvoiceLineSchema, load_from='invoice_lines')
-
+    orders = fields.Nested(LinkedPurchaseOrdersSchema, load_from='linked_purchase_orders')
 
     @post_load
     def preprocess_lines(self, data):
