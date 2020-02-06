@@ -36,5 +36,5 @@ class GetPurchaseInvoiceRequest(Request):
 
 class PurchaseInvoiceListRequest(ListRequest):
     method = 'GET'
-    uri = 'purchaseinvoicelist.nv'
+    uri = 'PurchaseInvoiceList.nv'
     response_cls = PurchaseInvoiceListResponse
