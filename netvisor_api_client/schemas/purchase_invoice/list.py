@@ -28,11 +28,12 @@ class StatusSchema(Schema):
 
 class PurchaseInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
-    date = fields.Nested(DateSchema, load_from='invoicedate')
+    date = fields.Nested(DateSchema, load_from='invoice_date')
     vendor = fields.String(allow_none=True)
+    vendor_organization_identifier = fields.String(allow_none=True)
     sum = Decimal(load_from='invoice_sum')
-    payments = Decimal(load_from='payments')
-    open_sum = Decimal(load_from='open_sum')
+    payments = Decimal()
+    open_sum = Decimal()
 
     @post_load
     def preprocess_purchase_invoice(self, input_data):
