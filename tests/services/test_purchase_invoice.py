@@ -215,3 +215,15 @@ class TestPurchaseInvoiceService(object):
                 "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
             }
         ]
+
+    def test_empty_list(self, netvisor, responses):
+        responses.add(
+            method='GET',
+            url='http://koulutus.netvisor.fi/PurchaseInvoiceList.nv',
+            body=get_response_content('PurchaseInvoiceListEmpty.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+
+        purchase_invoice_list = netvisor.purchase_invoices.list()
+        assert purchase_invoice_list == []
