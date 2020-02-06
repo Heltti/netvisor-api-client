@@ -148,3 +148,23 @@ class TestPurchaseInvoiceService(object):
                 "vendor_country": "FI",
                 "accounted": False,
             }
+
+    def test_get_raises_error_if_sales_invoice_not_found(
+            self, netvisor, responses
+    ):
+        responses.add(
+            method='GET',
+            url=(
+                'http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=123&Version=2'
+            ),
+            body=get_response_content('GetPurchaseInvoiceNotFound.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+        with pytest.raises(InvalidData) as excinfo:
+            netvisor.purchase_invoices.get(123)
+
+        assert str(excinfo.value) == (
+            'Data form incorrect:. '
+            'Purchase invoice not found with Netvisor identifier: 123'
+        )
