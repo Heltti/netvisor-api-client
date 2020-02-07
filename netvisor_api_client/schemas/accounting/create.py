@@ -42,12 +42,12 @@ class LineSumSchema(Schema):
         }
 
 
-class DimensionSchema(Schema):
+class DimensionSchema(RejectUnknownFieldsSchema):
     dimension_name = fields.String(attribute='name')
     dimension_item = fields.String(attribute='item')
 
 
-class VoucherLineSchema(Schema):
+class VoucherLineSchema(RejectUnknownFieldsSchema):
     line_sum = fields.Nested(LineSumSchema)
     description = fields.String(allow_none=True)
     account_number = fields.Integer()
@@ -79,7 +79,7 @@ class AccountingAttachmentLineSchema(RejectUnknownFieldsSchema):
         super(AccountingAttachmentLineSchema, self).__setattr__(attr, value)
 
 
-class CreateAccountingVoucherSchema(Schema):
+class CreateAccountingVoucherSchema(RejectUnknownFieldsSchema):
     calculation_mode = fields.String(attribute='mode')
     voucher_date = FinnishDate(attribute='date')
     voucher_number = fields.Integer(attribute='number')
