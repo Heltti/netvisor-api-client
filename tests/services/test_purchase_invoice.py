@@ -145,7 +145,11 @@ class TestPurchaseInvoiceService(object):
             "vendor_postnumber": "53100",
             "vendor_town": "Lappeenranta",
             "vendor_country": "FI",
+            "voucher_id": None,
             "accounted": False,
+            "preview_image": None,
+            "lines": None,
+            "orders": None,
         }
 
     def test_get_raises_error_if_sales_invoice_not_found(

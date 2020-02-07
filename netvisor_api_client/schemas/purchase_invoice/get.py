@@ -182,10 +182,12 @@ class GetPurchaseInvoiceSchema(Schema):
         allow_none=True)
     lines = fields.Nested(
         InvoiceLineSchema,
+        allow_none=True,
         load_from='invoice_lines'
     )
     orders = fields.Nested(
         LinkedPurchaseOrdersSchema,
+        allow_none=True,
         load_from='linked_purchase_orders'
     )
 
