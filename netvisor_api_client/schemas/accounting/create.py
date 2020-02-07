@@ -18,7 +18,7 @@ class VatPercentageSchema(RejectUnknownFieldsSchema):
         }
 
 
-class AccountingDimensionSchema(Schema):
+class AccountingDimensionSchema(RejectUnknownFieldsSchema):
     dimension = fields.String()
     type = fields.String()
 
@@ -30,7 +30,7 @@ class AccountingDimensionSchema(Schema):
         }
 
 
-class LineSumSchema(Schema):
+class LineSumSchema(RejectUnknownFieldsSchema):
     sum = Decimal()
     type = fields.String()
 
