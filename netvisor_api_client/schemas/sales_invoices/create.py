@@ -13,7 +13,7 @@ from ..fields import Decimal, List
 
 class ProductIdentifierSchema(RejectUnknownFieldsSchema):
     identifier = fields.String()
-    type = fields.String(default='customer')
+    type = fields.String(default='netvisor')
 
     @post_dump
     def post_dump(self, data):
