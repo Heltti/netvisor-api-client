@@ -86,6 +86,32 @@ class TestAccountingService(object):
                 'linked_source': {'type': 'salesinvoice', 'key': 38},
                 'uri': 'https:/netvisor.com/voucher/39',
                 'lines': []
+            },
+                        {
+                'status': 'valid',
+                'key': 38,
+                'date': date(2000, 1, 2),
+                'number': 39,
+                'description': 'Invoice 39',
+                'class': 'SA Sales Invoice',
+                'linked_source': {'type': 'salesinvoice', 'key': 39},
+                'uri': 'https:/netvisor.com/voucher/39',
+                'lines': [
+                    {
+                        'key': 300,
+                        'line_sum': Decimal('-30.31'),
+                        'description': 'Invoice 39',
+                        'account_number': 300,
+                        'vat_percent': 33,
+                        'vat_code': '-',
+                        'dimensions': [
+                            {
+                                'name': 'Sales',
+                                'item': None
+                            }
+                        ]
+                    }
+                ]
             }
         ]
 
