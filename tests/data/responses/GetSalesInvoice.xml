@@ -12,7 +12,7 @@
     <SalesInvoiceReferencenumber>1070</SalesInvoiceReferencenumber>
     <SalesInvoiceAmount iso4217currencycode="EUR" currencyrate="1">244,00</SalesInvoiceAmount>
     <SellerIdentifier type="name">Jarmo</SellerIdentifier>
-    <InvoiceStatus>Unsent</InvoiceStatus>
+    <InvoiceStatus status="unsent">Unsent</InvoiceStatus>
     <SalesInvoiceFreeTextBeforeLines />
     <SalesInvoiceFreeTextAfterLines />
     <SalesInvoiceOurReference />

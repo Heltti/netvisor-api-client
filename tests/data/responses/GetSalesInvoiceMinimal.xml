@@ -12,7 +12,7 @@
     <SalesInvoiceReferencenumber>1070</SalesInvoiceReferencenumber>
     <SalesInvoiceAmount>244,00</SalesInvoiceAmount>
     <SellerIdentifier type="name" />
-    <InvoiceStatus>Unsent</InvoiceStatus>
+    <InvoiceStatus status="unsent">Unsent</InvoiceStatus>
     <SalesInvoiceFreeTextBeforeLines />
     <SalesInvoiceFreeTextAfterLines />
     <SalesInvoiceOurReference />
