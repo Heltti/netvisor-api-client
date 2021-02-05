@@ -12,7 +12,7 @@ from ..fields import Decimal, FinnishDate, List
 
 class DimensionSchema(Schema):
     name = fields.String(load_from='dimension_name')
-    item = fields.String(load_from='dimension_item')
+    item = fields.String(load_from='dimension_item', allow_none=True)
 
 
 class VoucherLineSchema(Schema):
