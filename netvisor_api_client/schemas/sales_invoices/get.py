@@ -149,6 +149,6 @@ class GetSalesInvoiceSchema(Schema):
         load_from='sales_invoice_private_comment'
     )
     seller_identifier = fields.Nested(StringSchema)
-    invoice_status = fields.String(required=True)
+    invoice_status = fields.Nested(StringSchema)
     invoice_lines = fields.Nested(InvoiceLinesSchema)
     match_partial_payments_by_default = Boolean(true='Yes', false='No')
