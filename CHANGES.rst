@@ -3,6 +3,12 @@ Changelog
 
 Here you can see the full list of changes between each release
 
+0.9.2 (February 5th, 2021)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- PR #6: Fixed accounting dimension's Item None value error - @kiuru
+- PR #7: Sales invoices: invoice status to attributed version - @ajmyyra
+
+
 0.9.1 (January 28th, 2020)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - PR #4: Added VAT code and voucher line NetvisorKey for accounting model - @kiuru
