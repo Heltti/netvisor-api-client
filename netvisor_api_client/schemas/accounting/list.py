@@ -6,7 +6,6 @@
     :license: MIT, see LICENSE for more details.
 """
 from marshmallow import Schema, fields, post_load
-
 from ..fields import Decimal, FinnishDate, List
 
 

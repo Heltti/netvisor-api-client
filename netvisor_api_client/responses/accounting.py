@@ -6,9 +6,14 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Response
-from ..schemas import AccountingListSchema
+from ..schemas import AccountingListSchema, RepliesSchema
 
 
 class AccountingListResponse(Response):
     schema_cls = AccountingListSchema
     tag_name = 'vouchers'
+
+
+class CreateAccountingResponse(Response):
+    schema_cls = RepliesSchema
+    tag_name = 'replies'

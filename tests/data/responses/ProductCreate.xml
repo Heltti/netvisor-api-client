@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>11.4.2015 15:16:30</TimeStamp>
+    </ResponseStatus>
+    <Replies>
+        <InsertedDataIdentifier>8</InsertedDataIdentifier>
+    </Replies>
+</Root>

@@ -68,12 +68,10 @@ class Request(object):
 
     def parse_response(self, response):
         response = self.response_cls(response)
-
         return response.data
 
 
 class ListRequest(Request):
     def parse_response(self, response):
         response = super(ListRequest, self).parse_response(response=response)
-
         return response if response is not None else []

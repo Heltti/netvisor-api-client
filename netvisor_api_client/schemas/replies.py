@@ -14,3 +14,7 @@ class RepliesSchema(Schema):
     @post_load
     def preprocess_replies(self, input_data):
         return input_data['inserted_data_identifier']
+
+
+class DimensionRepliesSchema(Schema):
+    pass

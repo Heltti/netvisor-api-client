@@ -1,0 +1,10 @@
+<Root>
+	<Dimensionitem>
+		<Name>Example Dimension</Name>
+		<Item>Example Dimension Item Sub-Item 1</Item>
+		<!--olditem>Example Dimension Item Sub-Item 2</olditem-->
+		<FatherId>0</FatherId>
+		<FatherItem>Example Dimension Item 2</FatherItem>
+		<IsHidden>false</IsHidden>
+	</Dimensionitem>
+</Root>
