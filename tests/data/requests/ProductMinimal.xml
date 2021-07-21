@@ -1,0 +1,14 @@
+<Root>
+  <Product>
+    <ProductBaseInformation>
+      <Name>Code Complete</Name>
+      <ProductGroup>Kirjat</ProductGroup>
+      <IsActive>true</IsActive>
+      <IsSalesProduct>false</IsSalesProduct>
+      <UnitPrice type="brutto">42,5</UnitPrice>
+    </ProductBaseInformation>
+    <ProductBookkeepingDetails>
+      <DefaultVatPercentage>24</DefaultVatPercentage>
+    </ProductBookkeepingDetails>
+  </Product>
+</Root>

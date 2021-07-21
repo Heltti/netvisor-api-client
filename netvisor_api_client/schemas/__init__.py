@@ -5,7 +5,11 @@ from .customers import (  # noqa
     CustomerListSchema,
     GetCustomerSchema
 )
-from .products import GetProductSchema, ProductListSchema  # noqa
+from .products import ( # noqa
+    CreateProductSchema,
+    GetProductSchema,
+    ProductListSchema
+)
 from .replies import RepliesSchema  # noqa
 from .sales_invoices import (  # noqa
     CreateSalesInvoiceSchema,

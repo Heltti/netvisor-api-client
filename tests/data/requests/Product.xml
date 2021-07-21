@@ -1,20 +1,31 @@
 <Root>
   <Product>
-    <ProductCode>CC</ProductCode>
-    <ProductGroup>Kirjat</ProductGroup>
-    <Name>Code Complete</Name>
-    <Description>Toinen painos</Description>
-    <UnitPrice type="brutto">42,5</UnitPrice>
-    <Unit>kpl</Unit>
-    <UnitWeight>1</UnitWeight>
-    <PurchasePrice>25</PurchasePrice>
-    <TariffHeading>Code Complete</TariffHeading>
-    <ComissionPercentage>11</ComissionPercentage>
-    <IsActive>1</IsActive>
-    <IsSalesProduct>0</IsSalesProduct>
-    <InventoryEnabled></InventoryEnabled>
-    <ProductBookKeepingDetails>
-      <DefaultVatPercent>22</DefaultVatPercent>
-    </ProductBookKeepingDetails>
+    <ProductBaseInformation>
+      <Name>Code Complete</Name>
+      <ProductCode>CC</ProductCode>
+      <ProductGroup>Kirjat</ProductGroup>
+      <Description>Toinen painos</Description>
+      <TariffHeading>Code Complete</TariffHeading>
+      <IsActive>true</IsActive>
+      <IsSalesProduct>false</IsSalesProduct>
+      <ComissionPercentage>11</ComissionPercentage>
+      <PurchasePrice>25</PurchasePrice>
+      <UnitPrice type="brutto">42,5</UnitPrice>
+      <Unit>kpl</Unit>
+      <UnitWeight>1</UnitWeight>
+      <InventoryEnabled>0</InventoryEnabled>
+    </ProductBaseInformation>
+    <ProductBookkeepingDetails>
+      <DefaultVatPercentage>24</DefaultVatPercentage>
+    </ProductBookkeepingDetails>
+    <ProductAdditionalInformation>
+      <ProductNetWeight weightunit="kg">1</ProductNetWeight>
+      <ProductGrossWeight weightunit="kg">1</ProductGrossWeight>
+      <ProductPackageInformation>
+        <PackageWidth unit="cm">5</PackageWidth>
+        <PackageHeight unit="cm">20</PackageHeight>
+        <PackageLength unit="cm">15</PackageLength>
+      </ProductPackageInformation>
+    </ProductAdditionalInformation>
   </Product>
 </Root>

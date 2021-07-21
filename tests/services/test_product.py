@@ -3,7 +3,7 @@ import decimal
 import pytest
 
 from netvisor_api_client.exc import InvalidData
-from tests.utils import get_response_content
+from tests.utils import get_request_content, get_response_content
 
 
 class TestProductService(object):
@@ -157,3 +157,69 @@ class TestProductService(object):
                 'unit_price': decimal.Decimal('1.96'),
             }
         ]
+
+    def test_create(self, netvisor, responses):
+        responses.add(
+            method='POST',
+            url='http://koulutus.netvisor.fi/Product.nv?method=add',
+            body=get_response_content('ProductCreate.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+
+        netvisor_id = netvisor.products.create({
+            'product_base_information': {
+                'product_code': u'CC',
+                'product_group': u'Kirjat',
+                'name': u'Code Complete',
+                'description': u'Toinen painos',
+                'unit_price': {'amount': decimal.Decimal(42.5), 'type': 'brutto'},
+                'unit': u'kpl',
+                'unit_weight': 1,
+                'purchase_price': decimal.Decimal(25.0),
+                'tariff_heading': u'Code Complete',
+                'comission_percentage': 11,
+                'is_active': True,
+                'is_sales_product': False,
+                'inventory_enabled': False,
+            },
+            'product_bookkeeping_details': {
+                'default_vat_percentage': 24,
+            },
+            'product_additional_information': {
+                'product_net_weight': dict(amount=1, weightunit="kg"),
+                'product_gross_weight': dict(amount=1, weightunit="kg"),
+                'product_package_information': {
+                    'package_width': dict(amount=5, unit="cm"),
+                    'package_height': dict(amount=20, unit="cm"),
+                    'package_length': dict(amount=15, unit="cm"),
+                }
+            }
+        })
+        request = responses.calls[0].request
+        assert netvisor_id == 8
+        assert request.body == get_request_content('Product.xml')
+
+    def test_create_with_minimal_data(self, netvisor, responses):
+        responses.add(
+            method='POST',
+            url='http://koulutus.netvisor.fi/Product.nv?method=add',
+            body=get_response_content('ProductCreate.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+        netvisor_id = netvisor.products.create({
+            'product_base_information': {
+                'product_group': u'Kirjat',
+                'name': u'Code Complete',
+                'unit_price': {'amount': decimal.Decimal(42.5), 'type': 'brutto'},
+                'is_active': True,
+                'is_sales_product': False,
+            },
+            'product_bookkeeping_details': {
+                'default_vat_percentage': 24,
+            }
+        })
+        request = responses.calls[0].request
+        assert netvisor_id == 8
+        assert request.body == get_request_content('ProductMinimal.xml')
