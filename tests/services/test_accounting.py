@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest
 
-from tests.utils import get_response_content
+from tests.utils import get_response_content, get_request_content
+import xmltodict
 
 
 class TestAccountingService(object):
@@ -184,3 +185,68 @@ class TestAccountingService(object):
         )
         request = responses.calls[0].request
         assert request.url == url
+
+    def test_create_voucher(self, netvisor, responses):
+        responses.add(
+            method='POST',
+            url='http://koulutus.netvisor.fi/Accounting.nv',
+            body=get_response_content('AccountingCreateVoucher.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+
+        netvisor_id = netvisor.accounting.create(
+            {
+                "mode": "net",
+                "date": date(2018, 6, 11),
+                "description": "Test Company Oy, invoice 1",
+                "class": "Myyntilasku",
+                "voucher_line": [
+                {
+                    "line_sum": {
+                        "sum": Decimal("-10000.00"),
+                        "type": "net"},
+                    "description": u"Test Company Oy, invoice 1",
+                    "account_number": 3000,
+                    "vat_percent": dict(percentage=Decimal("24"), code="KOMY"),
+                    "account_dimension": {
+                        "dimension": "Test account",
+                        "type": "name"
+                    },
+                    "dimension": {
+                        "name": "Projects",
+                        "item": "Project X"
+                    }
+                },
+                {
+                    "line_sum": {
+                        "sum": Decimal("-5000"),
+                        "type": "net"},
+                    "description": u"Test Company Oy, invoice 1",
+                    "account_number": 2939,
+                    "vat_percent": dict(percentage=Decimal(0), code=u"NONE"),
+                },
+                {
+                    "line_sum": {
+                        "sum": Decimal("20000"),
+                        "type": "net"
+                    },
+                    "description": u"Test Company Oy, invoice 1",
+                    "account_number": 1701,
+                    "vat_percent": dict(percentage=Decimal(0), code=u"NONE"),
+                }
+                ],
+                "attachments": [
+                {
+                    "mime_type": "application/pdf",
+                    "description": "Test attachment",
+                    "filename": "attachment.pdf",
+                    "data": "JVBERi0xLjQNJeLjz9MNCjYgMCB"
+                }
+                ],
+            }
+        )
+        request = responses.calls[0].request
+
+        assert netvisor_id == 8
+        assert xmltodict.parse(request.body) == xmltodict.parse(get_request_content('Voucher.xml'))

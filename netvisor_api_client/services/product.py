@@ -22,6 +22,7 @@ class ProductService(Service):
 
     def list(self):
         request = ProductListRequest(self.client)
+
         return request.make_request()
 
     def create(self, data):

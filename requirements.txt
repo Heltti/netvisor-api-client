@@ -4,3 +4,8 @@ freezegun
 isort
 pytest
 responses
+
+inflection
+marshmallow<3.0.0
+requests
+xmltodict>=0.10.1
