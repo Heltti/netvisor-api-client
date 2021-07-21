@@ -6,7 +6,12 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Service
-from ..requests.product import GetProductRequest, ProductListRequest
+from ..requests.product import (
+    CreateProductRequest,
+    GetProductRequest,
+    ProductListRequest,
+    UpdateProductRequest
+)
 
 
 class ProductService(Service):
@@ -17,4 +22,22 @@ class ProductService(Service):
 
     def list(self):
         request = ProductListRequest(self.client)
+        return request.make_request()
+
+    def create(self, data):
+        request = CreateProductRequest(
+            self.client,
+            params={'method': 'add'},
+            data=data
+        )
+
+        return request.make_request()
+
+    def update(self, id, data):
+        request = UpdateProductRequest(
+            self.client,
+            params={'id': id, 'method': 'edit'},
+            data=data
+        )
+
         return request.make_request()
