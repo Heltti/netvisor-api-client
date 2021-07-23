@@ -286,7 +286,11 @@ class TestSalesInvoiceService(object):
                     'quantity': decimal.Decimal('2'),
                     'discount_percentage': decimal.Decimal('0'),
                     'free_text': 'Punainen',
-                    'accounting_account_suggestion': '3000'
+                    'accounting_account_suggestion': '3000',
+                    'dimension': [
+                        {'dimension_name': 'Example Dimension', 'dimension_item': 'Example Dimension Item'},
+                        {'dimension_name': 'Example Dimension 2', 'dimension_item': 'Example Dimension 2 Item'},
+                    ],
                 },
                 {
                     'identifier': dict(identifier="1697", type="netvisor"),

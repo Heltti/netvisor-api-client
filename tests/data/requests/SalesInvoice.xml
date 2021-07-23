@@ -36,6 +36,14 @@
           <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
           <SalesInvoiceProductLineFreeText>Punainen</SalesInvoiceProductLineFreeText>
           <AccountingAccountSuggestion>3000</AccountingAccountSuggestion>
+          <Dimension>
+              <DimensionName>Example Dimension</DimensionName>
+              <DimensionItem>Example Dimension Item</DimensionItem>
+          </Dimension>
+          <Dimension>
+              <DimensionName>Example Dimension 2</DimensionName>
+              <DimensionItem>Example Dimension 2 Item</DimensionItem>
+          </Dimension>
         </SalesInvoiceProductLine>
       </InvoiceLine>
       <InvoiceLine>

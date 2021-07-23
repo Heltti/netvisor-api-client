@@ -95,7 +95,7 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
 
     accounting_account_suggestion = fields.String()
 
-    dimension = fields.Nested(SalesInvoiceProductDimensionSchema, attribute='dimension', required=False)
+    dimension = List(fields.Nested(SalesInvoiceProductDimensionSchema, required=False), default=list)
 
     class Meta:
         ordered = True
