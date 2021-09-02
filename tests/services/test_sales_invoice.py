@@ -450,3 +450,14 @@ class TestSalesInvoiceService(object):
 
         request = responses.calls[0].request
         assert request.body == get_request_content('SalesInvoice.xml')
+
+    def test_status_update(self, netvisor, responses):
+        responses.add(
+            method='GET',
+            url='http://koulutus.netvisor.fi/UpdateSalesInvoicestatus.nv',
+            body=get_response_content('SalesInvoiceStatusUpdate.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+        sales_invoices = netvisor.sales_invoices.update_status(5, 'paid')
+        assert sales_invoices == []

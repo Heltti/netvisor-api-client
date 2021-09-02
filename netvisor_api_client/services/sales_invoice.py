@@ -10,7 +10,8 @@ from ..requests.sales_invoice import (
     CreateSalesInvoiceRequest,
     GetSalesInvoiceRequest,
     SalesInvoiceListRequest,
-    UpdateSalesInvoiceRequest
+    UpdateSalesInvoiceRequest,
+    UpdateSalesInvoiceStatusRequest
 )
 
 
@@ -48,5 +49,12 @@ class SalesInvoiceService(Service):
             self.client,
             params={'id': id, 'method': 'edit'},
             data=data
+        )
+        return request.make_request()
+
+    def update_status(self, id, netvisor_status):
+        request = UpdateSalesInvoiceStatusRequest(
+            self.client,
+            params={'netvisorkey': id, 'status': netvisor_status},
         )
         return request.make_request()

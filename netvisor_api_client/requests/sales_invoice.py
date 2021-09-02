@@ -13,7 +13,8 @@ from ..responses.sales_invoices import (
     CreateSalesInvoiceResponse,
     GetSalesInvoiceResponse,
     SalesInvoiceListResponse,
-    UpdateSalesInvoiceResponse
+    UpdateSalesInvoiceResponse,
+    UpdateSalesInvoiceStatusResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
 
@@ -64,3 +65,9 @@ class UpdateSalesInvoiceRequest(Request):
     response_cls = UpdateSalesInvoiceResponse
     schema_cls = CreateSalesInvoiceSchema
     tag_name = 'sales_invoice'
+
+
+class UpdateSalesInvoiceStatusRequest(Request):
+    method = 'POST'
+    uri = 'updatesalesinvoicestatus.nv'
+    response_cls = UpdateSalesInvoiceStatusResponse
