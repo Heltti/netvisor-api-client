@@ -248,6 +248,7 @@ class TestSalesInvoiceService(object):
             'number': '107',
             'date': date(2008, 12, 12),
             'value_date': date(2008, 11, 30),
+            'event_date': date(2008, 12, 1),
             'delivery_date': date(2008, 7, 25),
             'reference_number': '1070',
             'amount': decimal.Decimal('244.00'),
