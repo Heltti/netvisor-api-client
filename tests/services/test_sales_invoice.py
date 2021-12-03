@@ -450,11 +450,11 @@ class TestSalesInvoiceService(object):
 
     def test_status_update(self, netvisor, responses):
         responses.add(
-            method='GET',
-            url='http://koulutus.netvisor.fi/UpdateSalesInvoicestatus.nv',
+            method='POST',
+            url='http://koulutus.netvisor.fi/updatesalesinvoicestatus.nv?netvisorkey=5&status=paid',
             body=get_response_content('SalesInvoiceStatusUpdate.xml'),
             content_type='text/html; charset=utf-8',
             match_querystring=True
         )
         sales_invoices = netvisor.sales_invoices.update_status(5, 'paid')
-        assert sales_invoices == []
+        assert sales_invoices == None
