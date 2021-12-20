@@ -17,6 +17,7 @@ class CustomerBaseInformationSchema(RejectUnknownFieldsSchema):
     name = fields.String()
     name_extension = fields.String()
     street_address = fields.String()
+    additional_street_address = fields.String()
     additional_address_line = fields.String()
     city = fields.String()
     post_number = fields.String()

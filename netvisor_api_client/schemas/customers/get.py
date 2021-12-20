@@ -25,6 +25,7 @@ class CustomerBaseInformationSchema(Schema):
     home_page_uri = fields.String(allow_none=True)
     is_active = fields.Boolean()
     street_address = fields.String(allow_none=True)
+    additional_address_line = fields.String(allow_none=True)
     city = fields.String(allow_none=True)
     post_number = fields.String(allow_none=True)
     country = fields.Nested(StringSchema, allow_none=True)
