@@ -82,6 +82,8 @@ class SalesInvoiceProductDimensionSchema(RejectUnknownFieldsSchema):
     dimension_name = fields.String(required=True)
     dimension_item = fields.String(required=True)
 
+    class Meta:
+        ordered = True
 
 class PrintChannelFormatSchema(RejectUnknownFieldsSchema):
     identifier = fields.String()
@@ -165,7 +167,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     payment_term_cash_discount_days = fields.Integer()
     payment_term_cash_discount = Decimal()
 
-    print_channel_format = fields.Nested(PrintChannelFormatSchema, attribute='identifier', default=dict(identifier=''))
+    print_channel_format = fields.Nested(PrintChannelFormatSchema, attribute='print_channel_format', default=dict(identifier=''))
 
     invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
 

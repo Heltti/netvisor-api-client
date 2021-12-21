@@ -272,6 +272,7 @@ class TestSalesInvoiceService(object):
             'payment_term_net_days': 14,
             'payment_term_cash_discount_days': 5,
             'payment_term_cash_discount': decimal.Decimal('9'),
+            'print_channel_format': dict(identifier="2", type="netvisor"),
             'invoice_lines': [
                 {
                     'identifier': dict(identifier="1697", type="netvisor"),

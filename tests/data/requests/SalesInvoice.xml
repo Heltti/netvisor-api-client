@@ -26,6 +26,7 @@
     <PaymentTermNetDays>14</PaymentTermNetDays>
     <PaymentTermCashDiscountDays>5</PaymentTermCashDiscountDays>
     <PaymentTermCashDiscount type="percentage">9</PaymentTermCashDiscount>
+    <PrintChannelFormat type="netvisor">2</PrintChannelFormat>
     <InvoiceLines>
       <InvoiceLine>
         <SalesInvoiceProductLine>
