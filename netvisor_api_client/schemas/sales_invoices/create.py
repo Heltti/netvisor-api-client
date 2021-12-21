@@ -83,6 +83,18 @@ class SalesInvoiceProductDimensionSchema(RejectUnknownFieldsSchema):
     dimension_item = fields.String(required=True)
 
 
+class PrintChannelFormatSchema(RejectUnknownFieldsSchema):
+    identifier = fields.String()
+    type = fields.String(default='netvisor')
+
+    @post_dump
+    def post_dump(self, data):
+        return {
+            '#text': data['identifier'],
+            '@type': data['type']
+        }
+
+
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     product_identifier = fields.Nested(ProductIdentifierSchema, attribute='identifier', default=dict(identifier=''))
     product_name = fields.String(attribute='name')
@@ -152,6 +164,8 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     payment_term_net_days = fields.Integer()
     payment_term_cash_discount_days = fields.Integer()
     payment_term_cash_discount = Decimal()
+
+    print_channel_format = fields.Nested(PrintChannelFormatSchema, attribute='identifier', default=dict(identifier=''))
 
     invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
 
