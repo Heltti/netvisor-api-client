@@ -36,3 +36,8 @@ class UpdateSalesInvoiceResponse(Response):
 class UpdateSalesInvoiceStatusResponse(Response):
     schema_cls = None
     tag_name = None
+
+
+class MatchCreditNoteResponse(Response):
+    schema_cls = None
+    tag_name = None

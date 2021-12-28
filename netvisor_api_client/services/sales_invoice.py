@@ -11,7 +11,8 @@ from ..requests.sales_invoice import (
     GetSalesInvoiceRequest,
     SalesInvoiceListRequest,
     UpdateSalesInvoiceRequest,
-    UpdateSalesInvoiceStatusRequest
+    UpdateSalesInvoiceStatusRequest,
+    MatchCreditNoteRequest
 )
 
 
@@ -56,5 +57,12 @@ class SalesInvoiceService(Service):
         request = UpdateSalesInvoiceStatusRequest(
             self.client,
             params={'netvisorkey': id, 'status': netvisor_status},
+        )
+        return request.make_request()
+
+    def match_credit_note(self, data):
+        request = MatchCreditNoteRequest(
+            self.client,
+            data=data,
         )
         return request.make_request()

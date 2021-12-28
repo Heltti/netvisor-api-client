@@ -463,3 +463,19 @@ class TestSalesInvoiceService(object):
         )
         sales_invoices = netvisor.sales_invoices.update_status(5, 'paid')
         assert sales_invoices == None
+
+    def test_match_credit_note(self, netvisor, responses):
+        responses.add(
+            method='POST',
+            url='http://koulutus.netvisor.fi/matchcreditnote.nv',
+            body=get_response_content('SalesInvoiceMatchCreditNote.xml'),
+            content_type='text/html; charset=utf-8',
+            match_querystring=True
+        )
+        data = {
+            'credit_note_netvisor_key': 6,
+            'invoice_netvisor_key': 5,
+        }
+
+        res = netvisor.sales_invoices.match_credit_note(data=data)
+        assert res == None

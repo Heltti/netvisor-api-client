@@ -13,6 +13,7 @@ from .replies import RepliesSchema  # noqa
 from .sales_invoices import (  # noqa
     CreateSalesInvoiceSchema,
     GetSalesInvoiceSchema,
-    SalesInvoiceListSchema
+    SalesInvoiceListSchema,
+    SalesInvoiceMatchCreditNoteSchema
 )
 from .sales_payments import SalesPaymentListSchema  # noqa

@@ -15,8 +15,10 @@ from ..responses.sales_invoices import (
     SalesInvoiceListResponse,
     UpdateSalesInvoiceResponse,
     UpdateSalesInvoiceStatusResponse,
+    MatchCreditNoteResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
+from ..schemas import SalesInvoiceMatchCreditNoteSchema
 
 
 class GetSalesInvoiceRequest(Request):
@@ -71,3 +73,11 @@ class UpdateSalesInvoiceStatusRequest(Request):
     method = 'POST'
     uri = 'updatesalesinvoicestatus.nv'
     response_cls = UpdateSalesInvoiceStatusResponse
+
+
+class MatchCreditNoteRequest(Request):
+    method = 'POST'
+    uri = 'matchcreditnote.nv'
+    response_cls = MatchCreditNoteResponse
+    schema_cls = SalesInvoiceMatchCreditNoteSchema
+    tag_name = 'match_credit_note'
