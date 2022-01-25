@@ -10,6 +10,6 @@ from ..requests.sales_payment import SalesPaymentListRequest
 
 
 class SalesPaymentService(Service):
-    def list(self):
-        request = SalesPaymentListRequest(self.client)
+    def list(self, params={}):
+        request = SalesPaymentListRequest(self.client, params=params)
         return request.make_request()
