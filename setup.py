@@ -18,7 +18,7 @@ setup(
     name='netvisor-api-client',
     version=get_version(),
     description='Python client for the Netvisor API',
-    long_description="",
+    long_description="Python client for the Netvisor API",
     author='Heltti Oy',
     author_email='dev@heltti.fi',
     url='https://github.com/Heltti/netvisor-api-client',
