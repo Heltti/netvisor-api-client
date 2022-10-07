@@ -2,5 +2,9 @@ flake8
 flexmock
 freezegun
 isort
+inflection
+marshmallow<3.0.0
 pytest
 responses
+requests
+xmltodict>=0.10.1

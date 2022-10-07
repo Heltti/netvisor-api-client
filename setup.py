@@ -28,12 +28,6 @@ setup(
     },
     license=open('LICENSE').read(),
     platforms='any',
-    install_requires=[
-        'inflection',
-        'marshmallow<3.0.0',
-        'requests',
-        'xmltodict>=0.10.1',
-    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
