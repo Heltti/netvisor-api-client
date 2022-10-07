@@ -3,6 +3,11 @@ Changelog
 
 Here you can see the full list of changes between each release
 
+0.9.3 (October 7th, 2022)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Fix sales invoice schema for `invoicing_customer_country_code`
+
+
 0.9.2 (February 5th, 2021)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - PR #6: Fixed accounting dimension's Item None value error - @kiuru
