@@ -123,7 +123,10 @@ class GetSalesInvoiceSchema(Schema):
         load_from='invoicing_customer_postnumber'
     )
     invoicing_customer_town = fields.String(allow_none=True, required=True)
-    invoicing_customer_country_code = fields.String(required=True)
+    invoicing_customer_country_code = fields.Nested(
+        StringSchema,
+        required=True
+    )
     delivery_address_name = fields.String(allow_none=True, required=True)
     delivery_address_line = fields.String(allow_none=True, required=True)
     delivery_address_post_number = fields.String(
@@ -151,4 +154,7 @@ class GetSalesInvoiceSchema(Schema):
     seller_identifier = fields.Nested(StringSchema)
     invoice_status = fields.Nested(StringSchema)
     invoice_lines = fields.Nested(InvoiceLinesSchema)
+
+    # TODO: Parsing response when using language other than EN will throw -> language support should be implemented
+    #       i.e. when using language FI, the values for true and false are Kyllä and Ei respectively
     match_partial_payments_by_default = Boolean(true='Yes', false='No')
