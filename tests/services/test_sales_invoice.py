@@ -10,6 +10,7 @@ from tests.utils import get_request_content, get_response_content
 
 
 class TestSalesInvoiceService(object):
+
     def test_get(self, netvisor, responses):
         responses.add(
             method='GET',
@@ -18,7 +19,9 @@ class TestSalesInvoiceService(object):
             content_type='text/html; charset=utf-8',
             match_querystring=True
         )
+
         sales_invoice = netvisor.sales_invoices.get(5)
+
         assert sales_invoice == {
             'number': 3,
             'date': date(2012, 1, 27),
@@ -37,7 +40,7 @@ class TestSalesInvoiceService(object):
             'invoicing_customer_address_line': u'Pajukuja 1',
             'invoicing_customer_post_number': u'53100',
             'invoicing_customer_town': u'Lappeenranta',
-            'invoicing_customer_country_code': u'FINLAND',
+            'invoicing_customer_country_code': 'Finland',
             'match_partial_payments_by_default': False,
             'delivery_address_name': u'Netvisor Oy',
             'delivery_address_line': u'Snelmanninkatu 12',
