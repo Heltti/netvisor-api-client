@@ -113,7 +113,7 @@ class TestSalesInvoiceService(object):
             'invoicing_customer_address_line': None,
             'invoicing_customer_post_number': None,
             'invoicing_customer_town': None,
-            'invoicing_customer_country_code': u'FINLAND',
+            'invoicing_customer_country_code': 'Finland',
             'match_partial_payments_by_default': False,
             'delivery_address_name': None,
             'delivery_address_line': None,
