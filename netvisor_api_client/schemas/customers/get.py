@@ -59,9 +59,7 @@ class CustomerDeliveryDetailsSchema(Schema):
 
 class GetCustomerSchema(Schema):
     customer_base_information = fields.Nested(CustomerBaseInformationSchema)
-    customer_additional_information = fields.Nested(
-        CustomerAdditionalInformationSchema
-    )
+    customer_additional_information = fields.Nested(CustomerAdditionalInformationSchema)
     customer_contact_details = fields.Nested(CustomerContactDetailsSchema)
     customer_finvoice_details = fields.Nested(CustomerFinvoiceDetailsSchema)
     customer_delivery_details = fields.Nested(CustomerDeliveryDetailsSchema)

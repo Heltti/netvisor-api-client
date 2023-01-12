@@ -6,26 +6,22 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Response
-from ..schemas import (
-    GetSalesInvoiceSchema,
-    RepliesSchema,
-    SalesInvoiceListSchema
-)
+from ..schemas import GetSalesInvoiceSchema, RepliesSchema, SalesInvoiceListSchema
 
 
 class SalesInvoiceListResponse(Response):
     schema_cls = SalesInvoiceListSchema
-    tag_name = 'sales_invoice_list'
+    tag_name = "sales_invoice_list"
 
 
 class GetSalesInvoiceResponse(Response):
     schema_cls = GetSalesInvoiceSchema
-    tag_name = 'sales_invoice'
+    tag_name = "sales_invoice"
 
 
 class CreateSalesInvoiceResponse(Response):
     schema_cls = RepliesSchema
-    tag_name = 'replies'
+    tag_name = "replies"
 
 
 class UpdateSalesInvoiceResponse(Response):

@@ -8,20 +8,19 @@
 
 
 class NetvisorError(Exception):
-
     @staticmethod
     def from_status(status):
-        code, message = status.split(' :: ', 1)
+        code, message = status.split(" :: ", 1)
         error_cls = {
-            'AUTHENTICATION_FAILED': AuthenticationFailed,
-            'INVALID_DATA': InvalidData,
-            'INVALID_DATA_SIZE': InvalidDataSize,
-            'DUPLICATE_DATA': DuplicateData,
-            'REQUEST_NOT_UNIQUE': RequestNotUnique,
-            'PERIOD_LOCK': PeriodLock,
-            'SERVICE_ACCESS_ERROR': ServiceAccessError,
-            'SYSTEM_MAINTANANCE': SystemMaintenance,
-            'TECHNICAL_ERROR': TechnicalError
+            "AUTHENTICATION_FAILED": AuthenticationFailed,
+            "INVALID_DATA": InvalidData,
+            "INVALID_DATA_SIZE": InvalidDataSize,
+            "DUPLICATE_DATA": DuplicateData,
+            "REQUEST_NOT_UNIQUE": RequestNotUnique,
+            "PERIOD_LOCK": PeriodLock,
+            "SERVICE_ACCESS_ERROR": ServiceAccessError,
+            "SYSTEM_MAINTANANCE": SystemMaintenance,
+            "TECHNICAL_ERROR": TechnicalError,
         }[code]
         return error_cls(message)
 

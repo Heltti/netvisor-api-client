@@ -17,10 +17,7 @@ class UnitPriceSchema(RejectUnknownFieldsSchema):
 
     @post_dump
     def post_dump(self, data):
-        return {
-            '#text': data['amount'],
-            '@type': data['type']
-        }
+        return {"#text": data["amount"], "@type": data["type"]}
 
 
 class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
@@ -33,10 +30,10 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
     purchase_price = Decimal(allow_none=True)
     tariff_heading = fields.String(allow_none=True)
     comission_percentage = Decimal(allow_none=True)
-    is_active = Boolean(true='1', false='0')
-    is_sales_product = Boolean(true='1', false='0')
+    is_active = Boolean(true="1", false="0")
+    is_sales_product = Boolean(true="1", false="0")
     unit_weight = Decimal(allow_none=True)
-    inventory_enabled = Boolean(true='1', false='0', allow_none=True)
+    inventory_enabled = Boolean(true="1", false="0", allow_none=True)
     country_of_origin = fields.String(allow_none=True)
 
     class Meta:
@@ -44,10 +41,10 @@ class ProductBaseInformationSchema(RejectUnknownFieldsSchema):
 
     @post_dump
     def post_dump(self, data):
-        if 'country_of_origin' in data:
-            data['country_of_origin'] = {
-                '#text': data['country_of_origin'],
-                '@type': 'ISO-3166'
+        if "country_of_origin" in data:
+            data["country_of_origin"] = {
+                "#text": data["country_of_origin"],
+                "@type": "ISO-3166",
             }
         return data
 
@@ -64,14 +61,11 @@ class ProductBookkeepingDetailsSchema(RejectUnknownFieldsSchema):
 
 class ProductMeasureSchema(RejectUnknownFieldsSchema):
     amount = Decimal()
-    unit = fields.String(default='cm')
+    unit = fields.String(default="cm")
 
     @post_dump
     def post_dump(self, data):
-        return {
-            '#text': data['amount'],
-            '@unit': data['unit']
-        }
+        return {"#text": data["amount"], "@unit": data["unit"]}
 
 
 class ProductPackageInformationSchema(RejectUnknownFieldsSchema):
@@ -85,14 +79,11 @@ class ProductPackageInformationSchema(RejectUnknownFieldsSchema):
 
 class ProductWeightSchema(RejectUnknownFieldsSchema):
     amount = Decimal()
-    weightunit = fields.String(default='kg')
+    weightunit = fields.String(default="kg")
 
     @post_dump
     def post_dump(self, data):
-        return {
-            '#text': data['amount'],
-            '@weightunit': data['weightunit']
-        }
+        return {"#text": data["amount"], "@weightunit": data["weightunit"]}
 
 
 class ProductAdditionalInformationSchema(RejectUnknownFieldsSchema):
@@ -123,8 +114,8 @@ class CreateProductSchema(RejectUnknownFieldsSchema):
 
     @post_dump
     def post_dump(self, data):
-        if 'country_of_origin' in data:
-            data['country_of_origin'] = {
-                '#text': data['country_of_origin'],
-                '@type': 'ISO-3166',
+        if "country_of_origin" in data:
+            data["country_of_origin"] = {
+                "#text": data["country_of_origin"],
+                "@type": "ISO-3166",
             }

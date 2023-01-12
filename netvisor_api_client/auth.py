@@ -19,11 +19,17 @@ class NetvisorAuth(AuthBase):
     Implements the custom authentication mechanism used by Netvisor.
     """
 
-    VALID_LANGUAGES = ('EN', 'FI', 'SE')
+    VALID_LANGUAGES = ("EN", "FI", "SE")
 
     def __init__(
-            self, sender, partner_id, partner_key, customer_id, customer_key,
-            organization_id, language='FI'
+        self,
+        sender,
+        partner_id,
+        partner_key,
+        customer_id,
+        customer_key,
+        organization_id,
+        language="FI",
     ):
         self.sender = sender
         self.partner_id = partner_id
@@ -48,7 +54,7 @@ class NetvisorAuth(AuthBase):
     @language.setter
     def language(self, value):
         if value not in self.VALID_LANGUAGES:
-            msg = 'language must be one of {}'.format(self.VALID_LANGUAGES)
+            msg = "language must be one of {}".format(self.VALID_LANGUAGES)
             raise ValueError(msg)
         self._language = value
 
@@ -77,7 +83,7 @@ class NetvisorAuth(AuthBase):
 
         """
         now = datetime.datetime.utcnow()
-        return now.isoformat(' ')[:-3]
+        return now.isoformat(" ")[:-3]
 
     def make_mac(self, url, timestamp, transaction_id):
         """
@@ -101,9 +107,8 @@ class NetvisorAuth(AuthBase):
             self.customer_key,
             self.partner_key,
         ]
-        joined_parameters = b'&'.join(
-            p.encode('utf-8') if isinstance(p, str) else p
-            for p in parameters
+        joined_parameters = b"&".join(
+            p.encode("utf-8") if isinstance(p, str) else p for p in parameters
         )
         return hashlib.md5(joined_parameters).hexdigest()
 
@@ -112,13 +117,13 @@ class NetvisorAuth(AuthBase):
         transaction_id = self.make_transaction_id()
         mac = self.make_mac(r.url, timestamp, transaction_id)
 
-        r.headers['X-Netvisor-Authentication-CustomerId'] = self.customer_id
-        r.headers['X-Netvisor-Authentication-MAC'] = mac
-        r.headers['X-Netvisor-Authentication-PartnerId'] = self.partner_id
-        r.headers['X-Netvisor-Authentication-Sender'] = self.sender
-        r.headers['X-Netvisor-Authentication-Timestamp'] = timestamp
-        r.headers['X-Netvisor-Authentication-TransactionId'] = transaction_id
-        r.headers['X-Netvisor-Interface-Language'] = self.language
-        r.headers['X-Netvisor-Organisation-ID'] = self.organization_id
+        r.headers["X-Netvisor-Authentication-CustomerId"] = self.customer_id
+        r.headers["X-Netvisor-Authentication-MAC"] = mac
+        r.headers["X-Netvisor-Authentication-PartnerId"] = self.partner_id
+        r.headers["X-Netvisor-Authentication-Sender"] = self.sender
+        r.headers["X-Netvisor-Authentication-Timestamp"] = timestamp
+        r.headers["X-Netvisor-Authentication-TransactionId"] = transaction_id
+        r.headers["X-Netvisor-Interface-Language"] = self.language
+        r.headers["X-Netvisor-Organisation-ID"] = self.organization_id
 
         return r

@@ -11,8 +11,8 @@ from ..fields import Decimal
 
 
 class UnitPriceSchema(Schema):
-    amount = Decimal(load_from='#text')
-    type = fields.String(load_from='@type')
+    amount = Decimal(load_from="#text")
+    type = fields.String(load_from="@type")
 
 
 class ProductBaseInformationSchema(Schema):
@@ -48,7 +48,5 @@ class ProductBookKeepingDetailsSchema(Schema):
 
 class GetProductSchema(Schema):
     product_base_information = fields.Nested(ProductBaseInformationSchema)
-    product_book_keeping_details = fields.Nested(
-        ProductBookKeepingDetailsSchema
-    )
+    product_book_keeping_details = fields.Nested(ProductBookKeepingDetailsSchema)
     product_inventory_details = fields.Nested(ProductInventoryDetailsSchema)

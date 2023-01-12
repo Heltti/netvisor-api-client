@@ -11,4 +11,4 @@ from ..schemas import SalesPaymentListSchema
 
 class SalesPaymentListResponse(Response):
     schema_cls = SalesPaymentListSchema
-    tag_name = 'sales_payment_list'
+    tag_name = "sales_payment_list"

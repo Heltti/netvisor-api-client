@@ -11,17 +11,17 @@ from ..schemas import GetProductSchema, ProductListSchema, RepliesSchema
 
 class ProductListResponse(Response):
     schema_cls = ProductListSchema
-    tag_name = 'product_list'
+    tag_name = "product_list"
 
 
 class GetProductResponse(Response):
     schema_cls = GetProductSchema
-    tag_name = 'product'
+    tag_name = "product"
 
 
 class CreateProductResponse(Response):
     schema_cls = RepliesSchema
-    tag_name = 'replies'
+    tag_name = "replies"
 
 
 class UpdateProductResponse(Response):

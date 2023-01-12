@@ -10,13 +10,13 @@ from ..requests.product import (
     CreateProductRequest,
     GetProductRequest,
     ProductListRequest,
-    UpdateProductRequest
+    UpdateProductRequest,
 )
 
 
 class ProductService(Service):
     def get(self, id):
-        request = GetProductRequest(self.client, params={'id': id})
+        request = GetProductRequest(self.client, params={"id": id})
 
         return request.make_request()
 
@@ -25,19 +25,13 @@ class ProductService(Service):
         return request.make_request()
 
     def create(self, data):
-        request = CreateProductRequest(
-            self.client,
-            params={'method': 'add'},
-            data=data
-        )
+        request = CreateProductRequest(self.client, params={"method": "add"}, data=data)
 
         return request.make_request()
 
     def update(self, id, data):
         request = UpdateProductRequest(
-            self.client,
-            params={'id': id, 'method': 'edit'},
-            data=data
+            self.client, params={"id": id, "method": "edit"}, data=data
         )
 
         return request.make_request()

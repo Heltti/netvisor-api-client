@@ -26,7 +26,7 @@ class CustomerBaseInformationSchema(RejectUnknownFieldsSchema):
     fax_number = fields.String()
     email = fields.String()
     home_page_uri = fields.String()
-    is_active = Boolean(true='1', false='0')
+    is_active = Boolean(true="1", false="0")
     email_invoicing_address = fields.String()
 
     class Meta:
@@ -75,10 +75,10 @@ class CustomerAdditionalInformationSchema(RejectUnknownFieldsSchema):
 
     @post_dump
     def post_dump(self, data):
-        if 'invoice_print_channel_format' in data:
-            data['invoice_print_channel_format'] = {
-                '#text': str(data['invoice_print_channel_format']),
-                '@type': 'netvisor'
+        if "invoice_print_channel_format" in data:
+            data["invoice_print_channel_format"] = {
+                "#text": str(data["invoice_print_channel_format"]),
+                "@type": "netvisor",
             }
 
 
@@ -87,9 +87,7 @@ class CreateCustomerSchema(RejectUnknownFieldsSchema):
     customer_finvoice_details = fields.Nested(CustomerFinvoiceDetailsSchema)
     customer_delivery_details = fields.Nested(CustomerDeliveryDetailsSchema)
     customer_contact_details = fields.Nested(CustomerContactDetailsSchema)
-    customer_additional_information = fields.Nested(
-        CustomerAdditionalInformationSchema
-    )
+    customer_additional_information = fields.Nested(CustomerAdditionalInformationSchema)
 
     class Meta:
         ordered = True

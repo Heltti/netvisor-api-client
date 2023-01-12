@@ -13,27 +13,29 @@ from ..responses.sales_invoices import (
     CreateSalesInvoiceResponse,
     GetSalesInvoiceResponse,
     SalesInvoiceListResponse,
-    UpdateSalesInvoiceResponse
+    UpdateSalesInvoiceResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
 
 
 class GetSalesInvoiceRequest(Request):
-    method = 'GET'
-    uri = 'GetSalesInvoice.nv'
+    method = "GET"
+    uri = "GetSalesInvoice.nv"
     response_cls = GetSalesInvoiceResponse
 
     def _raise_exception(self):
         raise InvalidData(
-            'Data form incorrect:. '
-            'Sales invoice not found with Netvisor identifier: {0}'.format(
-                self.params['NetvisorKey']
+            "Data form incorrect:. "
+            "Sales invoice not found with Netvisor identifier: {0}".format(
+                self.params["NetvisorKey"]
             )
         )
 
     def parse_response(self, response):
         try:
-            result = super(GetSalesInvoiceRequest, self).parse_response(response=response)
+            result = super(GetSalesInvoiceRequest, self).parse_response(
+                response=response
+            )
 
             if not result:
                 self._raise_exception()
@@ -45,22 +47,22 @@ class GetSalesInvoiceRequest(Request):
 
 
 class SalesInvoiceListRequest(ListRequest):
-    method = 'GET'
-    uri = 'SalesInvoiceList.nv'
+    method = "GET"
+    uri = "SalesInvoiceList.nv"
     response_cls = SalesInvoiceListResponse
 
 
 class CreateSalesInvoiceRequest(Request):
-    method = 'POST'
-    uri = 'salesinvoice.nv'
+    method = "POST"
+    uri = "salesinvoice.nv"
     response_cls = CreateSalesInvoiceResponse
     schema_cls = CreateSalesInvoiceSchema
-    tag_name = 'sales_invoice'
+    tag_name = "sales_invoice"
 
 
 class UpdateSalesInvoiceRequest(Request):
-    method = 'POST'
-    uri = 'salesinvoice.nv'
+    method = "POST"
+    uri = "salesinvoice.nv"
     response_cls = UpdateSalesInvoiceResponse
     schema_cls = CreateSalesInvoiceSchema
-    tag_name = 'sales_invoice'
+    tag_name = "sales_invoice"

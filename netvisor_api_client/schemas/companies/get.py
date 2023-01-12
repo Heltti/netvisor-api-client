@@ -30,7 +30,7 @@ class RegisteredNames(Schema):
 
     @post_load
     def preprocess_registered_names(self, input_data):
-        return input_data['registered_name'] if input_data else []
+        return input_data["registered_name"] if input_data else []
 
 
 class RegisteredPersonRole(Schema):
@@ -46,7 +46,7 @@ class RegisteredPersonRoles(Schema):
 
     @post_load
     def preprocess_registered_person_roles(self, input_data):
-        return input_data['role'] if input_data else []
+        return input_data["role"] if input_data else []
 
 
 class CompanySchema(Schema):
@@ -81,4 +81,4 @@ class GetCompanyInformationSchema(Schema):
 
     @post_load
     def preprocess_customer(self, input_data):
-        return input_data['company']
+        return input_data["company"]

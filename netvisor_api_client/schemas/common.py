@@ -11,7 +11,7 @@ from marshmallow import (
     ValidationError,
     fields,
     pre_dump,
-    pre_load
+    pre_load,
 )
 
 from .fields import Decimal
@@ -22,7 +22,7 @@ class RejectUnknownFieldsSchema(Schema):
     def check_unknown_fields(self, data):
         field_names = set()
         for field_name, field in self.fields.items():
-            attribute = getattr(field, 'attribute', None)
+            attribute = getattr(field, "attribute", None)
             field_names.add(field_name if attribute is None else attribute)
         for k in data:
             if k not in field_names:
@@ -33,21 +33,21 @@ class FlattenElementSchema(Schema):
     @pre_load
     def pre_load(self, data):
         if isinstance(data, (str,)):
-            return {'#text': data}
+            return {"#text": data}
         return data
 
     def load(self, *args, **kwargs):
         result = super(FlattenElementSchema, self).load(*args, **kwargs)
-        return MarshalResult(result.data.get('text'), result.errors)
+        return MarshalResult(result.data.get("text"), result.errors)
 
 
 class DateSchema(FlattenElementSchema):
-    text = fields.Date(load_from='#text')
+    text = fields.Date(load_from="#text")
 
 
 class StringSchema(FlattenElementSchema):
-    text = fields.String(load_from='#text')
+    text = fields.String(load_from="#text")
 
 
 class DecimalSchema(FlattenElementSchema):
-    text = Decimal(load_from='#text')
+    text = Decimal(load_from="#text")

@@ -10,6 +10,6 @@ from ..responses.accounting import AccountingListResponse
 
 
 class AccountingListRequest(Request):
-    method = 'GET'
-    uri = 'AccountingLedger.nv'
+    method = "GET"
+    uri = "AccountingLedger.nv"
     response_cls = AccountingListResponse

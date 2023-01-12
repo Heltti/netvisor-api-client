@@ -13,22 +13,20 @@ from ..responses.products import (
     GetProductResponse,
     ProductListResponse,
     CreateProductResponse,
-    UpdateProductResponse
+    UpdateProductResponse,
 )
 from ..schemas import CreateProductSchema
 
 
 class GetProductRequest(Request):
-    method = 'GET'
-    uri = 'GetProduct.nv'
+    method = "GET"
+    uri = "GetProduct.nv"
     response_cls = GetProductResponse
 
     def _raise_validation_error(self):
         raise InvalidData(
-            'Data form incorrect:. '
-            'Product not found with Netvisor identifier: {0}'.format(
-                self.params['id']
-            )
+            "Data form incorrect:. "
+            "Product not found with Netvisor identifier: {0}".format(self.params["id"])
         )
 
     def parse_response(self, response):
@@ -45,23 +43,22 @@ class GetProductRequest(Request):
 
 
 class CreateProductRequest(Request):
-    method = 'POST'
-    uri = 'Product.nv'
+    method = "POST"
+    uri = "Product.nv"
     response_cls = CreateProductResponse
     schema_cls = CreateProductSchema
-    tag_name = 'product'
+    tag_name = "product"
 
 
 class ProductListRequest(ListRequest):
-    method = 'GET'
-    uri = 'ProductList.nv'
+    method = "GET"
+    uri = "ProductList.nv"
     response_cls = ProductListResponse
 
 
-
 class UpdateProductRequest(Request):
-    method = 'POST'
-    uri = 'Product.nv'
+    method = "POST"
+    uri = "Product.nv"
     response_cls = UpdateProductResponse
     schema_cls = CreateProductSchema
-    tag_name = 'product'
+    tag_name = "product"

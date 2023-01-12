@@ -10,6 +10,6 @@ from ..responses.sales_payments import SalesPaymentListResponse
 
 
 class SalesPaymentListRequest(Request):
-    method = 'GET'
-    uri = 'SalesPaymentList.nv'
+    method = "GET"
+    uri = "SalesPaymentList.nv"
     response_cls = SalesPaymentListResponse

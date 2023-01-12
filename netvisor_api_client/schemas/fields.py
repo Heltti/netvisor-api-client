@@ -26,27 +26,23 @@ class Boolean(fields.Boolean):
 
 class Decimal(fields.Decimal):
     def _deserialize(self, value, attr, data):
-        return super(Decimal, self)._deserialize(
-            value.replace(',', '.'),
-            attr,
-            data
-        )
+        return super(Decimal, self)._deserialize(value.replace(",", "."), attr, data)
 
     def serialize(self, attr, obj, accessor=None):
         value = super(Decimal, self).serialize(attr, obj, accessor)
         if value is missing:
             return value
-        return str(value).replace('.', ',')
+        return str(value).replace(".", ",")
 
 
 class FinnishDate(fields.Field):
     def _deserialize(self, value, attr, data):
-        msg = 'Could not deserialize {0!r} to a date object.'.format(value)
-        err = ValidationError(getattr(self, 'error', None) or msg)
+        msg = "Could not deserialize {0!r} to a date object.".format(value)
+        err = ValidationError(getattr(self, "error", None) or msg)
         if not value:  # falsy values are invalid
             raise err
         try:
-            return datetime.strptime(value, '%d.%m.%Y').date()
+            return datetime.strptime(value, "%d.%m.%Y").date()
         except (AttributeError, TypeError, ValueError):
             raise err
 

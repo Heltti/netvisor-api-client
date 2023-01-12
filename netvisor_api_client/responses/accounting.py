@@ -11,4 +11,4 @@ from ..schemas import AccountingListSchema
 
 class AccountingListResponse(Response):
     schema_cls = AccountingListSchema
-    tag_name = 'vouchers'
+    tag_name = "vouchers"

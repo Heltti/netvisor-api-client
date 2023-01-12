@@ -18,8 +18,8 @@ class ProductSchema(Schema):
 
 
 class ProductListSchema(Schema):
-    products = List(fields.Nested(ProductSchema), load_from='product')
+    products = List(fields.Nested(ProductSchema), load_from="product")
 
     @post_load
     def preprocess_product_list(self, input_data):
-        return input_data['products'] if input_data else []
+        return input_data["products"] if input_data else []

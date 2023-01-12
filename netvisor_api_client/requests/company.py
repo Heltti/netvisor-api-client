@@ -6,19 +6,16 @@
     :license: MIT, see LICENSE for more details.
 """
 from .base import Request
-from ..responses.companies import (
-    CompanyListResponse,
-    GetCompanyInformationResponse
-)
+from ..responses.companies import CompanyListResponse, GetCompanyInformationResponse
 
 
 class GetCompanyInformationRequest(Request):
-    method = 'GET'
-    uri = 'GetCompanyInformation.nv'
+    method = "GET"
+    uri = "GetCompanyInformation.nv"
     response_cls = GetCompanyInformationResponse
 
 
 class CompanyListRequest(Request):
-    method = 'GET'
-    uri = 'CompanyList.nv'
+    method = "GET"
+    uri = "CompanyList.nv"
     response_cls = CompanyListResponse

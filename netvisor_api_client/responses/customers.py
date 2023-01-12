@@ -11,17 +11,17 @@ from ..schemas import CustomerListSchema, GetCustomerSchema, RepliesSchema
 
 class CustomerListResponse(Response):
     schema_cls = CustomerListSchema
-    tag_name = 'customerlist'
+    tag_name = "customerlist"
 
 
 class GetCustomerResponse(Response):
     schema_cls = GetCustomerSchema
-    tag_name = 'customer'
+    tag_name = "customer"
 
 
 class CreateCustomerResponse(Response):
     schema_cls = RepliesSchema
-    tag_name = 'replies'
+    tag_name = "replies"
 
 
 class UpdateCustomerResponse(Response):

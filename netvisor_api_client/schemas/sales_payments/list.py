@@ -11,8 +11,8 @@ from ..fields import Decimal, FinnishDate, List
 
 
 class BankStatusErrorDescriptionSchema(Schema):
-    code = fields.String(load_from='@code')
-    description = fields.String(load_from='#text')
+    code = fields.String(load_from="@code")
+    description = fields.String(load_from="#text")
 
 
 class SalesPaymentSchema(Schema):
@@ -24,17 +24,12 @@ class SalesPaymentSchema(Schema):
     reference_number = fields.String()
     invoice_number = fields.Integer()
     bank_status = fields.String()
-    bank_status_error_description = fields.Nested(
-        BankStatusErrorDescriptionSchema
-    )
+    bank_status_error_description = fields.Nested(BankStatusErrorDescriptionSchema)
 
 
 class SalesPaymentListSchema(Schema):
-    sales_payments = List(
-        fields.Nested(SalesPaymentSchema),
-        load_from='sales_payment'
-    )
+    sales_payments = List(fields.Nested(SalesPaymentSchema), load_from="sales_payment")
 
     @post_load
     def preprocess_sales_payment_list(self, input_data):
-        return input_data['sales_payments'] if input_data else []
+        return input_data["sales_payments"] if input_data else []

@@ -11,9 +11,9 @@ from ..schemas import CompanyListSchema, GetCompanyInformationSchema
 
 class CompanyListResponse(Response):
     schema_cls = CompanyListSchema
-    tag_name = 'company_list'
+    tag_name = "company_list"
 
 
 class GetCompanyInformationResponse(Response):
     schema_cls = GetCompanyInformationSchema
-    tag_name = 'company_information'
+    tag_name = "company_information"

@@ -3,17 +3,13 @@ from .companies import CompanyListSchema, GetCompanyInformationSchema  # noqa
 from .customers import (  # noqa
     CreateCustomerSchema,
     CustomerListSchema,
-    GetCustomerSchema
+    GetCustomerSchema,
 )
-from .products import ( # noqa
-    CreateProductSchema,
-    GetProductSchema,
-    ProductListSchema
-)
+from .products import CreateProductSchema, GetProductSchema, ProductListSchema  # noqa
 from .replies import RepliesSchema  # noqa
 from .sales_invoices import (  # noqa
     CreateSalesInvoiceSchema,
     GetSalesInvoiceSchema,
-    SalesInvoiceListSchema
+    SalesInvoiceListSchema,
 )
 from .sales_payments import SalesPaymentListSchema  # noqa
