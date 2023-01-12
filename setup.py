@@ -7,7 +7,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_version():
-    filename = os.path.join(HERE, 'netvisor_api_client', '__init__.py')
+    filename = os.path.join(HERE, "netvisor_api_client", "__init__.py")
     contents = open(filename).read()
     pattern = r"^__version__ = '(.*?)'$"
 
@@ -15,30 +15,28 @@ def get_version():
 
 
 setup(
-    name='netvisor-api-client',
+    name="netvisor-api-client",
     version=get_version(),
-    description=open('README.md').read(),
-    long_description=open('README.md').read(),
+    description=open("README.md").read(),
+    long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    author='Heltti Oy',
-    author_email='dev@heltti.fi',
-    url='https://github.com/Heltti/netvisor-api-client',
+    author="Heltti Oy",
+    author_email="dev@heltti.fi",
+    url="https://github.com/Heltti/netvisor-api-client",
     install_requires=find_packages(),
-    package_data={
-        '': ['LICENSE']
-    },
-    license=open('LICENSE').read(),
-    platforms='any',
+    package_data={"": ["LICENSE"]},
+    license=open("LICENSE").read(),
+    platforms="any",
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Topic :: Software Development :: Libraries :: Python Modules'
-    ]
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+    ],
 )
