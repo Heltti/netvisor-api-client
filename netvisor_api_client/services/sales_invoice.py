@@ -5,13 +5,13 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
-from .base import Service
 from ..requests.sales_invoice import (
     CreateSalesInvoiceRequest,
     GetSalesInvoiceRequest,
     SalesInvoiceListRequest,
     UpdateSalesInvoiceRequest,
 )
+from .base import Service
 
 
 class SalesInvoiceService(Service):

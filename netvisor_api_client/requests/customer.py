@@ -5,7 +5,6 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
-from .base import Request, ListRequest
 from ..responses.customers import (
     CreateCustomerResponse,
     CustomerListResponse,
@@ -13,6 +12,7 @@ from ..responses.customers import (
     UpdateCustomerResponse,
 )
 from ..schemas import CreateCustomerSchema
+from .base import ListRequest, Request
 
 
 class GetCustomerRequest(Request):

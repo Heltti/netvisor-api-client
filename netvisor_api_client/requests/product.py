@@ -7,15 +7,15 @@
 """
 from marshmallow import ValidationError
 
-from .base import Request, ListRequest
 from ..exc import InvalidData
 from ..responses.products import (
+    CreateProductResponse,
     GetProductResponse,
     ProductListResponse,
-    CreateProductResponse,
     UpdateProductResponse,
 )
 from ..schemas import CreateProductSchema
+from .base import ListRequest, Request
 
 
 class GetProductRequest(Request):

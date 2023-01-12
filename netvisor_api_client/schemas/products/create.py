@@ -8,7 +8,7 @@
 from marshmallow import fields, post_dump
 
 from ..common import RejectUnknownFieldsSchema
-from ..fields import Decimal, Boolean
+from ..fields import Boolean, Decimal
 
 
 class UnitPriceSchema(RejectUnknownFieldsSchema):

@@ -7,7 +7,6 @@
 """
 from marshmallow import ValidationError
 
-from .base import Request, ListRequest
 from ..exc import InvalidData
 from ..responses.sales_invoices import (
     CreateSalesInvoiceResponse,
@@ -16,6 +15,7 @@ from ..responses.sales_invoices import (
     UpdateSalesInvoiceResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
+from .base import ListRequest, Request
 
 
 class GetSalesInvoiceRequest(Request):
