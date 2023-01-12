@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import decimal
 
 import pytest
