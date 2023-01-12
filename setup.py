@@ -23,7 +23,7 @@ setup(
     author='Heltti Oy',
     author_email='dev@heltti.fi',
     url='https://github.com/Heltti/netvisor-api-client',
-    packages=find_packages(),
+    install_requires=find_packages(),
     package_data={
         '': ['LICENSE']
     },
