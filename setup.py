@@ -1,7 +1,7 @@
 import os
 import re
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,6 +14,11 @@ def get_version():
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
+def get_install_requires():
+    with open(os.path.join(HERE, "requirements.txt"), "r") as requirements_file:
+        return requirements_file.read().splitlines()
+
+
 setup(
     name="netvisor-api-client",
     version=get_version(),
@@ -23,7 +28,7 @@ setup(
     author="Heltti Oy",
     author_email="dev@heltti.fi",
     url="https://github.com/Heltti/netvisor-api-client",
-    install_requires=find_packages(),
+    install_requires=get_install_requires(),
     package_data={"": ["LICENSE"]},
     license=open("LICENSE").read(),
     platforms="any",

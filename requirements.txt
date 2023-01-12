@@ -1,10 +1,8 @@
-flake8
-flexmock
-freezegun
-isort
+# Dependencies
+# To install, run: pip install -r requirements.txt
+
 inflection
 marshmallow<3.0.0
-pytest
 responses
 requests
 xmltodict>=0.10.1
