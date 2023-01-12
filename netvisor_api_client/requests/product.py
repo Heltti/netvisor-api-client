@@ -9,7 +9,13 @@ from marshmallow import ValidationError
 
 from .base import Request, ListRequest
 from ..exc import InvalidData
-from ..responses.products import GetProductResponse, ProductListResponse
+from ..responses.products import (
+    GetProductResponse,
+    ProductListResponse,
+    CreateProductResponse,
+    UpdateProductResponse
+)
+from ..schemas import CreateProductSchema
 
 
 class GetProductRequest(Request):
@@ -38,7 +44,24 @@ class GetProductRequest(Request):
             self._raise_validation_error()
 
 
+class CreateProductRequest(Request):
+    method = 'POST'
+    uri = 'Product.nv'
+    response_cls = CreateProductResponse
+    schema_cls = CreateProductSchema
+    tag_name = 'product'
+
+
 class ProductListRequest(ListRequest):
     method = 'GET'
     uri = 'ProductList.nv'
     response_cls = ProductListResponse
+
+
+
+class UpdateProductRequest(Request):
+    method = 'POST'
+    uri = 'Product.nv'
+    response_cls = UpdateProductResponse
+    schema_cls = CreateProductSchema
+    tag_name = 'product'
