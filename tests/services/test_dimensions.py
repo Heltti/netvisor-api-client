@@ -4,7 +4,6 @@ from tests.utils import get_request_content, get_response_content
 
 
 class TestDimensionService(object):
-
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",

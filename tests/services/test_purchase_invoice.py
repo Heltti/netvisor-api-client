@@ -8,7 +8,6 @@ from tests.utils import get_response_content
 
 
 class TestPurchaseInvoiceService(object):
-
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",

@@ -7,7 +7,6 @@
 """
 from marshmallow import ValidationError
 
-from .base import ListRequest, Request
 from ..exc import InvalidData
 from ..responses.products import (
     CreateProductResponse,
@@ -16,6 +15,7 @@ from ..responses.products import (
     UpdateProductResponse,
 )
 from ..schemas.products import CreateProductSchema
+from .base import ListRequest, Request
 
 
 class GetProductRequest(Request):
