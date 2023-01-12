@@ -17,7 +17,7 @@ def get_version():
 setup(
     name='netvisor-api-client',
     version=get_version(),
-    description='Python client for the Netvisor API',
+    description=open('README.md').read(),
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     author='Heltti Oy',
