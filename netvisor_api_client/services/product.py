@@ -5,16 +5,17 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
+from .base import Service
 from ..requests.product import (
     CreateProductRequest,
     GetProductRequest,
     ProductListRequest,
     UpdateProductRequest,
 )
-from .base import Service
 
 
 class ProductService(Service):
+
     def get(self, id):
         request = GetProductRequest(self.client, params={"id": id})
 
@@ -22,6 +23,7 @@ class ProductService(Service):
 
     def list(self):
         request = ProductListRequest(self.client)
+
         return request.make_request()
 
     def create(self, data):

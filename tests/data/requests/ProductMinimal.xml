@@ -3,7 +3,7 @@
     <ProductBaseInformation>
       <ProductGroup>Kirjat</ProductGroup>
       <Name>Code Complete</Name>
-      <UnitPrice type="net">42,5</UnitPrice>
+      <UnitPrice type="gross">42,5</UnitPrice>
       <IsActive>1</IsActive>
       <IsSalesProduct>0</IsSalesProduct>
     </ProductBaseInformation>

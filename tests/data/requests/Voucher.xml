@@ -1,0 +1,39 @@
+<Root>
+  <Voucher>
+    <CalculationMode>net</CalculationMode>
+    <VoucherDate>2018-06-11</VoucherDate>
+    <Description>Test Company Oy, invoice 1</Description>
+    <VoucherClass>Myyntilasku</VoucherClass>
+    <VoucherLine>
+      <LineSum type="net">-10000,00</LineSum>
+      <Description>Test Company Oy, invoice 1</Description>
+      <AccountNumber>3000</AccountNumber>
+      <VatPercent vatcode="KOMY">24</VatPercent>
+      <AccountDimension type="name">Test account</AccountDimension>
+      <Dimension>
+        <DimensionName>Projects</DimensionName>
+        <DimensionItem>Project X</DimensionItem>
+      </Dimension>
+    </VoucherLine>
+    <VoucherLine>
+      <LineSum type="net">-5000</LineSum>
+      <Description>Test Company Oy, invoice 1</Description>
+      <AccountNumber>2939</AccountNumber>
+      <VatPercent vatcode="NONE">0</VatPercent>
+    </VoucherLine>
+    <VoucherLine>
+      <LineSum type="net">20000</LineSum>
+      <Description>Test Company Oy, invoice 1</Description>
+      <AccountNumber>1701</AccountNumber>
+      <VatPercent vatcode="NONE">0</VatPercent>
+    </VoucherLine>
+    <VoucherAttachments>
+      <VoucherAttachment>
+        <MimeType>application/pdf</MimeType>
+        <AttachmentDescription>Test attachment</AttachmentDescription>
+        <Filename>attachment.pdf</Filename>
+        <DocumentData>JVBERi0xLjQNJeLjz9MNCjYgMCB</DocumentData>
+      </VoucherAttachment>
+    </VoucherAttachments>
+  </Voucher>
+</Root>

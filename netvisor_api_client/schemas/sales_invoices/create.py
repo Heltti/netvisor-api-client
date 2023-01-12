@@ -66,6 +66,11 @@ class SalesInvoiceAttachmentLineSchema(RejectUnknownFieldsSchema):
         return data
 
 
+class SalesInvoiceProductDimensionSchema(RejectUnknownFieldsSchema):
+    dimension_name = fields.String(required=True)
+    dimension_item = fields.String(required=True)
+
+
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     product_identifier = fields.Nested(
         ProductIdentifierSchema, attribute="identifier", default=dict(identifier="")
@@ -84,6 +89,10 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
 
     accounting_account_suggestion = fields.String()
 
+    dimension = fields.Nested(
+        SalesInvoiceProductDimensionSchema, attribute="dimension", required=False
+    )
+
     class Meta:
         ordered = True
 
@@ -98,6 +107,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_date = fields.Date(attribute="date")
     sales_invoice_value_date = fields.Date(attribute="value_date")
     sales_invoice_delivery_date = fields.Date(attribute="delivery_date")
+    sales_invoice_due_date = fields.Date(attribute="due_date")
     sales_invoice_reference_number = fields.String(attribute="reference_number")
     sales_invoice_amount = Decimal(attribute="amount")
     sales_invoice_amount_currency = fields.String(attribute="currency")
@@ -108,6 +118,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     invoice_type = fields.String()
 
     sales_invoice_status = fields.String(attribute="status")
+
     sales_invoice_free_text_before_lines = fields.String(
         attribute="free_text_before_lines"
     )

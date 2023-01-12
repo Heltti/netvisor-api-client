@@ -5,7 +5,7 @@
     :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
     :license: MIT, see LICENSE for more details.
 """
-from ..requests.accounting import AccountingListRequest
+from ..requests.accounting import AccountingListRequest, CreateAccountingRequest
 from .base import Service
 
 
@@ -42,4 +42,9 @@ class AccountingService(Service):
         if changed_since is not None:
             query["ChangedSince"] = changed_since.isoformat()
         request = AccountingListRequest(self.client, params=query)
+        return request.make_request()
+
+    def create(self, data):
+        request = CreateAccountingRequest(self.client, data=data)
+
         return request.make_request()

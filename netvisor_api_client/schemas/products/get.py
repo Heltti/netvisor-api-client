@@ -39,7 +39,7 @@ class ProductInventoryDetailsSchema(Schema):
     inventory_ordered_amount = Decimal()
 
 
-class ProductBookKeepingDetailsSchema(Schema):
+class ProductBookkeepingDetailsSchema(Schema):
     default_domestic_account_number = fields.String()
     default_eu_account_number = fields.String()
     default_outside_eu_account_number = fields.String()
@@ -48,5 +48,5 @@ class ProductBookKeepingDetailsSchema(Schema):
 
 class GetProductSchema(Schema):
     product_base_information = fields.Nested(ProductBaseInformationSchema)
-    product_book_keeping_details = fields.Nested(ProductBookKeepingDetailsSchema)
+    product_bookkeeping_details = fields.Nested(ProductBookkeepingDetailsSchema)
     product_inventory_details = fields.Nested(ProductInventoryDetailsSchema)

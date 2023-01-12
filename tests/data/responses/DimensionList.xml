@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <DimensionNameList>
+    <DimensionName>
+      <Netvisorkey>14</Netvisorkey>
+      <Name>Hinnastoryhmä</Name>
+      <IsHidden>False</IsHidden>
+      <LinkType>0</LinkType>
+      <DimensionDetails>
+        <DimensionDetail>
+          <Netvisorkey>17</Netvisorkey>
+          <Name>Opiskelijat</Name>
+          <IsHidden>False</IsHidden>
+          <Level>1</Level>
+          <Sort>0</Sort>
+          <EndSort>0</EndSort>
+          <FatherID>0</FatherID>
+        </DimensionDetail>
+        <DimensionDetail>
+          <Netvisorkey>23</Netvisorkey>
+          <Name>Eläkeläiset</Name>
+          <IsHidden>False</IsHidden>
+          <Level>1</Level>
+          <Sort>1</Sort>
+          <EndSort>1</EndSort>
+          <FatherID>0</FatherID>
+        </DimensionDetail>
+      </DimensionDetails>
+    </DimensionName>
+    <DimensionName>
+      <Netvisorkey>9</Netvisorkey>
+      <Name>KP1</Name>
+      <IsHidden>True</IsHidden>
+      <LinkType>0</LinkType>
+      <DimensionDetails>
+        <DimensionDetail>
+          <Netvisorkey>12</Netvisorkey>
+          <Name>PL100</Name>
+          <IsHidden>True</IsHidden>
+          <Level>1</Level>
+          <Sort>0</Sort>
+          <EndSort>0</EndSort>
+          <FatherID>0</FatherID>
+        </DimensionDetail>
+      </DimensionDetails>
+    </DimensionName>
+  </DimensionNameList>
+</Root>

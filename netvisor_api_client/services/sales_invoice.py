@@ -19,11 +19,19 @@ class SalesInvoiceService(Service):
         request = GetSalesInvoiceRequest(self.client, params={"NetvisorKey": id})
         return request.make_request()
 
-    def list(self, above_id=None, invoice_number=None, start_date=None, end_date=None):
+    def list(
+        self,
+        status=None,
+        above_id=None,
+        invoice_number=None,
+        start_date=None,
+        end_date=None,
+    ):
         request = SalesInvoiceListRequest(
             self.client,
             params={
                 "InvoicesAboveNetvisorKey": above_id,
+                "InvoiceStatus": status,
                 "InvoiceNumber": invoice_number,
                 "BeginInvoiceDate": start_date,
                 "EndInvoiceDate": end_date,

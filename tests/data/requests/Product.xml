@@ -5,14 +5,14 @@
       <ProductGroup>Kirjat</ProductGroup>
       <Name>Code Complete</Name>
       <Description>Toinen painos</Description>
-      <UnitPrice type="brutto">42,5</UnitPrice>
+      <UnitWeight>1</UnitWeight>
+      <UnitPrice type="gross">42,5</UnitPrice>
       <Unit>kpl</Unit>
-      <PurchasePrice>25</PurchasePrice>
+      <PurchasePrice>25,00</PurchasePrice>
       <TariffHeading>Code Complete</TariffHeading>
       <ComissionPercentage>11</ComissionPercentage>
       <IsActive>1</IsActive>
       <IsSalesProduct>0</IsSalesProduct>
-      <UnitWeight>1</UnitWeight>
       <InventoryEnabled>0</InventoryEnabled>
       <CountryOfOrigin type="ISO-3166">FI</CountryOfOrigin>
     </ProductBaseInformation>
@@ -20,12 +20,12 @@
       <DefaultVatPercentage>24</DefaultVatPercentage>
     </ProductBookkeepingDetails>
     <ProductAdditionalInformation>
-      <ProductNetWeight weightunit="kg">1</ProductNetWeight>
-      <ProductGrossWeight weightunit="kg">1</ProductGrossWeight>
+      <ProductNetWeight weightunit="kg">11,2</ProductNetWeight>
+      <ProductGrossWeight weightunit="kg">12,6</ProductGrossWeight>
       <ProductPackageInformation>
-        <PackageWidth unit="cm">5</PackageWidth>
-        <PackageHeight unit="cm">20</PackageHeight>
-        <PackageLength unit="cm">15</PackageLength>
+        <PackageWidth unit="cm">7,3</PackageWidth>
+        <PackageHeight unit="cm">15,0</PackageHeight>
+        <PackageLength unit="cm">36,1</PackageLength>
       </ProductPackageInformation>
     </ProductAdditionalInformation>
   </Product>

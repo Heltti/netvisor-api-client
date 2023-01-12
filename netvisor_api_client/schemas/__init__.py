@@ -6,6 +6,7 @@ from .customers import (  # noqa
     GetCustomerSchema,
 )
 from .products import CreateProductSchema, GetProductSchema, ProductListSchema  # noqa
+from .purchase_invoice import GetPurchaseInvoiceSchema, PurchaseInvoiceListSchema
 from .replies import RepliesSchema  # noqa
 from .sales_invoices import (  # noqa
     CreateSalesInvoiceSchema,

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <PurchaseInvoice>
+    <PurchaseInvoiceNetvisorKey>1025</PurchaseInvoiceNetvisorKey>
+    <PurchaseInvoiceNumber>152212</PurchaseInvoiceNumber>
+    <PurchaseInvoiceDate format="ansi">2018-01-02</PurchaseInvoiceDate>
+    <PurchaseInvoiceDeliveryDate format="ansi">2014-10-02</PurchaseInvoiceDeliveryDate>
+    <PurchaseInvoiceDueDate format="ansi">2018-01-31</PurchaseInvoiceDueDate>
+    <PurchaseInvoiceValueDate format="ansi">2018-01-15</PurchaseInvoiceValueDate>
+    <PurchaseInvoiceReferencenumber>011234</PurchaseInvoiceReferencenumber>
+    <PurchaseInvoiceVendorBankAccountNumber>FI000111234567</PurchaseInvoiceVendorBankAccountNumber>
+    <IsPurchaseInvoiceVendorBankAccountDeleted>False</IsPurchaseInvoiceVendorBankAccountDeleted>
+    <IsPurchaseInvoiceVendorBankAccountFromSEPARegion>True</IsPurchaseInvoiceVendorBankAccountFromSEPARegion>
+    <PurchaseInvoiceAmount>100,00</PurchaseInvoiceAmount>
+    <PurchaseInvoicePaidAmount>0,00</PurchaseInvoicePaidAmount>
+    <ForeignCurrencyAmount>100</ForeignCurrencyAmount>
+    <ForeignCurrencyNameID>EUR</ForeignCurrencyNameID>
+    <InvoiceStatus>Avoin</InvoiceStatus>
+    <ApprovalStatus>open</ApprovalStatus>
+    <PurchaseInvoiceOurReference>111234</PurchaseInvoiceOurReference>
+    <PurchaseInvoiceYourReference>21134</PurchaseInvoiceYourReference>
+    <PurchaseInvoiceDescription>Comment text</PurchaseInvoiceDescription>
+    <VendorOrganizationIdentifier>123456-7</VendorOrganizationIdentifier>
+    <VendorCode>12345</VendorCode>
+    <VendorName>Vendor Oy Ab</VendorName>
+    <VendorAddressline>Pajukuja 5</VendorAddressline>
+    <VendorPostnumber>53100</VendorPostnumber>
+    <VendorTown>Lappeenranta</VendorTown>
+    <VendorCountry>FI</VendorCountry>
+    <VendorBankAccountNumber>FI000111234567</VendorBankAccountNumber>
+    <Fingerprint>FEF2041B3EF7ED8DC14E85B51081E9B1EB3C867B3160E2F48757605819B9B1CE</Fingerprint>
+    <VoucherID>1</VoucherID>
+    <IsAccounted>False</IsAccounted>
+    <PreviewImage>Text</PreviewImage>
+    <InvoiceLines>
+      <PurchaseInvoiceLine>
+        <NetvisorKey>1051</NetvisorKey>
+        <LineSum>125,25</LineSum>
+        <LineNetSum>102,6639</LineNetSum>
+        <UnitPrice>5,480000000000</UnitPrice>
+        <VatPercent>22</VatPercent>
+        <VatCode>KOOS</VatCode>
+        <Description>Description text</Description>
+        <Unit>kpl</Unit>
+        <OrderedAmount>15</OrderedAmount>
+        <PurchasePrice>24,00</PurchasePrice>
+        <DeliveredAmount>10</DeliveredAmount>
+        <ProductCode>15243</ProductCode>
+        <DiscountPercentage>1,5</DiscountPercentage>
+        <ProductName>Test Product</ProductName>
+        <AccountingSuggestionBookkeepingAccountNetvisorKey>643
+        </AccountingSuggestionBookkeepingAccountNetvisorKey>
+        <AccountingSuggestionBookkeepingAccount>4000 Ostot</AccountingSuggestionBookkeepingAccount>
+      </PurchaseInvoiceLine>
+      <PurchaseInvoiceLine>
+        <NetvisorKey>1052</NetvisorKey>
+        <LineSum>125,25</LineSum>
+        <LineNetSum>102,6639</LineNetSum>
+        <UnitPrice>5,480000000000</UnitPrice>
+        <VatPercent>22</VatPercent>
+        <VatCode>KOOS</VatCode>
+        <Description>Description text</Description>
+        <Unit>kpl</Unit>
+        <OrderedAmount>15</OrderedAmount>
+        <PurchasePrice>24,00</PurchasePrice>
+        <DeliveredAmount>10</DeliveredAmount>
+        <ProductCode>15243</ProductCode>
+        <DiscountPercentage>1,5</DiscountPercentage>
+        <ProductName>Test Product</ProductName>
+        <AccountingSuggestionBookkeepingAccountNetvisorKey>643
+        </AccountingSuggestionBookkeepingAccountNetvisorKey>
+        <AccountingSuggestionBookkeepingAccount>4000 Ostot</AccountingSuggestionBookkeepingAccount>
+      </PurchaseInvoiceLine>
+      <PurchaseInvoiceLineDimensions>
+        <Dimension>
+          <DimensionName>Projects</DimensionName>
+          <DimensionNameNetvisorKey>3</DimensionNameNetvisorKey>
+          <DimensionDetailName>Project 1</DimensionDetailName>
+          <DimensionDetailNetvisorKey>3</DimensionDetailNetvisorKey>
+        </Dimension>
+        <Dimension>
+          <DimensionName>Projects</DimensionName>
+          <DimensionNameNetvisorKey>4</DimensionNameNetvisorKey>
+          <DimensionDetailName>Project 2</DimensionDetailName>
+          <DimensionDetailNetvisorKey>4</DimensionDetailNetvisorKey>
+        </Dimension>
+      </PurchaseInvoiceLineDimensions>
+    </InvoiceLines>
+    <LinkedPurchaseOrders>
+      <PurchaseOrder>
+        <OrderNumber>1</OrderNumber>
+        <NetvisorKey>123</NetvisorKey>
+      </PurchaseOrder>
+      <PurchaseOrder>
+        <OrderNumber>2</OrderNumber>
+        <NetvisorKey>456</NetvisorKey>
+      </PurchaseOrder>
+    </LinkedPurchaseOrders>
+  </PurchaseInvoice>
+</Root>
