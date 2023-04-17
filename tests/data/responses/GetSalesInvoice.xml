@@ -22,7 +22,7 @@
     <InvoicingCustomerAddressline>Pajukuja 1</InvoicingCustomerAddressline>
     <InvoicingCustomerPostnumber>53100</InvoicingCustomerPostnumber>
     <InvoicingCustomerTown>Lappeenranta</InvoicingCustomerTown>
-    <InvoicingCustomerCountryCode>FINLAND</InvoicingCustomerCountryCode>
+    <InvoicingCustomerCountryCode ISO-3166="FI">Finland</InvoicingCustomerCountryCode>
     <MatchPartialPaymentsByDefault>No</MatchPartialPaymentsByDefault>
     <DeliveryAddressName>Netvisor Oy</DeliveryAddressName>
     <DeliveryAddressLine>Snelmanninkatu 12</DeliveryAddressLine>

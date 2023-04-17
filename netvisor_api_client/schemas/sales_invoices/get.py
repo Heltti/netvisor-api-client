@@ -123,7 +123,7 @@ class GetSalesInvoiceSchema(Schema):
         load_from='invoicing_customer_postnumber'
     )
     invoicing_customer_town = fields.String(allow_none=True, required=True)
-    invoicing_customer_country_code = fields.String(required=True)
+    invoicing_customer_country_code = fields.Nested(StringSchema, required=True)
     delivery_address_name = fields.String(allow_none=True, required=True)
     delivery_address_line = fields.String(allow_none=True, required=True)
     delivery_address_post_number = fields.String(
