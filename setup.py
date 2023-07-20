@@ -1,4 +1,4 @@
-import os
+mport os
 import re
 
 from setuptools import setup
@@ -6,10 +6,9 @@ from setuptools import setup
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def get_version():
-    filename = os.path.join(HERE, "netvisor_api_client", "__init__.py")
-    contents = open(filename).read()
-    pattern = r"^__version__ = '(.*?)'$"
+def get_version() -> str:
+    contents = open(os.path.join(HERE, "netvisor_api_client", "__init__.py")).read()
+    pattern = r"^__version__ = \"(.*?)\"$"
 
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
