@@ -3,6 +3,31 @@ Changelog
 
 Here you can see the full list of changes between each release
 
+0.9.4 (January 12th, 2023)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Add support for new resources - PR #5 by @tristen-tooming, PR #10 by @jarmokortetjarvi
+    - Accounting
+        - Create: Accounting.nv
+    - Product
+        - Create & update: Product.nv
+        - List: ProductList.nv
+    - Dimension
+        - Create: DimensionItem.nv
+        - List: DimensionList.nv
+    - Purchase Invoice
+        - Get: GetPurchaseInvoice.nv
+        - List: PurchaseInvoiceList.nv
+
+- Fix package dependencies configuration
+- Housekeeping: Code styling with black, import order with isort
+
+
+0.9.3 (October 7th, 2022)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Fix sales invoice schema for `invoicing_customer_country_code`
+
+
 0.9.2 (February 5th, 2021)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - PR #6: Fixed accounting dimension's Item None value error - @kiuru

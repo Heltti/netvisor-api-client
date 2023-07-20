@@ -1,0 +1,8 @@
+# Development dependencies
+# To install, run: pip install -r requirements-dev.txt
+
+flake8
+flexmock
+freezegun
+isort
+pytest

@@ -12,27 +12,24 @@ from ..fields import Decimal, List
 
 
 class StatusSchema(Schema):
-    status = fields.String(load_from='#text')
-    substatus = fields.String(allow_none=True, load_from='@substatus')
+    status = fields.String(load_from="#text")
+    substatus = fields.String(allow_none=True, load_from="@substatus")
 
     @pre_load
     def pre_load(self, data):
         if isinstance(data, (str,)):
-            return {
-                '#text': data,
-                '@substatus': None
-            }
+            return {"#text": data, "@substatus": None}
         else:
             return data
 
 
 class PurchaseInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
-    number = fields.Integer(load_from='invoice_number')
-    date = fields.Nested(DateSchema, load_from='invoice_date')
+    number = fields.Integer(load_from="invoice_number")
+    date = fields.Nested(DateSchema, load_from="invoice_date")
     vendor = fields.String(allow_none=True)
     vendor_organization_identifier = fields.String(allow_none=True, required=False)
-    sum = Decimal(load_from='invoice_sum')
+    sum = Decimal(load_from="invoice_sum")
     payments = Decimal()
     open_sum = Decimal()
     uri = fields.String()
@@ -43,10 +40,9 @@ class PurchaseInvoiceSchema(Schema):
 
 class PurchaseInvoiceListSchema(Schema):
     purchase_invoices = List(
-        fields.Nested(PurchaseInvoiceSchema),
-        load_from='purchase_invoice'
+        fields.Nested(PurchaseInvoiceSchema), load_from="purchase_invoice"
     )
 
     @post_load
     def preprocess_purchase_invoice_list(self, input_data):
-        return input_data['purchase_invoices'] if input_data else []
+        return input_data["purchase_invoices"] if input_data else []

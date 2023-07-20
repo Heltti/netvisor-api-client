@@ -1,18 +1,20 @@
-from .base import Service
 from ..requests.purchase_invoice import (
+    GetPurchaseInvoiceRequest,
     PurchaseInvoiceListRequest,
-    GetPurchaseInvoiceRequest
 )
+from .base import Service
 
 
 class PurchaseInvoiceService(Service):
     def get(self, id, version=2, include=None, omit_attachments=None):
         request = GetPurchaseInvoiceRequest(
             self.client,
-            params={'NetvisorKey': id,
-                    'Version': version,
-                    'Include': include,
-                    'Omitattachments': omit_attachments}
+            params={
+                "NetvisorKey": id,
+                "Version": version,
+                "Include": include,
+                "Omitattachments": omit_attachments,
+            },
         )
         return request.make_request()
 
@@ -20,10 +22,10 @@ class PurchaseInvoiceService(Service):
         request = PurchaseInvoiceListRequest(
             self.client,
             params={
-                'invoicestatus': status,
-                'invoicenumber': invoice_number,
-                'begininvoicedate': start_date,
-                'endinvoicedate': end_date,
-            }
+                "invoicestatus": status,
+                "invoicenumber": invoice_number,
+                "begininvoicedate": start_date,
+                "endinvoicedate": end_date,
+            },
         )
         return request.make_request()

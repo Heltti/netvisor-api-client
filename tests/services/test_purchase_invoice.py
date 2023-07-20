@@ -1,22 +1,20 @@
-from decimal import Decimal
 from datetime import date
+from decimal import Decimal
 
 import pytest
-import xmltodict
-from marshmallow import ValidationError
 
 from netvisor_api_client.exc import InvalidData
-from tests.utils import get_request_content, get_response_content
+from tests.utils import get_response_content
 
 
 class TestPurchaseInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
-            method='GET',
-            url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2',
-            body=get_response_content('GetPurchaseInvoice.xml'),
-            content_type='text/html; charset=utf-8',
-            match_querystring=True
+            method="GET",
+            url="http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
+            body=get_response_content("GetPurchaseInvoice.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
         )
 
         purchase_invoice = netvisor.purchase_invoices.get(1025)
@@ -29,9 +27,9 @@ class TestPurchaseInvoiceService(object):
             "value_date": date(2018, 1, 15),
             "reference_number": "011234",
             "vendor_bank_account_number": "FI000111234567",
-            "amount": Decimal('100.00'),
-            "paid_amount": Decimal('0.00'),
-            "foreign_currency_amount": Decimal('100'),
+            "amount": Decimal("100.00"),
+            "paid_amount": Decimal("0.00"),
+            "foreign_currency_amount": Decimal("100"),
             "foreign_currency_name_id": "EUR",
             "status": "Avoin",
             "approval_status": "open",
@@ -43,7 +41,7 @@ class TestPurchaseInvoiceService(object):
             "vendor_postnumber": "53100",
             "vendor_town": "Lappeenranta",
             "vendor_country": "FI",
-            'vendor_bank_account_number': 'FI000111234567',
+            "vendor_bank_account_number": "FI000111234567",
             "voucher_id": 1,
             "accounted": False,
             "preview_image": "Text",
@@ -51,74 +49,72 @@ class TestPurchaseInvoiceService(object):
                 "items": [
                     {
                         "netvisor_key": 1051,
-                        "line_sum": Decimal('125.25'),
-                        "line_net_sum": Decimal('102.6639'),
-                        "unit_price": Decimal('5.480000000000'),
-                        "vat_percent": Decimal('22'),
+                        "line_sum": Decimal("125.25"),
+                        "line_net_sum": Decimal("102.6639"),
+                        "unit_price": Decimal("5.480000000000"),
+                        "vat_percent": Decimal("22"),
                         "vat_code": "KOOS",
                         "description": "Description text",
                         "unit": "kpl",
-                        "ordered_amount": Decimal('15'),
-                        "delivered_amount": Decimal('10'),
+                        "ordered_amount": Decimal("15"),
+                        "delivered_amount": Decimal("10"),
                         "product_code": "15243",
-                        "discount_percentage": Decimal('1.5'),
+                        "discount_percentage": Decimal("1.5"),
                         "product_name": "Test Product",
-                        "purchase_price": Decimal('24.00'),
+                        "purchase_price": Decimal("24.00"),
                         "bookkeeping_account_netvisor_key": "643",
-                        "bookkeeping_account": "4000 Ostot"
+                        "bookkeeping_account": "4000 Ostot",
                     },
                     {
                         "netvisor_key": 1052,
-                        "line_sum": Decimal('125.25'),
-                        "line_net_sum": Decimal('102.6639'),
-                        "unit_price": Decimal('5.480000000000'),
-                        "vat_percent": Decimal('22'),
+                        "line_sum": Decimal("125.25"),
+                        "line_net_sum": Decimal("102.6639"),
+                        "unit_price": Decimal("5.480000000000"),
+                        "vat_percent": Decimal("22"),
                         "vat_code": "KOOS",
                         "description": "Description text",
                         "unit": "kpl",
-                        "ordered_amount": Decimal('15'),
-                        "delivered_amount": Decimal('10'),
+                        "ordered_amount": Decimal("15"),
+                        "delivered_amount": Decimal("10"),
                         "product_code": "15243",
-                        "discount_percentage": Decimal('1.5'),
+                        "discount_percentage": Decimal("1.5"),
                         "product_name": "Test Product",
-                        "purchase_price": Decimal('24.00'),
+                        "purchase_price": Decimal("24.00"),
                         "bookkeeping_account_netvisor_key": "643",
-                        "bookkeeping_account": "4000 Ostot"
-                    }
+                        "bookkeeping_account": "4000 Ostot",
+                    },
                 ],
                 "dimensions": [
                     {
                         "name": "Projects",
                         "netvisor_key": 3,
                         "detail_name": "Project 1",
-                        "detail_netvisor_key": 3
+                        "detail_netvisor_key": 3,
                     },
                     {
                         "name": "Projects",
                         "netvisor_key": 4,
                         "detail_name": "Project 2",
-                        "detail_netvisor_key": 4
-                    }]
-
+                        "detail_netvisor_key": 4,
+                    },
+                ],
             },
             "orders": [
                 {
                     "netvisor_key": 123,
                     "number": 1,
                 },
-                {
-                    "netvisor_key": 456,
-                    "number": 2
-                }]
+                {"netvisor_key": 456, "number": 2},
+            ],
         }
 
     def test_get_minimal(self, netvisor, responses):
         responses.add(
-            method='GET',
-            url='http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2',
-            body=get_response_content('GetPurchaseInvoiceMinimal.xml'),
-            content_type='text/html; charset=utf-8',
-            match_querystring=True
+            method="GET",
+            url="http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
+            body=get_response_content("GetPurchaseInvoiceMinimal.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
         )
 
         purchase_invoice = netvisor.purchase_invoices.get(1025)
@@ -131,9 +127,9 @@ class TestPurchaseInvoiceService(object):
             "value_date": date(2018, 1, 15),
             "reference_number": "011234",
             "vendor_bank_account_number": "FI000111234567",
-            "amount": Decimal('100.00'),
-            "paid_amount": Decimal('0.00'),
-            "foreign_currency_amount": Decimal('100'),
+            "amount": Decimal("100.00"),
+            "paid_amount": Decimal("0.00"),
+            "foreign_currency_amount": Decimal("100"),
             "foreign_currency_name_id": "EUR",
             "status": "Avoin",
             "approval_status": "open",
@@ -152,37 +148,36 @@ class TestPurchaseInvoiceService(object):
             "orders": None,
         }
 
-    def test_get_raises_error_if_sales_invoice_not_found(
-            self, netvisor, responses
-    ):
+    def test_get_raises_error_if_sales_invoice_not_found(self, netvisor, responses):
         responses.add(
-            method='GET',
+            method="GET",
             url=(
-                'http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=123&Version=2'
+                "http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=123&Version=2"
             ),
-            body=get_response_content('GetPurchaseInvoiceNotFound.xml'),
-            content_type='text/html; charset=utf-8',
-            match_querystring=True
+            body=get_response_content("GetPurchaseInvoiceNotFound.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
         )
         with pytest.raises(InvalidData) as excinfo:
             netvisor.purchase_invoices.get(123)
 
         assert str(excinfo.value) == (
-            'Data form incorrect:. '
-            'Purchase invoice not found with Netvisor identifier: 123'
+            "Data form incorrect:. "
+            "Purchase invoice not found with Netvisor identifier: 123"
         )
 
     def test_list(self, netvisor, responses):
         responses.add(
-            method='GET',
-            url='http://koulutus.netvisor.fi/PurchaseInvoiceList.nv',
-            body=get_response_content('PurchaseInvoiceList.xml'),
-            content_type='text/html; charset=utf-8',
-            match_querystring=True
+            method="GET",
+            url="http://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
+            body=get_response_content("PurchaseInvoiceList.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
         )
 
         purchase_invoice_list = netvisor.purchase_invoices.list()
         from pprint import pprint
+
         pprint(purchase_invoice_list)
         assert purchase_invoice_list == [
             {
@@ -194,7 +189,7 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("25"),
                 "payments": Decimal("25"),
                 "open_sum": Decimal("0"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
             },
             {
                 "netvisor_key": 2,
@@ -205,7 +200,7 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("30"),
                 "payments": Decimal("0"),
                 "open_sum": Decimal("30"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
             },
             {
                 "netvisor_key": 3,
@@ -216,17 +211,17 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("30"),
                 "payments": Decimal("0"),
                 "open_sum": Decimal("30"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*"
-            }
+                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
+            },
         ]
 
     def test_empty_list(self, netvisor, responses):
         responses.add(
-            method='GET',
-            url='http://koulutus.netvisor.fi/PurchaseInvoiceList.nv',
-            body=get_response_content('PurchaseInvoiceListEmpty.xml'),
-            content_type='text/html; charset=utf-8',
-            match_querystring=True
+            method="GET",
+            url="http://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
+            body=get_response_content("PurchaseInvoiceListEmpty.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
         )
 
         purchase_invoice_list = netvisor.purchase_invoices.list()

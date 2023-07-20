@@ -10,11 +10,11 @@ from .client import Client
 from .services.accounting import AccountingService
 from .services.company import CompanyService
 from .services.customer import CustomerService
+from .services.dimension import DimensionService
 from .services.product import ProductService
 from .services.purchase_invoice import PurchaseInvoiceService
 from .services.sales_invoice import SalesInvoiceService
 from .services.sales_payment import SalesPaymentService
-from .services.dimension import DimensionService
 
 
 class Netvisor(object):

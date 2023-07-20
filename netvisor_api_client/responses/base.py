@@ -25,9 +25,7 @@ class Response(object):
 
     def parse(self):
         self.raw_data = xmltodict.parse(
-            self.response.text,
-            postprocessor=self.postprocess,
-            dict_constructor=dict
+            self.response.text, postprocessor=self.postprocess, dict_constructor=dict
         )
 
     def postprocess(self, path, key, data):
@@ -35,11 +33,10 @@ class Response(object):
 
     def deserialize(self):
         if self.schema_cls is not None:
-            root_tag_data = self.raw_data['root'][self.tag_name]
+            root_tag_data = self.raw_data["root"][self.tag_name]
 
             if root_tag_data is not None:
-                result = self.schema_cls(strict=True) \
-                    .load(root_tag_data)
+                result = self.schema_cls(strict=True).load(root_tag_data)
 
                 self.data = result.data
 
@@ -49,8 +46,8 @@ class Response(object):
 
     @property
     def statuses(self):
-        return self.raw_data['root']['response_status']['status']
+        return self.raw_data["root"]["response_status"]["status"]
 
     @property
     def is_ok(self):
-        return self.statuses == 'OK'
+        return self.statuses == "OK"

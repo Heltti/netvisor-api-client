@@ -11,7 +11,6 @@ import requests
 
 
 class Client(object):
-
     def __init__(self, host, auth):
         self.host = host
         self.requester = requests.Session()
@@ -23,4 +22,4 @@ class Client(object):
         return response
 
     def make_url(self, path):
-        return '{host}/{path}'.format(host=self.host, path=path)
+        return "{host}/{path}".format(host=self.host, path=path)

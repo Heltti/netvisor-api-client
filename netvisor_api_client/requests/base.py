@@ -29,8 +29,8 @@ class Request(object):
             method=self.method,
             path=self.uri,
             params=self.params,
-            headers={'content-type': 'text/xml; charset=utf-8'},
-            data=self.unparse()
+            headers={"content-type": "text/xml; charset=utf-8"},
+            data=self.unparse(),
         )
 
         return self.parse_response(response)
@@ -41,11 +41,7 @@ class Request(object):
 
             result = schema.dump(self.data)
 
-            self.raw_data = {
-                'root': {
-                    self.tag_name: result.data
-                }
-            }
+            self.raw_data = {"root": {self.tag_name: result.data}}
 
         else:
             self.raw_data = None
@@ -53,25 +49,24 @@ class Request(object):
     def unparse(self):
         if self.raw_data is not None:
             xml = xmltodict.unparse(
-                self.raw_data,
-                preprocessor=self.preprocess,
-                pretty=True,
-                indent='  '
+                self.raw_data, preprocessor=self.preprocess, pretty=True, indent="  "
             )
-            return self._remove_xml_declaration(xml).encode('utf-8')
+            return self._remove_xml_declaration(xml).encode("utf-8")
 
     def _remove_xml_declaration(self, xml):
-        return xml.replace('<?xml version="1.0" encoding="utf-8"?>\n', '', 1)
+        return xml.replace('<?xml version="1.0" encoding="utf-8"?>\n', "", 1)
 
     def preprocess(self, key, value):
         return inflection.camelize(key), value
 
     def parse_response(self, response):
         response = self.response_cls(response)
+
         return response.data
 
 
 class ListRequest(Request):
     def parse_response(self, response):
         response = super(ListRequest, self).parse_response(response=response)
+
         return response if response is not None else []

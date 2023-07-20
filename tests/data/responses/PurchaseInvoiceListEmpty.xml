@@ -4,5 +4,5 @@
     <Status>OK</Status>
     <TimeStamp>1.10.2009 16:03:24</TimeStamp>
   </ResponseStatus>
-  <PurchaseInvoiceList />
+  <PurchaseInvoiceList/>
 </Root>

@@ -20,12 +20,12 @@
       <IsActive>0</IsActive>
       <IsSalesProduct></IsSalesProduct>
     </ProductBaseInformation>
-    <ProductBookKeepingDetails>
+    <ProductBookkeepingDetails>
       <DefaultVatPercent>0</DefaultVatPercent>
       <DefaultDomesticAccountNumber>3000</DefaultDomesticAccountNumber>
       <DefaultEuAccountNumber>3360</DefaultEuAccountNumber>
       <DefaultOutsideEUAccountNumber>3380</DefaultOutsideEUAccountNumber>
-    </ProductBookKeepingDetails>
+    </ProductBookkeepingDetails>
     <ProductInventoryDetails>
       <InventoryAmount>0,00</InventoryAmount>
       <InventoryMidPrice>0,0000</InventoryMidPrice>
