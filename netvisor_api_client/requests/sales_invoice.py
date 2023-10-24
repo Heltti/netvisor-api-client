@@ -14,6 +14,7 @@ from ..responses.sales_invoices import (
     SalesInvoiceListResponse,
     UpdateSalesInvoiceResponse,
     UpdateSalesInvoiceStatusResponse,
+    MatchCreditNoteResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
 from .base import ListRequest, Request
