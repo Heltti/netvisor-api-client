@@ -32,13 +32,7 @@ class ProductService(Service):
 
     def update(self, id, data):
         request = UpdateProductRequest(
-<<<<<<< HEAD
-            self.client,
-            params={'id': id, 'method': 'edit'},
-            data=data
-=======
             self.client, params={"id": id, "method": "edit"}, data=data
->>>>>>> master
         )
 
         return request.make_request()
