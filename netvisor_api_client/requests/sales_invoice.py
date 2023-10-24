@@ -13,6 +13,7 @@ from ..responses.sales_invoices import (
     GetSalesInvoiceResponse,
     SalesInvoiceListResponse,
     UpdateSalesInvoiceResponse,
+    UpdateSalesInvoiceStatusResponse,
 )
 from ..schemas import CreateSalesInvoiceSchema
 from .base import ListRequest, Request
