@@ -65,8 +65,7 @@ class UpdateSalesInvoiceRequest(Request):
     uri = "salesinvoice.nv"
     response_cls = UpdateSalesInvoiceResponse
     schema_cls = CreateSalesInvoiceSchema
-<<<<<<< HEAD
-    tag_name = 'sales_invoice'
+    tag_name = "sales_invoice"
 
 
 class UpdateSalesInvoiceStatusRequest(Request):
@@ -81,6 +80,3 @@ class MatchCreditNoteRequest(Request):
     response_cls = MatchCreditNoteResponse
     schema_cls = SalesInvoiceMatchCreditNoteSchema
     tag_name = 'match_credit_note'
-=======
-    tag_name = "sales_invoice"
->>>>>>> master
