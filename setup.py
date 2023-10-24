@@ -13,7 +13,7 @@ def get_version() -> str:
     return re.search(pattern, contents, re.MULTILINE).group(1)
 
 
-def get_install_requires() -> list[str]:
+def get_install_requires():
     with open(os.path.join(HERE, "requirements.txt"), "r") as requirements_file:
         return requirements_file.read().splitlines()
 
