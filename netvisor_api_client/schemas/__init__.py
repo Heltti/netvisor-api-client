@@ -12,5 +12,6 @@ from .sales_invoices import (  # noqa
     CreateSalesInvoiceSchema,
     GetSalesInvoiceSchema,
     SalesInvoiceListSchema,
+    SalesInvoiceMatchCreditNoteSchema,
 )
 from .sales_payments import SalesPaymentListSchema  # noqa
