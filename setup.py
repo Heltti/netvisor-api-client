@@ -31,14 +31,7 @@ setup(
     packages=find_packages(),
     package_data={"": ["LICENSE"]},
     license=open("LICENSE").read(),
-    platforms="any",
-    install_requires=[
-        'inflection',
-        'marshmallow<3.0.0',
-        'responses',
-        'requests',
-        'xmltodict>=0.10.1',    
-    ],    
+    platforms="any", 
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
