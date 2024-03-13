@@ -22,27 +22,9 @@ class StatusSchema(Schema):
         else:
             return data
 
-class InvoiceNumberSchema(Schema):
-    netvisor_key = fields.String(load_from='@NetvisorKey')
-    number = fields.String(load_from='#text')
-
-class SalesPaymentSchema(Schema):
-    netvisor_key = fields.Integer()
-    name = fields.String()
-    date = FinnishDate()
-    sum = Decimal()
-    foreign_currency_amount = Decimal(allow_none=True)
-    reference_number = fields.String(allow_none=True)
-    
-    bank_status = fields.String()
-    bank_status_error_description = fields.Nested(
-        BankStatusErrorDescriptionSchema
-    )
-
-
 class SalesInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
-    number = fields.Integer(load_from="number")
+    number = fields.Integer(load_from="invoice_number")
     date = fields.Nested(DateSchema, load_from="invoicedate")
     status = fields.Nested(StatusSchema, load_from="invoice_status")
     customer_code = fields.String(allow_none=True)
