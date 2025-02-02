@@ -1,18 +1,24 @@
 """
-netvisor.responses.accounting
+netvisor.responsemodels.accounting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
 :license: MIT, see LICENSE for more details.
 """
 
-from ..schemas import AccountingLedgerSchema, RepliesSchema
+from ..schemas import AccountingLedgerSchema, AccountListSchema, RepliesSchema
 from .base import Response
 
 
 class AccountingLedgerResponse(Response):
     schema_cls = AccountingLedgerSchema
     tag_name = "vouchers"
+
+
+class AccountListResponse(Response):
+    schema_cls = AccountListSchema
+    tag_name = "account_list"
+    secondary_tag_name = "accounts"
 
 
 class CreateAccountingResponse(Response):

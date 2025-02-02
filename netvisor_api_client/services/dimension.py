@@ -1,4 +1,4 @@
-from ..requests.dimension import CreateDimensionsRequest, DimensionsListRequest
+from ..requestmodels.dimension import CreateDimensionsRequest, DimensionsListRequest
 from .base import Service
 
 

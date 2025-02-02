@@ -6,7 +6,7 @@ netvisor.services.company
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.company import CompanyListRequest, GetCompanyInformationRequest
+from ..requestmodels.company import CompanyListRequest, GetCompanyInformationRequest
 from .base import Service
 
 

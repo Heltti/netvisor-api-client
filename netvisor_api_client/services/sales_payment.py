@@ -6,7 +6,7 @@ netvisor.services.sales_payment
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.sales_payment import SalesPaymentListRequest
+from ..requestmodels.sales_payment import SalesPaymentListRequest
 from .base import Service
 
 

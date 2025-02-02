@@ -1,7 +1,7 @@
 from marshmallow import ValidationError
 
 from ..exc import InvalidData
-from ..responses.purchase_invoices import (
+from ..responsemodels.purchase_invoices import (
     GetPurchaseInvoiceResponse,
     PurchaseInvoiceListResponse,
 )

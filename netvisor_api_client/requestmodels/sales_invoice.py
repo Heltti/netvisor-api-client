@@ -1,5 +1,5 @@
 """
-netvisor.requests.sales_invoice
+netvisor.requestmodels.sales_invoice
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
@@ -9,7 +9,7 @@ netvisor.requests.sales_invoice
 from marshmallow import ValidationError
 
 from ..exc import InvalidData
-from ..responses.sales_invoices import (
+from ..responsemodels.sales_invoices import (
     CreateSalesInvoiceResponse,
     GetSalesInvoiceResponse,
     SalesInvoiceListResponse,

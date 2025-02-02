@@ -1,4 +1,4 @@
-from ..responses.dimensions import CreateDimensionResponse, DimensionListResponse
+from ..responsemodels.dimensions import CreateDimensionResponse, DimensionListResponse
 from ..schemas.dimensions import CreateDimensionItemSchema
 from .base import ListRequest, Request
 

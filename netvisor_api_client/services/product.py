@@ -6,7 +6,7 @@ netvisor.services.product
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.product import (
+from ..requestmodels.product import (
     CreateProductRequest,
     GetProductRequest,
     ProductListRequest,

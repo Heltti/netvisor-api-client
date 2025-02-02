@@ -1,12 +1,12 @@
 """
-netvisor.requests.customer
+netvisor.requestmodels.customer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
 :license: MIT, see LICENSE for more details.
 """
 
-from ..responses.customers import (
+from ..responsemodels.customers import (
     CreateCustomerResponse,
     CustomerListResponse,
     GetCustomerResponse,

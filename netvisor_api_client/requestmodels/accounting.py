@@ -1,12 +1,16 @@
 """
-netvisor.requests.accounting
+netvisor.requestmodels.accounting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
 :license: MIT, see LICENSE for more details.
 """
 
-from ..responses.accounting import AccountingLedgerResponse, CreateAccountingResponse
+from ..responsemodels.accounting import (
+    AccountingLedgerResponse,
+    AccountListResponse,
+    CreateAccountingResponse,
+)
 from ..schemas.accounting import CreateAccountingVoucherSchema
 from .base import Request
 
@@ -15,6 +19,12 @@ class AccountingLedgerRequest(Request):
     method = "GET"
     uri = "AccountingLedger.nv"
     response_cls = AccountingLedgerResponse
+
+
+class AccountListRequest(Request):
+    method = "GET"
+    uri = "accountlist.nv"
+    response_cls = AccountListResponse
 
 
 class CreateAccountingRequest(Request):

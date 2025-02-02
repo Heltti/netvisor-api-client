@@ -6,7 +6,7 @@ netvisor.services.customer
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.customer import (
+from ..requestmodels.customer import (
     CreateCustomerRequest,
     CustomerListRequest,
     GetCustomerRequest,

@@ -6,7 +6,7 @@ netvisor.services.sales_invoice
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.sales_invoice import (
+from ..requestmodels.sales_invoice import (
     CreateSalesInvoiceRequest,
     GetSalesInvoiceRequest,
     SalesInvoiceListRequest,

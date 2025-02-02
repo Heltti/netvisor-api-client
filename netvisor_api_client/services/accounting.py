@@ -6,7 +6,11 @@ netvisor.services.accounting
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.accounting import AccountingLedgerRequest, CreateAccountingRequest
+from ..requestmodels.accounting import (
+    AccountingLedgerRequest,
+    AccountListRequest,
+    CreateAccountingRequest,
+)
 from .base import Service
 
 
@@ -43,6 +47,10 @@ class AccountingService(Service):
         if changed_since is not None:
             query["ChangedSince"] = changed_since.isoformat()
         request = AccountingLedgerRequest(self.client, params=query)
+        return request.make_request()
+
+    def accountlist(self):
+        request = AccountListRequest(self.client)
         return request.make_request()
 
     def create(self, data):

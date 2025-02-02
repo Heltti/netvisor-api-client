@@ -1,12 +1,15 @@
 """
-netvisor.requests.company
+netvisor.requestmodels.company
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
 :license: MIT, see LICENSE for more details.
 """
 
-from ..responses.companies import CompanyListResponse, GetCompanyInformationResponse
+from ..responsemodels.companies import (
+    CompanyListResponse,
+    GetCompanyInformationResponse,
+)
 from .base import Request
 
 

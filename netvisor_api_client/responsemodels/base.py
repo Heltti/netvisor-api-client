@@ -1,5 +1,5 @@
 """
-netvisor.responses.base
+netvisor.responsemodels.base
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy

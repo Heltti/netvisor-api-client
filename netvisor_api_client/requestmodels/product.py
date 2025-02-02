@@ -1,5 +1,5 @@
 """
-netvisor.requests.product
+netvisor.requestmodels.product
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
@@ -9,7 +9,7 @@ netvisor.requests.product
 from marshmallow import ValidationError
 
 from ..exc import InvalidData
-from ..responses.products import (
+from ..responsemodels.products import (
     CreateProductResponse,
     GetProductResponse,
     ProductListResponse,
