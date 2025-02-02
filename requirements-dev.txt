@@ -6,3 +6,4 @@ flexmock
 freezegun
 isort
 pytest
+pytest-cov
