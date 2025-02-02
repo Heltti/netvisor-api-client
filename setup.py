@@ -28,7 +28,7 @@ setup(
     author_email="dev@heltti.fi",
     url="https://github.com/Heltti/netvisor-api-client",
     install_requires=get_install_requires(),
-    packages=find_packages(),
+    packages = find_packages(exclude=["junit", "tests"]),
     package_data={"": ["LICENSE"]},
     license=open("LICENSE").read(),
     platforms="any", 

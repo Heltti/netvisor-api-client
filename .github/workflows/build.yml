@@ -7,14 +7,35 @@ on:
     branches: ["master"]
 env:
   TEST_IMAGE_REF: netvisor-api-client-tester:${{ github.sha }}
+  TEST_CONTAINER_NAME: netvisor-api-client-container
+  TEST_RESULTS_DIR: ${{ github.workspace }}/testresults
 
 jobs:
   test:
     name: Run tox tests & lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Build the Tester Docker image
         run: docker build . --file tests.dockerfile --tag ${{ env.TEST_IMAGE_REF }}
       - name: Run tests
-        run: docker run --rm ${{ env.TEST_IMAGE_REF }}
+        run: docker run --name ${{ env.TEST_CONTAINER_NAME }} ${{ env.TEST_IMAGE_REF }}
+      - name: Extract test results and coverage
+        run: |
+          mkdir -p ${{ env.TEST_RESULTS_DIR }}
+          docker cp ${{ env.TEST_CONTAINER_NAME }}:/tests/coverage ${{ env.TEST_RESULTS_DIR }}/coverage
+          docker cp ${{ env.TEST_CONTAINER_NAME }}:/tests/junit ${{ env.TEST_RESULTS_DIR }}/junit
+          docker rm ${{ env.TEST_CONTAINER_NAME }}
+      - uses: actions/upload-artifact@v4
+        name: Upload coverage
+        with:
+          name: Coverage
+          path: ${{ env.TEST_RESULTS_DIR }}/coverage/coverage.xml
+        if: ${{ always() }}
+      - uses: actions/upload-artifact@v4
+        name: Test results
+        with:
+          name: Test results
+          path: ${{ env.TEST_RESULTS_DIR }}/junit/*
+        if: ${{ always() }}
