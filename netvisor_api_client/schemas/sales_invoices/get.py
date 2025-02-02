@@ -1,10 +1,11 @@
 """
-    netvisor.schemas.sales_invoices.get
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.schemas.sales_invoices.get
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from marshmallow import Schema, fields, post_load
 
 from ..common import DateSchema, DecimalSchema, StringSchema
@@ -111,6 +112,6 @@ class GetSalesInvoiceSchema(Schema):
     invoice_status = fields.Nested(StringSchema)
     invoice_lines = fields.Nested(InvoiceLinesSchema)
 
-    # TODO: Parsing response when using language other than EN will throw -> language support should be implemented
+    # TODO: Parsing response when using language other than EN will throw -> language support
     #       i.e. when using language FI, the values for true and false are Kyllä and Ei respectively
     match_partial_payments_by_default = Boolean(true="Yes", false="No")

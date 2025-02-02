@@ -1,10 +1,11 @@
 """
-    netvisor.requests.accounting
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.requests.accounting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from ..responses.accounting import AccountingListResponse, CreateAccountingResponse
 from ..schemas.accounting import CreateAccountingVoucherSchema
 from .base import Request

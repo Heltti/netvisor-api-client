@@ -1,10 +1,11 @@
 """
-    netvisor.schemas.customers.get
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.schemas.customers.get
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from marshmallow import Schema, fields
 
 from ..common import StringSchema

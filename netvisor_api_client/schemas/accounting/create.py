@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, post_dump, post_load
+from marshmallow import fields, post_dump
 
 from ..common import RejectUnknownFieldsSchema
 from ..fields import Decimal, FinnishDate, List

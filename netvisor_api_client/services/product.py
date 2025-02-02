@@ -1,10 +1,11 @@
 """
-    netvisor.services.product
-    ~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.services.product
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from ..requests.product import (
     CreateProductRequest,
     GetProductRequest,

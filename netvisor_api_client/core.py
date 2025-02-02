@@ -1,10 +1,11 @@
 """
-    netvisor.core
-    ~~~~~~~~~~~~~
+netvisor.core
+~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from .auth import NetvisorAuth
 from .client import Client
 from .services.accounting import AccountingService

@@ -1,10 +1,11 @@
 """
-    netvisor.services.customer
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.services.customer
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from ..requests.customer import (
     CreateCustomerRequest,
     CustomerListRequest,
