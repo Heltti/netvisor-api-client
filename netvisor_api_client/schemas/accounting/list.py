@@ -49,7 +49,7 @@ class VoucherSchema(Schema):
     )
 
 
-class AccountingListSchema(Schema):
+class AccountingLedgerSchema(Schema):
     vouchers = List(fields.Nested(VoucherSchema), load_from="voucher")
 
     @post_load

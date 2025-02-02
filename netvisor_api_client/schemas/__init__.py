@@ -1,4 +1,4 @@
-from .accounting import AccountingListSchema  # noqa: F401
+from .accounting import AccountingLedgerSchema  # noqa: F401
 from .companies import CompanyListSchema, GetCompanyInformationSchema  # noqa: F401
 from .customers import (  # noqa: F401
     CreateCustomerSchema,

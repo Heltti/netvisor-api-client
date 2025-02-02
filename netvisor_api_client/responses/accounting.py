@@ -6,12 +6,12 @@ netvisor.responses.accounting
 :license: MIT, see LICENSE for more details.
 """
 
-from ..schemas import AccountingListSchema, RepliesSchema
+from ..schemas import AccountingLedgerSchema, RepliesSchema
 from .base import Response
 
 
-class AccountingListResponse(Response):
-    schema_cls = AccountingListSchema
+class AccountingLedgerResponse(Response):
+    schema_cls = AccountingLedgerSchema
     tag_name = "vouchers"
 
 

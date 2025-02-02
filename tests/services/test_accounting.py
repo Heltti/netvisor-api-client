@@ -8,7 +8,7 @@ from tests.utils import get_request_content, get_response_content
 
 
 class TestAccountingService(object):
-    def test_list(self, netvisor, responses):
+    def test_ledger(self, netvisor, responses):
         responses.add(
             method="GET",
             url="http://koulutus.netvisor.fi/AccountingLedger.nv",
@@ -16,7 +16,7 @@ class TestAccountingService(object):
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        accounting = netvisor.accounting.list()
+        accounting = netvisor.accounting.ledger()
         assert accounting == [
             {
                 "status": "valid",
@@ -125,7 +125,7 @@ class TestAccountingService(object):
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(**{parameter: value}) is not None
+        assert netvisor.accounting.ledger(**{parameter: value}) is not None
         request = responses.calls[0].request
         assert request.url == url
 
@@ -147,7 +147,7 @@ class TestAccountingService(object):
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(**{parameter: value}) is not None
+        assert netvisor.accounting.ledger(**{parameter: value}) is not None
         request = responses.calls[0].request
         assert request.url == url
 
@@ -163,7 +163,7 @@ class TestAccountingService(object):
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(netvisor_key_list=[1, 2, 3]) is not None
+        assert netvisor.accounting.ledger(netvisor_key_list=[1, 2, 3]) is not None
         request = responses.calls[0].request
         assert request.url == url
 

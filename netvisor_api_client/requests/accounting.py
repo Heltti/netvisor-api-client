@@ -6,15 +6,15 @@ netvisor.requests.accounting
 :license: MIT, see LICENSE for more details.
 """
 
-from ..responses.accounting import AccountingListResponse, CreateAccountingResponse
+from ..responses.accounting import AccountingLedgerResponse, CreateAccountingResponse
 from ..schemas.accounting import CreateAccountingVoucherSchema
 from .base import Request
 
 
-class AccountingListRequest(Request):
+class AccountingLedgerRequest(Request):
     method = "GET"
     uri = "AccountingLedger.nv"
-    response_cls = AccountingListResponse
+    response_cls = AccountingLedgerResponse
 
 
 class CreateAccountingRequest(Request):

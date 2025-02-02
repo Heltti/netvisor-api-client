@@ -6,12 +6,12 @@ netvisor.services.accounting
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requests.accounting import AccountingListRequest, CreateAccountingRequest
+from ..requests.accounting import AccountingLedgerRequest, CreateAccountingRequest
 from .base import Service
 
 
 class AccountingService(Service):
-    def list(
+    def ledger(
         self,
         start_date=None,
         end_date=None,
@@ -42,7 +42,7 @@ class AccountingService(Service):
             query["Voucherstatus"] = voucherstatus
         if changed_since is not None:
             query["ChangedSince"] = changed_since.isoformat()
-        request = AccountingListRequest(self.client, params=query)
+        request = AccountingLedgerRequest(self.client, params=query)
         return request.make_request()
 
     def create(self, data):
