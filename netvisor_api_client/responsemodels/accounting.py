@@ -6,7 +6,12 @@ netvisor.responsemodels.accounting
 :license: MIT, see LICENSE for more details.
 """
 
-from ..schemas import AccountingLedgerSchema, AccountListSchema, RepliesSchema
+from ..schemas import (
+    AccountingLedgerSchema,
+    AccountingPeriodListSchema,
+    AccountListSchema,
+    RepliesSchema,
+)
 from .base import Response
 
 
@@ -24,3 +29,8 @@ class AccountListResponse(Response):
 class CreateAccountingResponse(Response):
     schema_cls = RepliesSchema
     tag_name = "replies"
+
+
+class AccountingPeriodListResponse(Response):
+    schema_cls = AccountingPeriodListSchema
+    tag_name = "accounting_period_list"

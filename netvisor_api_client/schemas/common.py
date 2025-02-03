@@ -15,7 +15,7 @@ from marshmallow import (
     pre_load,
 )
 
-from .fields import Decimal
+from .fields import Decimal, FinnishDate
 
 
 class RejectUnknownFieldsSchema(Schema):
@@ -44,6 +44,10 @@ class FlattenElementSchema(Schema):
 
 class DateSchema(FlattenElementSchema):
     text = fields.Date(load_from="#text")
+
+
+class FinnishDateSchema(FlattenElementSchema):
+    text = FinnishDate(load_from="#text")
 
 
 class StringSchema(FlattenElementSchema):

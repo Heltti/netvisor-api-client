@@ -8,6 +8,7 @@ netvisor.services.accounting
 
 from ..requestmodels.accounting import (
     AccountingLedgerRequest,
+    AccountingPeriodListRequest,
     AccountListRequest,
     CreateAccountingRequest,
 )
@@ -55,5 +56,8 @@ class AccountingService(Service):
 
     def create(self, data):
         request = CreateAccountingRequest(self.client, data=data)
+        return request.make_request()
 
+    def periodlist(self):
+        request = AccountingPeriodListRequest(self.client)
         return request.make_request()

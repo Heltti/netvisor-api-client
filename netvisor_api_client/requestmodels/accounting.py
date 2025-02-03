@@ -8,6 +8,7 @@ netvisor.requestmodels.accounting
 
 from ..responsemodels.accounting import (
     AccountingLedgerResponse,
+    AccountingPeriodListResponse,
     AccountListResponse,
     CreateAccountingResponse,
 )
@@ -33,3 +34,9 @@ class CreateAccountingRequest(Request):
     response_cls = CreateAccountingResponse
     schema_cls = CreateAccountingVoucherSchema
     tag_name = "Voucher"
+
+
+class AccountingPeriodListRequest(Request):
+    method = "GET"
+    uri = "accountingperiodlist.nv"
+    response_cls = AccountingPeriodListResponse
