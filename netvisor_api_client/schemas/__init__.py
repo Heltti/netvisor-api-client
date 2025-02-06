@@ -7,6 +7,7 @@ from .companies import CompanyListSchema, GetCompanyInformationSchema  # noqa: F
 from .customers import (  # noqa: F401
     CreateCustomerSchema,
     CustomerListSchema,
+    GetCustomerListSchema,
     GetCustomerSchema,
 )
 from .products import (  # noqa: F401

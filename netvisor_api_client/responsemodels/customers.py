@@ -6,8 +6,13 @@ netvisor.responsemodels.customers
 :license: MIT, see LICENSE for more details.
 """
 
-from ..schemas import CustomerListSchema, GetCustomerSchema, RepliesSchema
 from .base import Response
+from ..schemas import (
+    CustomerListSchema,
+    GetCustomerListSchema,
+    GetCustomerSchema,
+    RepliesSchema,
+)
 
 
 class CustomerListResponse(Response):
@@ -18,6 +23,11 @@ class CustomerListResponse(Response):
 class GetCustomerResponse(Response):
     schema_cls = GetCustomerSchema
     tag_name = "customer"
+
+
+class GetCustomerListResponse(Response):
+    schema_cls = GetCustomerListSchema
+    tag_name = "customers"
 
 
 class CreateCustomerResponse(Response):

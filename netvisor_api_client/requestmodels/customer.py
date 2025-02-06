@@ -6,20 +6,27 @@ netvisor.requestmodels.customer
 :license: MIT, see LICENSE for more details.
 """
 
+from .base import ListRequest, Request
 from ..responsemodels.customers import (
     CreateCustomerResponse,
     CustomerListResponse,
     GetCustomerResponse,
+    GetCustomerListResponse,
     UpdateCustomerResponse,
 )
 from ..schemas import CreateCustomerSchema
-from .base import ListRequest, Request
 
 
 class GetCustomerRequest(Request):
     method = "GET"
     uri = "GetCustomer.nv"
     response_cls = GetCustomerResponse
+
+
+class GetCustomerListRequest(Request):
+    method = "GET"
+    uri = "GetCustomer.nv"
+    response_cls = GetCustomerListResponse
 
 
 class CustomerListRequest(ListRequest):

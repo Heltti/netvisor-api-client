@@ -6,6 +6,7 @@
   </ResponseStatus>
   <Customer>
     <CustomerBaseInformation>
+      <NetvisorKey>5</NetvisorKey>
       <InternalIdentifier>MM</InternalIdentifier>
       <ExternalIdentifier>1234567-8</ExternalIdentifier>
       <CustomerGroupNetvisorKey>1</CustomerGroupNetvisorKey>
