@@ -8,18 +8,25 @@ netvisor.services.sales_invoice
 
 from ..requestmodels.sales_invoice import (
     CreateSalesInvoiceRequest,
+    GetSalesInvoiceListRequest,
     GetSalesInvoiceRequest,
+    MatchCreditNoteRequest,
     SalesInvoiceListRequest,
     UpdateSalesInvoiceRequest,
     UpdateSalesInvoiceStatusRequest,
-    MatchCreditNoteRequest,
 )
 from .base import Service
 
 
 class SalesInvoiceService(Service):
-    def get(self, id):
+    def get(self, id: int):
         request = GetSalesInvoiceRequest(self.client, params={"NetvisorKey": id})
+        return request.make_request()
+
+    def detaillist(self, idlist: list[int]):
+        request = GetSalesInvoiceListRequest(
+            self.client, params={"NetvisorKeyList": ",".join(str(id) for id in idlist)}
+        )
         return request.make_request()
 
     def list(

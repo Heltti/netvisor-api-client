@@ -6,13 +6,13 @@ netvisor.responsemodels.customers
 :license: MIT, see LICENSE for more details.
 """
 
-from .base import Response
 from ..schemas import (
     CustomerListSchema,
     GetCustomerListSchema,
     GetCustomerSchema,
     RepliesSchema,
 )
+from .base import Response
 
 
 class CustomerListResponse(Response):

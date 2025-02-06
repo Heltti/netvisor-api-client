@@ -116,3 +116,13 @@ class GetSalesInvoiceSchema(Schema):
     # TODO: Parsing response when using language other than EN will throw -> language support
     #       i.e. when using language FI, the values for true and false are Kyllä and Ei respectively
     match_partial_payments_by_default = Boolean(true="Yes", false="No")
+
+
+class GetSalesInvoiceListSchema(Schema):
+    sales_invoices = List(
+        fields.Nested(GetSalesInvoiceSchema), load_from="sales_invoice"
+    )
+
+    @post_load
+    def preprocess_sales_invoice_list(self, input_data):
+        return input_data["sales_invoices"] if input_data else []

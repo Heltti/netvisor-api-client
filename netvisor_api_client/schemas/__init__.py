@@ -22,6 +22,7 @@ from .purchase_invoice import (  # noqa: F401
 from .replies import RepliesSchema  # noqa: F401
 from .sales_invoices import (  # noqa: F401
     CreateSalesInvoiceSchema,
+    GetSalesInvoiceListSchema,
     GetSalesInvoiceSchema,
     SalesInvoiceListSchema,
     SalesInvoiceMatchCreditNoteSchema,

@@ -6,14 +6,14 @@ netvisor.services.customer
 :license: MIT, see LICENSE for more details.
 """
 
-from .base import Service
 from ..requestmodels.customer import (
     CreateCustomerRequest,
     CustomerListRequest,
+    GetCustomerListRequest,
     GetCustomerRequest,
     UpdateCustomerRequest,
-    GetCustomerListRequest,
 )
+from .base import Service
 
 
 class CustomerService(Service):

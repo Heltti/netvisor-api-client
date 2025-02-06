@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+  </ResponseStatus>
+  <SalesInvoices>
+    <SalesInvoice>
+      <SalesInvoiceNumber>3</SalesInvoiceNumber>
+      <SalesInvoiceDate format="ansi">2012-01-27</SalesInvoiceDate>
+      <SalesInvoiceEventDate format="ansi">2008-12-01</SalesInvoiceEventDate>
+      <SalesInvoiceDueDate format="ansi">2023-06-06</SalesInvoiceDueDate>
+      <SalesInvoiceValueDate format="ansi">2008-12-01</SalesInvoiceValueDate>
+      <SalesInvoiceDeliveryDate format="ansi">2012-01-27</SalesInvoiceDeliveryDate>
+      <SalesInvoiceReferencenumber>1070</SalesInvoiceReferencenumber>
+      <SalesInvoiceAmount iso4217currencycode="EUR" currencyrate="1">244.12</SalesInvoiceAmount>
+      <SellerIdentifier type="name">Jarmo</SellerIdentifier>
+      <InvoiceStatus status="unsent">Unsent</InvoiceStatus>
+      <SalesInvoiceFreeTextBeforeLines/>
+      <SalesInvoiceFreeTextAfterLines/>
+      <SalesInvoiceOurReference/>
+      <SalesInvoiceYourReference/>
+      <SalesInvoicePrivateComment/>
+      <InvoicingCustomerName>Matti Mallikas</InvoicingCustomerName>
+      <InvoicingCustomerAddressline>Pajukuja 1</InvoicingCustomerAddressline>
+      <InvoicingCustomerPostnumber>53100</InvoicingCustomerPostnumber>
+      <InvoicingCustomerTown>Lappeenranta</InvoicingCustomerTown>
+      <InvoicingCustomerCountryCode ISO-3166="FI">Finland</InvoicingCustomerCountryCode>
+      <MatchPartialPaymentsByDefault>No</MatchPartialPaymentsByDefault>
+      <DeliveryAddressName>Netvisor Oy</DeliveryAddressName>
+      <DeliveryAddressLine>Snelmanninkatu 12</DeliveryAddressLine>
+      <DeliveryAddressPostnumber>53100</DeliveryAddressPostnumber>
+      <DeliveryAddressTown>LPR</DeliveryAddressTown>
+      <DeliveryAddressCountryCode>FINLAND</DeliveryAddressCountryCode>
+      <DeliveryMethod/>
+      <DeliveryTerm/>
+      <PaymentTermNetDays>14</PaymentTermNetDays>
+      <PaymentTermCashDiscountDays>5</PaymentTermCashDiscountDays>
+      <PaymentTermCashDiscount type="percentage">9</PaymentTermCashDiscount>
+      <InvoiceLines>
+        <InvoiceLine>
+          <SalesInvoiceProductLine>
+            <productidentifier type="customer">OMENA</productidentifier>
+            <ProductName>Omena</ProductName>
+            <ProductUnitPrice>6,9000</ProductUnitPrice>
+            <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+            <SalesInvoiceProductLineQuantity>2</SalesInvoiceProductLineQuantity>
+            <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+            <SalesInvoiceProductLineFreeText/>
+            <SalesInvoiceProductLineVatSum>3,04</SalesInvoiceProductLineVatSum>
+            <SalesInvoiceProductLineSum>16,84</SalesInvoiceProductLineSum>
+            <AccountingAccountSuggestion>551</AccountingAccountSuggestion>
+          </SalesInvoiceProductLine>
+          <SalesInvoiceProductLine>
+            <productidentifier type="customer">BANAANI</productidentifier>
+            <ProductName>Banaani</ProductName>
+            <ProductUnitPrice>2,4900</ProductUnitPrice>
+            <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+            <SalesInvoiceProductLineQuantity>1</SalesInvoiceProductLineQuantity>
+            <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+            <SalesInvoiceProductLineFreeText/>
+            <SalesInvoiceProductLineVatSum>0,5478</SalesInvoiceProductLineVatSum>
+            <SalesInvoiceProductLineSum>3,0378</SalesInvoiceProductLineSum>
+            <AccountingAccountSuggestion>551</AccountingAccountSuggestion>
+          </SalesInvoiceProductLine>
+        </InvoiceLine>
+      </InvoiceLines>
+    </SalesInvoice>
+    <SalesInvoice>
+      <SalesInvoiceNumber>4</SalesInvoiceNumber>
+      <SalesInvoiceDate format="ansi">2012-01-27</SalesInvoiceDate>
+      <SalesInvoiceEventDate format="ansi">2008-12-01</SalesInvoiceEventDate>
+      <SalesInvoiceDueDate format="ansi">2023-06-06</SalesInvoiceDueDate>
+      <SalesInvoiceValueDate format="ansi">2008-12-01</SalesInvoiceValueDate>
+      <SalesInvoiceDeliveryDate format="ansi">2012-01-27</SalesInvoiceDeliveryDate>
+      <SalesInvoiceReferencenumber>1070</SalesInvoiceReferencenumber>
+      <SalesInvoiceAmount iso4217currencycode="EUR" currencyrate="1">244.12</SalesInvoiceAmount>
+      <SellerIdentifier type="name">Jarmo</SellerIdentifier>
+      <InvoiceStatus status="unsent">Unsent</InvoiceStatus>
+      <SalesInvoiceFreeTextBeforeLines/>
+      <SalesInvoiceFreeTextAfterLines/>
+      <SalesInvoiceOurReference/>
+      <SalesInvoiceYourReference/>
+      <SalesInvoicePrivateComment/>
+      <InvoicingCustomerName>Matti Mallikas 2</InvoicingCustomerName>
+      <InvoicingCustomerAddressline>Pajukuja 1</InvoicingCustomerAddressline>
+      <InvoicingCustomerPostnumber>53100</InvoicingCustomerPostnumber>
+      <InvoicingCustomerTown>Lappeenranta</InvoicingCustomerTown>
+      <InvoicingCustomerCountryCode ISO-3166="FI">Finland</InvoicingCustomerCountryCode>
+      <MatchPartialPaymentsByDefault>No</MatchPartialPaymentsByDefault>
+      <DeliveryAddressName>Netvisor Oy</DeliveryAddressName>
+      <DeliveryAddressLine>Snelmanninkatu 12</DeliveryAddressLine>
+      <DeliveryAddressPostnumber>53100</DeliveryAddressPostnumber>
+      <DeliveryAddressTown>LPR</DeliveryAddressTown>
+      <DeliveryAddressCountryCode>FINLAND</DeliveryAddressCountryCode>
+      <DeliveryMethod/>
+      <DeliveryTerm/>
+      <PaymentTermNetDays>14</PaymentTermNetDays>
+      <PaymentTermCashDiscountDays>5</PaymentTermCashDiscountDays>
+      <PaymentTermCashDiscount type="percentage">9</PaymentTermCashDiscount>
+      <InvoiceLines>
+        <InvoiceLine>
+          <SalesInvoiceProductLine>
+            <productidentifier type="customer">OMENA</productidentifier>
+            <ProductName>Omena</ProductName>
+            <ProductUnitPrice>6,9000</ProductUnitPrice>
+            <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+            <SalesInvoiceProductLineQuantity>2</SalesInvoiceProductLineQuantity>
+            <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+            <SalesInvoiceProductLineFreeText/>
+            <SalesInvoiceProductLineVatSum>3,04</SalesInvoiceProductLineVatSum>
+            <SalesInvoiceProductLineSum>16,84</SalesInvoiceProductLineSum>
+            <AccountingAccountSuggestion>551</AccountingAccountSuggestion>
+          </SalesInvoiceProductLine>
+          <SalesInvoiceProductLine>
+            <productidentifier type="customer">BANAANI</productidentifier>
+            <ProductName>Banaani</ProductName>
+            <ProductUnitPrice>2,4900</ProductUnitPrice>
+            <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+            <SalesInvoiceProductLineQuantity>1</SalesInvoiceProductLineQuantity>
+            <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+            <SalesInvoiceProductLineFreeText/>
+            <SalesInvoiceProductLineVatSum>0,5478</SalesInvoiceProductLineVatSum>
+            <SalesInvoiceProductLineSum>3,0378</SalesInvoiceProductLineSum>
+            <AccountingAccountSuggestion>551</AccountingAccountSuggestion>
+          </SalesInvoiceProductLine>
+        </InvoiceLine>
+      </InvoiceLines>
+    </SalesInvoice>
+  </SalesInvoices>
+</Root>

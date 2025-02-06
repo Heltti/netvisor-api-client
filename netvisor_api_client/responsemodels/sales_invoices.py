@@ -6,7 +6,12 @@ netvisor.responsemodels.sales_invoices
 :license: MIT, see LICENSE for more details.
 """
 
-from ..schemas import GetSalesInvoiceSchema, RepliesSchema, SalesInvoiceListSchema
+from ..schemas import (
+    GetSalesInvoiceListSchema,
+    GetSalesInvoiceSchema,
+    RepliesSchema,
+    SalesInvoiceListSchema,
+)
 from .base import Response
 
 
@@ -18,6 +23,11 @@ class SalesInvoiceListResponse(Response):
 class GetSalesInvoiceResponse(Response):
     schema_cls = GetSalesInvoiceSchema
     tag_name = "sales_invoice"
+
+
+class GetSalesInvoiceListResponse(Response):
+    schema_cls = GetSalesInvoiceListSchema
+    tag_name = "sales_invoices"
 
 
 class CreateSalesInvoiceResponse(Response):

@@ -6,15 +6,15 @@ netvisor.requestmodels.customer
 :license: MIT, see LICENSE for more details.
 """
 
-from .base import ListRequest, Request
 from ..responsemodels.customers import (
     CreateCustomerResponse,
     CustomerListResponse,
-    GetCustomerResponse,
     GetCustomerListResponse,
+    GetCustomerResponse,
     UpdateCustomerResponse,
 )
 from ..schemas import CreateCustomerSchema
+from .base import ListRequest, Request
 
 
 class GetCustomerRequest(Request):

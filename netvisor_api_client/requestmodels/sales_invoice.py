@@ -11,12 +11,13 @@ from marshmallow import ValidationError
 from ..exc import InvalidData
 from ..responsemodels.sales_invoices import (
     CreateSalesInvoiceResponse,
+    GetSalesInvoiceListResponse,
     GetSalesInvoiceResponse,
+    MatchCreditNoteResponse,
     SalesInvoiceListResponse,
+    SalesInvoiceMatchCreditNoteSchema,
     UpdateSalesInvoiceResponse,
     UpdateSalesInvoiceStatusResponse,
-    MatchCreditNoteResponse,
-    SalesInvoiceMatchCreditNoteSchema,
 )
 from ..schemas import CreateSalesInvoiceSchema
 from .base import ListRequest, Request
@@ -48,6 +49,12 @@ class GetSalesInvoiceRequest(Request):
 
         except ValidationError:
             self._raise_exception()
+
+
+class GetSalesInvoiceListRequest(Request):
+    method = "GET"
+    uri = "GetSalesInvoice.nv"
+    response_cls = GetSalesInvoiceListResponse
 
 
 class SalesInvoiceListRequest(ListRequest):

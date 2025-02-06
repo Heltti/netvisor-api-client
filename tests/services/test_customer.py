@@ -31,6 +31,7 @@ class TestCustomerService(object):
                 "city": "Lappeenranta",
                 "post_number": "53100",
                 "country": "FI",
+                "netvisor_key": 5,
                 "phone_number": "040 12157 988",
                 "fax_number": "(015) 123 4567",
                 "email": "maija.mallikas@netvisor.fi",
@@ -71,8 +72,8 @@ class TestCustomerService(object):
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        customer = netvisor.customers.detaillist([5, 6])
-        assert customer == [
+        customers = netvisor.customers.detaillist([5, 6])
+        assert customers == [
             {
                 "customer_base_information": {
                     "internal_identifier": "MM",
