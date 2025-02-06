@@ -73,14 +73,14 @@ class UpdateSalesInvoiceRequest(Request):
 
 
 class UpdateSalesInvoiceStatusRequest(Request):
-    method = 'POST'
-    uri = 'updatesalesinvoicestatus.nv'
+    method = "POST"
+    uri = "updatesalesinvoicestatus.nv"
     response_cls = UpdateSalesInvoiceStatusResponse
 
 
 class MatchCreditNoteRequest(Request):
-    method = 'POST'
-    uri = 'matchcreditnote.nv'
+    method = "POST"
+    uri = "matchcreditnote.nv"
     response_cls = MatchCreditNoteResponse
     schema_cls = SalesInvoiceMatchCreditNoteSchema
-    tag_name = 'match_credit_note'
+    tag_name = "match_credit_note"

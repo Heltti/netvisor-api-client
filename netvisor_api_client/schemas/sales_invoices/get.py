@@ -66,6 +66,7 @@ class GetSalesInvoiceSchema(Schema):
     due_date = fields.Nested(
         DateSchema, required=True, load_from="sales_invoice_due_date"
     )
+    value_date = fields.Nested(DateSchema, load_from="sales_invoice_value_date")
     reference_number = fields.String(
         required=True, load_from="sales_invoice_referencenumber"
     )

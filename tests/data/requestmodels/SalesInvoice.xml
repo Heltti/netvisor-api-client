@@ -2,8 +2,9 @@
   <SalesInvoice>
     <SalesInvoiceNumber>107</SalesInvoiceNumber>
     <SalesInvoiceDate>2008-12-12</SalesInvoiceDate>
-    <SalesInvoiceValueDate>2008-11-30</SalesInvoiceValueDate>
     <SalesInvoiceEventDate>2008-12-01</SalesInvoiceEventDate>
+    <SalesInvoiceDueDate>2023-06-06</SalesInvoiceDueDate>
+    <SalesInvoiceValueDate>2008-11-30</SalesInvoiceValueDate>
     <SalesInvoiceDeliveryDate>2008-07-25</SalesInvoiceDeliveryDate>
     <SalesInvoiceReferenceNumber>1070</SalesInvoiceReferenceNumber>
     <SalesInvoiceAmount iso4217currencycode="EUR">244,00</SalesInvoiceAmount>
@@ -39,12 +40,12 @@
           <SalesInvoiceProductLineFreeText>Punainen</SalesInvoiceProductLineFreeText>
           <AccountingAccountSuggestion>3000</AccountingAccountSuggestion>
           <Dimension>
-              <DimensionName>Example Dimension</DimensionName>
-              <DimensionItem>Example Dimension Item</DimensionItem>
+            <DimensionName>Example Dimension</DimensionName>
+            <DimensionItem>Example Dimension Item</DimensionItem>
           </Dimension>
           <Dimension>
-              <DimensionName>Example Dimension 2</DimensionName>
-              <DimensionItem>Example Dimension 2 Item</DimensionItem>
+            <DimensionName>Example Dimension 2</DimensionName>
+            <DimensionItem>Example Dimension 2 Item</DimensionItem>
           </Dimension>
         </SalesInvoiceProductLine>
       </InvoiceLine>

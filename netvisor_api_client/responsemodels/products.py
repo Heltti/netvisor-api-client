@@ -24,6 +24,7 @@ class CreateProductResponse(Response):
     schema_cls = RepliesSchema
     tag_name = "replies"
 
+
 class UpdateProductResponse(Response):
     schema_cls = None
     tag_name = None

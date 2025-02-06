@@ -23,6 +23,7 @@ class StatusSchema(Schema):
         else:
             return data
 
+
 class SalesInvoiceSchema(Schema):
     netvisor_key = fields.Integer()
     number = fields.Integer(load_from="invoice_number")

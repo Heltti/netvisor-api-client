@@ -27,9 +27,10 @@ class TestSalesInvoiceService(object):
             "number": 3,
             "date": date(2012, 1, 27),
             "delivery_date": date(2012, 1, 27),
-            "due_date": date(2012, 2, 11),
+            "due_date": date(2023, 6, 6),
+            "value_date": date(2008, 12, 1),
             "reference_number": "1070",
-            "amount": decimal.Decimal(244.00),
+            "amount": decimal.Decimal("244.12"),
             "seller_identifier": "Jarmo",
             "invoice_status": "Unsent",
             "free_text_before_lines": None,
@@ -246,6 +247,8 @@ class TestSalesInvoiceService(object):
                 "date": date(2008, 12, 12),
                 "value_date": date(2008, 11, 30),
                 "delivery_date": date(2008, 7, 25),
+                "due_date": date(2023, 6, 6),
+                "event_date": date(2008, 12, 1),
                 "reference_number": "1070",
                 "amount": decimal.Decimal("244.00"),
                 "currency": "EUR",
@@ -268,6 +271,7 @@ class TestSalesInvoiceService(object):
                 "payment_term_net_days": 14,
                 "payment_term_cash_discount_days": 5,
                 "payment_term_cash_discount": decimal.Decimal("9"),
+                "print_channel_format": dict(identifier="2", type="netvisor"),
                 "invoice_lines": [
                     {
                         "identifier": dict(identifier="1697", type="netvisor"),
@@ -284,6 +288,16 @@ class TestSalesInvoiceService(object):
                         "discount_percentage": decimal.Decimal("0"),
                         "free_text": "Punainen",
                         "accounting_account_suggestion": "3000",
+                        "dimension": [
+                            {
+                                "dimension_item": "Example Dimension Item",
+                                "dimension_name": "Example Dimension",
+                            },
+                            {
+                                "dimension_item": "Example Dimension 2 Item",
+                                "dimension_name": "Example Dimension 2",
+                            },
+                        ],
                     },
                     {
                         "identifier": dict(identifier="1697", type="netvisor"),
@@ -383,6 +397,8 @@ class TestSalesInvoiceService(object):
             "date": date(2008, 12, 12),
             "value_date": date(2008, 11, 30),
             "delivery_date": date(2008, 7, 25),
+            "due_date": date(2023, 6, 6),
+            "event_date": date(2008, 12, 1),
             "reference_number": "1070",
             "amount": decimal.Decimal("244.00"),
             "currency": "EUR",
@@ -405,6 +421,7 @@ class TestSalesInvoiceService(object):
             "payment_term_net_days": 14,
             "payment_term_cash_discount_days": 5,
             "payment_term_cash_discount": decimal.Decimal("9"),
+            "print_channel_format": dict(identifier="2", type="netvisor"),
             "invoice_lines": [
                 {
                     "identifier": dict(identifier="1697", type="netvisor"),
@@ -418,6 +435,16 @@ class TestSalesInvoiceService(object):
                     "discount_percentage": decimal.Decimal("0"),
                     "free_text": "Punainen",
                     "accounting_account_suggestion": "3000",
+                    "dimension": [
+                        {
+                            "dimension_item": "Example Dimension Item",
+                            "dimension_name": "Example Dimension",
+                        },
+                        {
+                            "dimension_item": "Example Dimension 2 Item",
+                            "dimension_name": "Example Dimension 2",
+                        },
+                    ],
                 },
                 {
                     "identifier": dict(identifier="1697", type="netvisor"),

@@ -74,16 +74,14 @@ class SalesInvoiceProductDimensionSchema(RejectUnknownFieldsSchema):
     class Meta:
         ordered = True
 
+
 class PrintChannelFormatSchema(RejectUnknownFieldsSchema):
     identifier = fields.String()
-    type = fields.String(default='netvisor')
+    type = fields.String(default="netvisor")
 
     @post_dump
     def post_dump(self, data):
-        return {
-            '#text': data['identifier'],
-            '@type': data['type']
-        }
+        return {"#text": data["identifier"], "@type": data["type"]}
 
 
 class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
@@ -105,7 +103,10 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
     accounting_account_suggestion = fields.String()
 
     dimension = fields.Nested(
-        SalesInvoiceProductDimensionSchema, attribute="dimension", required=False
+        SalesInvoiceProductDimensionSchema,
+        attribute="dimension",
+        required=False,
+        many=True,
     )
 
     class Meta:
@@ -120,10 +121,11 @@ class SalesInvoiceProductLineSchema(RejectUnknownFieldsSchema):
 class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     sales_invoice_number = fields.Integer(attribute="number")
     sales_invoice_date = fields.Date(attribute="date")
-    sales_invoice_value_date = fields.Date(attribute="value_date")
-    sales_invoice_event_date = fields.Date(attribute='event_date')
-    sales_invoice_delivery_date = fields.Date(attribute="delivery_date")
+    sales_invoice_event_date = fields.Date(attribute="event_date")
     sales_invoice_due_date = fields.Date(attribute="due_date")
+    sales_invoice_value_date = fields.Date(attribute="value_date")
+    sales_invoice_delivery_date = fields.Date(attribute="delivery_date")
+
     sales_invoice_reference_number = fields.String(attribute="reference_number")
     sales_invoice_amount = Decimal(attribute="amount")
     sales_invoice_amount_currency = fields.String(attribute="currency")
@@ -168,7 +170,7 @@ class CreateSalesInvoiceSchema(RejectUnknownFieldsSchema):
     payment_term_cash_discount_days = fields.Integer()
     payment_term_cash_discount = Decimal()
 
-    print_channel_format = fields.Nested(PrintChannelFormatSchema, attribute='print_channel_format', default=dict(identifier=''))
+    print_channel_format = fields.Nested(PrintChannelFormatSchema, allow_none=True)
 
     invoice_lines = List(fields.Nested(SalesInvoiceProductLineSchema), default=list)
 

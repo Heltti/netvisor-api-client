@@ -39,6 +39,7 @@ class MatchCreditNoteResponse(Response):
     schema_cls = None
     tag_name = None
 
+
 class SalesInvoiceMatchCreditNoteSchema(Response):
     schema_cls = None
     tag_name = None
