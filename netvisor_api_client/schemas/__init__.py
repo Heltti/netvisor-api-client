@@ -27,4 +27,7 @@ from .sales_invoices import (  # noqa: F401
     SalesInvoiceListSchema,
     SalesInvoiceMatchCreditNoteSchema,
 )
-from .sales_payments import SalesPaymentListSchema  # noqa: F401
+from .sales_payments import (  # noqa: F401
+    SalesPaymentCreateSchema,
+    SalesPaymentListSchema,
+)

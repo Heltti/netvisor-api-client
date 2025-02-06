@@ -1,21 +1,9 @@
 <Root>
-  <SalesPayment>
-    <Sum Currency="EUR">10</Sum>
-    <PaymentDate>2009-9-5</PaymentDate>
-    <TargetIdentifier Type="invoicenumber" TargetType="Order">1070</TargetIdentifier>
-    <SourceName>Pekka Paajanen</SourceName>
-    <PaymentMethod Type="alternative" OverrideAccountingAccountNumber="1900" OverrideSalesReceivableAccountNumber="2100">pankkikortti</PaymentMethod>
-    <SalesPaymentVoucherLines>
-      <VoucherLine>
-        <LineSum Type="net"></LineSum>
-        <Description></Description>
-        <AccountNumber></AccountNumber>
-        <VatPercent VatCode="KOOS"></VatPercent>
-        <Dimension>
-          <DimensionName></DimensionName>
-          <DimensionItem></DimensionItem>
-        </Dimension>
-      </VoucherLine>
-    </SalesPaymentVoucherLines>
-  </SalesPayment>
+  <Salespayment>
+    <Sum currency="EUR">10,15</Sum>
+    <PaymentDate>2014-02-07</PaymentDate>
+    <TargetIdentifier type="netvisor" targettype="invoice">1070</TargetIdentifier>
+    <SourceName>Matti Mallikas</SourceName>
+    <PaymentMethod type="alternative">pankkikortti</PaymentMethod>
+  </Salespayment>
 </Root>

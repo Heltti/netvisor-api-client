@@ -4,6 +4,7 @@
 flake8
 flexmock
 freezegun
-isort
+isort>=5.0.0
 pytest
 pytest-cov
+setuptools

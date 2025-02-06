@@ -6,11 +6,18 @@ netvisor.services.sales_payment
 :license: MIT, see LICENSE for more details.
 """
 
-from ..requestmodels.sales_payment import SalesPaymentListRequest
+from ..requestmodels.sales_payment import (
+    SalesPaymentCreateRequest,
+    SalesPaymentListRequest,
+)
 from .base import Service
 
 
 class SalesPaymentService(Service):
     def list(self, params={}):
         request = SalesPaymentListRequest(self.client, params=params)
+        return request.make_request()
+
+    def create(self, data):
+        request = SalesPaymentCreateRequest(self.client, data=data)
         return request.make_request()

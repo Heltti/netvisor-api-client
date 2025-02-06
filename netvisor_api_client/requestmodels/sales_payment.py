@@ -6,7 +6,11 @@ netvisor.requestmodels.sales_payment
 :license: MIT, see LICENSE for more details.
 """
 
-from ..responsemodels.sales_payments import SalesPaymentListResponse
+from ..responsemodels.sales_payments import (
+    SalesPaymentCreateResponse,
+    SalesPaymentListResponse,
+)
+from ..schemas import SalesPaymentCreateSchema
 from .base import Request
 
 
@@ -14,3 +18,11 @@ class SalesPaymentListRequest(Request):
     method = "GET"
     uri = "SalesPaymentList.nv"
     response_cls = SalesPaymentListResponse
+
+
+class SalesPaymentCreateRequest(Request):
+    method = "POST"
+    uri = "SalesPayment.nv"
+    response_cls = SalesPaymentCreateResponse
+    schema_cls = SalesPaymentCreateSchema
+    tag_name = "salespayment"

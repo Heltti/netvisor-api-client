@@ -3,7 +3,9 @@
 import decimal
 from datetime import date
 
-from tests.utils import get_response_content
+import xmltodict
+
+from tests.utils import get_request_content, get_response_content
 
 
 class TestSalesPaymentService(object):
@@ -42,3 +44,30 @@ class TestSalesPaymentService(object):
                 "bank_status": "OK",
             },
         ]
+
+    def test_create_minimal(self, netvisor, responses):
+        responses.add(
+            method="POST",
+            url="http://koulutus.netvisor.fi/SalesPayment.nv",
+            body=get_response_content("SalesInvoiceCreate.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
+        )
+
+        netvisor_id = netvisor.sales_payments.create(
+            {
+                "sum": dict(value=decimal.Decimal("10.15"), currency="EUR"),
+                "payment_date": date(2014, 2, 7),
+                "target_identifier": dict(
+                    type="netvisor", targettype="invoice", target="1070"
+                ),
+                "source_name": "Matti Mallikas",
+                "payment_method": dict(method="pankkikortti"),
+            }
+        )
+
+        request = responses.calls[0].request
+        assert netvisor_id == 8
+        assert xmltodict.parse(request.body) == xmltodict.parse(
+            get_request_content("SalesPayment.xml")
+        )
