@@ -22,9 +22,9 @@ class CustomerService(Service):
 
         return request.make_request()
 
-    def detaillist(self, idlist: list[int]):
+    def detail_list(self, id_list: list[int]):
         request = GetCustomerListRequest(
-            self.client, params={"idlist": ",".join(str(id) for id in idlist)}
+            self.client, params={"idlist": ",".join(str(id) for id in id_list)}
         )
         return request.make_request()
 

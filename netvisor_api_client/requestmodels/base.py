@@ -53,6 +53,7 @@ class Request(object):
                 self.raw_data, preprocessor=self.preprocess, pretty=True, indent="  "
             )
             return self._remove_xml_declaration(xml).encode("utf-8")
+        return None
 
     def _remove_xml_declaration(self, xml):
         return xml.replace('<?xml version="1.0" encoding="utf-8"?>\n', "", 1)

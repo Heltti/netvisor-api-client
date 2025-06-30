@@ -60,6 +60,7 @@ class InvoiceDimensionLineSchema(Schema):
     def preprocess_dimension_list(self, input_data):
         if input_data:
             return input_data["dimensions"]
+        return None
 
 
 class InvoiceLineSchema(Schema):
@@ -86,6 +87,7 @@ class LinkedPurchaseOrdersSchema(Schema):
     def preprocess_order_list(self, input_data):
         if input_data:
             return input_data["purchase_orders"]
+        return None
 
 
 class GetPurchaseInvoiceSchema(Schema):

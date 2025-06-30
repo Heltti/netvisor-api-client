@@ -12,7 +12,7 @@ class TestSalesPaymentService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/SalesPaymentList.nv",
+            url="https://koulutus.netvisor.fi/SalesPaymentList.nv",
             body=get_response_content("SalesPaymentList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -48,7 +48,7 @@ class TestSalesPaymentService(object):
     def test_create_minimal(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/SalesPayment.nv",
+            url="https://koulutus.netvisor.fi/SalesPayment.nv",
             body=get_response_content("SalesInvoiceCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

@@ -50,7 +50,7 @@ class AccountingService(Service):
         request = AccountingLedgerRequest(self.client, params=query)
         return request.make_request()
 
-    def accountlist(self):
+    def account_list(self):
         request = AccountListRequest(self.client)
         return request.make_request()
 
@@ -58,6 +58,6 @@ class AccountingService(Service):
         request = CreateAccountingRequest(self.client, data=data)
         return request.make_request()
 
-    def periodlist(self):
+    def period_list(self):
         request = AccountingPeriodListRequest(self.client)
         return request.make_request()

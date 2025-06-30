@@ -90,6 +90,3 @@ class CreateAccountingVoucherSchema(RejectUnknownFieldsSchema):
             data["voucher_attachments"] = [
                 {"voucher_attachment": data["voucher_attachments"]}
             ]
-
-        if "voucher_line" in data and data["voucher_line"]:
-            data["voucher_line"]

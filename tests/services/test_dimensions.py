@@ -7,7 +7,7 @@ class TestDimensionService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/DimensionList.nv",
+            url="https://koulutus.netvisor.fi/DimensionList.nv",
             body=get_response_content("DimensionList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -64,7 +64,7 @@ class TestDimensionService(object):
     def test_list_with_zero_dimensions(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/DimensionList.nv",
+            url="https://koulutus.netvisor.fi/DimensionList.nv",
             body=get_response_content("DimensionListMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -75,7 +75,7 @@ class TestDimensionService(object):
     def test_create_dimension(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/DimensionItem.nv?method=add",
+            url="https://koulutus.netvisor.fi/DimensionItem.nv?method=add",
             body=get_response_content("DimensionCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

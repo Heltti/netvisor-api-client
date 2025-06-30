@@ -11,7 +11,7 @@ class TestProductService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetProduct.nv?id=5",
+            url="https://koulutus.netvisor.fi/GetProduct.nv?id=5",
             body=get_response_content("GetProduct.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -51,7 +51,7 @@ class TestProductService(object):
     def test_get_with_minimal_product(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetProduct.nv?id=165",
+            url="https://koulutus.netvisor.fi/GetProduct.nv?id=165",
             body=get_response_content("GetProductMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -91,7 +91,7 @@ class TestProductService(object):
     def test_get_raises_error_if_product_not_found(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetProduct.nv?id=123",
+            url="https://koulutus.netvisor.fi/GetProduct.nv?id=123",
             body=get_response_content("GetProductNotFound.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -106,7 +106,7 @@ class TestProductService(object):
     def test_empty_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/ProductList.nv",
+            url="https://koulutus.netvisor.fi/ProductList.nv",
             body=get_response_content("ProductListEmpty.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -119,7 +119,7 @@ class TestProductService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/ProductList.nv",
+            url="https://koulutus.netvisor.fi/ProductList.nv",
             body=get_response_content("ProductList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -137,7 +137,7 @@ class TestProductService(object):
     def test_list_with_minimal_product(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/ProductList.nv",
+            url="https://koulutus.netvisor.fi/ProductList.nv",
             body=get_response_content("ProductListMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -155,7 +155,7 @@ class TestProductService(object):
     def test_create_product(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Product.nv?method=add",
+            url="https://koulutus.netvisor.fi/Product.nv?method=add",
             body=get_response_content("ProductCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -212,7 +212,7 @@ class TestProductService(object):
     def test_create_minimal_product(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Product.nv?method=add",
+            url="https://koulutus.netvisor.fi/Product.nv?method=add",
             body=get_response_content("ProductCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

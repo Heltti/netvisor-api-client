@@ -29,7 +29,7 @@ class Response(object):
             self.response.text, postprocessor=self.postprocess, dict_constructor=dict
         )
 
-    def postprocess(self, path, key, data):
+    def postprocess(self, _path, key, data):
         return inflection.underscore(key), data
 
     def deserialize(self):

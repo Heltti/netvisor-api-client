@@ -10,7 +10,7 @@ class TestCompanyService(object):
         responses.add(
             method="GET",
             url=(
-                "http://koulutus.netvisor.fi/GetCompanyInformation.nv?"
+                "https://koulutus.netvisor.fi/GetCompanyInformation.nv?"
                 "OrganizationIdentifier=1234567-8"
             ),
             body=get_response_content("GetCompanyInformation.xml"),
@@ -76,7 +76,7 @@ class TestCompanyService(object):
     def test_list_with_query(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CompanyList.nv?QueryTerm=acme",
+            url="https://koulutus.netvisor.fi/CompanyList.nv?QueryTerm=acme",
             body=get_response_content("CompanyList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

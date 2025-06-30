@@ -11,7 +11,7 @@ class TestPurchaseInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
+            url="https://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
             body=get_response_content("GetPurchaseInvoice.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -41,7 +41,6 @@ class TestPurchaseInvoiceService(object):
             "vendor_postnumber": "53100",
             "vendor_town": "Lappeenranta",
             "vendor_country": "FI",
-            "vendor_bank_account_number": "FI000111234567",
             "voucher_id": 1,
             "accounted": False,
             "preview_image": "Text",
@@ -111,7 +110,7 @@ class TestPurchaseInvoiceService(object):
     def test_get_minimal(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
+            url="https://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=1025&Version=2",
             body=get_response_content("GetPurchaseInvoiceMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -152,7 +151,7 @@ class TestPurchaseInvoiceService(object):
         responses.add(
             method="GET",
             url=(
-                "http://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=123&Version=2"
+                "https://koulutus.netvisor.fi/GetPurchaseInvoice.nv?NetvisorKey=123&Version=2"
             ),
             body=get_response_content("GetPurchaseInvoiceNotFound.xml"),
             content_type="text/html; charset=utf-8",
@@ -169,7 +168,7 @@ class TestPurchaseInvoiceService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
             body=get_response_content("PurchaseInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -189,7 +188,7 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("25"),
                 "payments": Decimal("25"),
                 "open_sum": Decimal("0"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
+                "uri": "https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
             },
             {
                 "netvisor_key": 2,
@@ -200,7 +199,7 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("30"),
                 "payments": Decimal("0"),
                 "open_sum": Decimal("30"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
+                "uri": "https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
             },
             {
                 "netvisor_key": 3,
@@ -211,14 +210,14 @@ class TestPurchaseInvoiceService(object):
                 "sum": Decimal("30"),
                 "payments": Decimal("0"),
                 "open_sum": Decimal("30"),
-                "uri": "http://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
+                "uri": "https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*",
             },
         ]
 
     def test_empty_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/PurchaseInvoiceList.nv",
             body=get_response_content("PurchaseInvoiceListEmpty.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

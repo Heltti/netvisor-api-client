@@ -46,6 +46,7 @@ class InvoiceLineSchema(Schema):
     def preprocess_invoice_line(self, input_data):
         if input_data:
             return input_data["product_lines"]
+        return None
 
 
 class InvoiceLinesSchema(Schema):
@@ -55,6 +56,7 @@ class InvoiceLinesSchema(Schema):
     def preprocess_invoice_lines(self, input_data):
         if input_data:
             return input_data["invoice_line"]
+        return None
 
 
 class GetSalesInvoiceSchema(Schema):

@@ -14,7 +14,9 @@ from .base import Service
 
 
 class SalesPaymentService(Service):
-    def list(self, params={}):
+    def list(self, params=None):
+        if params is None:
+            params = {}
         request = SalesPaymentListRequest(self.client, params=params)
         return request.make_request()
 

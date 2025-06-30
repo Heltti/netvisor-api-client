@@ -18,9 +18,16 @@ class AccountPeriodSchema(Schema):
     end_date = fields.Nested(FinnishDateSchema, load_from="end_date")
 
 
+class PeriodLockInformationSchema(Schema):
+    accounting_period_lock_date = fields.Nested(
+        FinnishDateSchema, load_from="accounting_period_lock_date"
+    )
+    vat_period_lock_date = fields.Nested(FinnishDateSchema)
+    purchase_lock_date = fields.Nested(FinnishDateSchema)
+
+
 class AccountingPeriodListSchema(Schema):
     periods = List(fields.Nested(AccountPeriodSchema), load_from="period")
-
-    @post_load
-    def preprocess_accounting_period_list(self, input_data):
-        return input_data["periods"] if input_data else []
+    period_lock_information = fields.Nested(
+        PeriodLockInformationSchema, load_from="period_lock_information"
+    )

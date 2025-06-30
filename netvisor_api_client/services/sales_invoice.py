@@ -23,9 +23,9 @@ class SalesInvoiceService(Service):
         request = GetSalesInvoiceRequest(self.client, params={"NetvisorKey": id})
         return request.make_request()
 
-    def detaillist(self, idlist: list[int]):
+    def detail_list(self, id_list: list[int]):
         request = GetSalesInvoiceListRequest(
-            self.client, params={"NetvisorKeyList": ",".join(str(id) for id in idlist)}
+            self.client, params={"NetvisorKeyList": ",".join(str(id) for id in id_list)}
         )
         return request.make_request()
 

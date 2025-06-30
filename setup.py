@@ -28,10 +28,10 @@ setup(
     author_email="dev@heltti.fi",
     url="https://github.com/Heltti/netvisor-api-client",
     install_requires=get_install_requires(),
-    packages = find_packages(exclude=["junit", "tests"]),
+    packages=find_packages(exclude=["junit", "tests"]),
     package_data={"": ["LICENSE"]},
     license=open("LICENSE").read(),
-    platforms="any", 
+    platforms="any",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -41,6 +41,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
 )

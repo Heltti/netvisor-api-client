@@ -23,7 +23,6 @@ class AccountingLedgerResponse(Response):
 class AccountListResponse(Response):
     schema_cls = AccountListSchema
     tag_name = "account_list"
-    secondary_tag_name = "accounts"
 
 
 class CreateAccountingResponse(Response):

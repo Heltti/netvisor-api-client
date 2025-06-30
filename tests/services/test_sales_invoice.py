@@ -15,7 +15,7 @@ class TestSalesInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
             body=get_response_content("GetSalesInvoice.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -91,13 +91,13 @@ class TestSalesInvoiceService(object):
     def test_get_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKeyList=5,6",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKeyList=5,6",
             body=get_response_content("GetSalesInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
 
-        sales_invoices = netvisor.sales_invoices.detaillist([5, 6])
+        sales_invoices = netvisor.sales_invoices.detail_list([5, 6])
 
         assert sales_invoices == [
             {
@@ -233,7 +233,7 @@ class TestSalesInvoiceService(object):
     def test_get_minimal(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
             body=get_response_content("GetSalesInvoiceMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -291,7 +291,7 @@ class TestSalesInvoiceService(object):
     def test_get_raises_error_if_sales_invoice_not_found(self, netvisor, responses):
         responses.add(
             method="GET",
-            url=("http://koulutus.netvisor.fi/GetSalesInvoice.nv?" "NetvisorKey=123"),
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?" "NetvisorKey=123",
             body=get_response_content("GetSalesInvoiceNotFound.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -307,7 +307,7 @@ class TestSalesInvoiceService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/SalesInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv",
             body=get_response_content("SalesInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -343,7 +343,7 @@ class TestSalesInvoiceService(object):
     def test_empty_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/SalesInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv",
             body=get_response_content("SalesInvoiceListEmpty.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -355,7 +355,7 @@ class TestSalesInvoiceService(object):
         responses.add(
             method="GET",
             url=(
-                "http://koulutus.netvisor.fi/SalesInvoiceList.nv?"
+                "https://koulutus.netvisor.fi/SalesInvoiceList.nv?"
                 "InvoicesAboveNetvisorKey=1000"
             ),
             body=get_response_content("SalesInvoiceListEmpty.xml"),
@@ -368,7 +368,7 @@ class TestSalesInvoiceService(object):
     def test_list_with_invoice_number(self, netvisor, responses):
         responses.add(
             method="GET",
-            url=("http://koulutus.netvisor.fi/SalesInvoiceList.nv?" "InvoiceNumber=5"),
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv?" "InvoiceNumber=5",
             body=get_response_content("SalesInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -378,7 +378,7 @@ class TestSalesInvoiceService(object):
     def test_create(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=add",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=add",
             body=get_response_content("SalesInvoiceCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -477,7 +477,7 @@ class TestSalesInvoiceService(object):
     def test_create_minimal(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=add",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=add",
             body=get_response_content("SalesInvoiceCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -529,7 +529,7 @@ class TestSalesInvoiceService(object):
     def test_update(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=edit&id=8",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=edit&id=8",
             body=get_response_content("SalesInvoiceEdit.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

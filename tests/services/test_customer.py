@@ -13,7 +13,7 @@ class TestCustomerService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=5",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=5",
             body=get_response_content("GetCustomer.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -67,12 +67,12 @@ class TestCustomerService(object):
     def test_getlist(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?idlist=5,6",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?idlist=5,6",
             body=get_response_content("GetCustomerList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        customers = netvisor.customers.detaillist([5, 6])
+        customers = netvisor.customers.detail_list([5, 6])
         assert customers == [
             {
                 "customer_base_information": {
@@ -167,7 +167,7 @@ class TestCustomerService(object):
     def test_get_with_minimal_customer(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=5",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=5",
             body=get_response_content("GetCustomerMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -217,7 +217,7 @@ class TestCustomerService(object):
     def test_get_raises_error_if_customer_not_found(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=123",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=123",
             body=get_response_content("GetCustomerNotFound.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -232,7 +232,7 @@ class TestCustomerService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv",
+            url="https://koulutus.netvisor.fi/CustomerList.nv",
             body=get_response_content("CustomerList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -256,7 +256,7 @@ class TestCustomerService(object):
     def test_list_with_zero_customers(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv",
+            url="https://koulutus.netvisor.fi/CustomerList.nv",
             body=get_response_content("CustomerListMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -267,7 +267,7 @@ class TestCustomerService(object):
     def test_list_with_query(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv?Keyword=anni",
+            url="https://koulutus.netvisor.fi/CustomerList.nv?Keyword=anni",
             body=get_response_content("CustomerList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -291,7 +291,7 @@ class TestCustomerService(object):
     def test_create(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=add",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=add",
             body=get_response_content("CustomerCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -350,7 +350,7 @@ class TestCustomerService(object):
     def test_create_with_minimal_data(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=add",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=add",
             body=get_response_content("CustomerCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -380,7 +380,7 @@ class TestCustomerService(object):
     def test_update(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=edit&id=8",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=edit&id=8",
             body=get_response_content("CustomerEdit.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
