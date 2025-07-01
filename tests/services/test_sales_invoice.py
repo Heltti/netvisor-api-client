@@ -15,7 +15,7 @@ class TestSalesInvoiceService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
             body=get_response_content("GetSalesInvoice.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -27,9 +27,10 @@ class TestSalesInvoiceService(object):
             "number": 3,
             "date": date(2012, 1, 27),
             "delivery_date": date(2012, 1, 27),
-            "due_date": date(2012, 2, 11),
+            "due_date": date(2023, 6, 6),
+            "value_date": date(2008, 12, 1),
             "reference_number": "1070",
-            "amount": decimal.Decimal(244.00),
+            "amount": decimal.Decimal("244.12"),
             "seller_identifier": "Jarmo",
             "invoice_status": "Unsent",
             "free_text_before_lines": None,
@@ -87,10 +88,152 @@ class TestSalesInvoiceService(object):
             ],
         }
 
+    def test_get_list(self, netvisor, responses):
+        responses.add(
+            method="GET",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKeyList=5,6",
+            body=get_response_content("GetSalesInvoiceList.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
+        )
+
+        sales_invoices = netvisor.sales_invoices.detail_list([5, 6])
+
+        assert sales_invoices == [
+            {
+                "number": 3,
+                "date": date(2012, 1, 27),
+                "delivery_date": date(2012, 1, 27),
+                "due_date": date(2023, 6, 6),
+                "value_date": date(2008, 12, 1),
+                "reference_number": "1070",
+                "amount": decimal.Decimal("244.12"),
+                "seller_identifier": "Jarmo",
+                "invoice_status": "Unsent",
+                "free_text_before_lines": None,
+                "free_text_after_lines": None,
+                "our_reference": None,
+                "your_reference": None,
+                "private_comment": None,
+                "invoicing_customer_name": "Matti Mallikas",
+                "invoicing_customer_address_line": "Pajukuja 1",
+                "invoicing_customer_post_number": "53100",
+                "invoicing_customer_town": "Lappeenranta",
+                "invoicing_customer_country_code": "Finland",
+                "match_partial_payments_by_default": False,
+                "delivery_address_name": "Netvisor Oy",
+                "delivery_address_line": "Snelmanninkatu 12",
+                "delivery_address_post_number": "53100",
+                "delivery_address_town": "LPR",
+                "delivery_address_country_code": "FINLAND",
+                "delivery_method": None,
+                "delivery_term": None,
+                "payment_term_net_days": 14,
+                "payment_term_cash_discount_days": 5,
+                "payment_term_cash_discount": decimal.Decimal("9"),
+                "invoice_lines": [
+                    {
+                        "identifier": "OMENA",
+                        "name": "Omena",
+                        "unit_price": decimal.Decimal("6.9000"),
+                        "vat_percentage": {
+                            "percentage": decimal.Decimal("22"),
+                            "code": "KOMY",
+                        },
+                        "quantity": decimal.Decimal("2"),
+                        "discount_percentage": decimal.Decimal("0"),
+                        "free_text": None,
+                        "vat_sum": decimal.Decimal("3.04"),
+                        "sum": decimal.Decimal("16.84"),
+                        "accounting_account_suggestion": "551",
+                    },
+                    {
+                        "identifier": "BANAANI",
+                        "name": "Banaani",
+                        "unit_price": decimal.Decimal("2.4900"),
+                        "vat_percentage": {
+                            "percentage": decimal.Decimal("22"),
+                            "code": "KOMY",
+                        },
+                        "quantity": decimal.Decimal("1"),
+                        "discount_percentage": decimal.Decimal("0"),
+                        "free_text": None,
+                        "vat_sum": decimal.Decimal("0.5478"),
+                        "sum": decimal.Decimal("3.0378"),
+                        "accounting_account_suggestion": "551",
+                    },
+                ],
+            },
+            {
+                "number": 4,
+                "date": date(2012, 1, 27),
+                "delivery_date": date(2012, 1, 27),
+                "due_date": date(2023, 6, 6),
+                "value_date": date(2008, 12, 1),
+                "reference_number": "1070",
+                "amount": decimal.Decimal("244.12"),
+                "seller_identifier": "Jarmo",
+                "invoice_status": "Unsent",
+                "free_text_before_lines": None,
+                "free_text_after_lines": None,
+                "our_reference": None,
+                "your_reference": None,
+                "private_comment": None,
+                "invoicing_customer_name": "Matti Mallikas 2",
+                "invoicing_customer_address_line": "Pajukuja 1",
+                "invoicing_customer_post_number": "53100",
+                "invoicing_customer_town": "Lappeenranta",
+                "invoicing_customer_country_code": "Finland",
+                "match_partial_payments_by_default": False,
+                "delivery_address_name": "Netvisor Oy",
+                "delivery_address_line": "Snelmanninkatu 12",
+                "delivery_address_post_number": "53100",
+                "delivery_address_town": "LPR",
+                "delivery_address_country_code": "FINLAND",
+                "delivery_method": None,
+                "delivery_term": None,
+                "payment_term_net_days": 14,
+                "payment_term_cash_discount_days": 5,
+                "payment_term_cash_discount": decimal.Decimal("9"),
+                "invoice_lines": [
+                    {
+                        "identifier": "OMENA",
+                        "name": "Omena",
+                        "unit_price": decimal.Decimal("6.9000"),
+                        "vat_percentage": {
+                            "percentage": decimal.Decimal("22"),
+                            "code": "KOMY",
+                        },
+                        "quantity": decimal.Decimal("2"),
+                        "discount_percentage": decimal.Decimal("0"),
+                        "free_text": None,
+                        "vat_sum": decimal.Decimal("3.04"),
+                        "sum": decimal.Decimal("16.84"),
+                        "accounting_account_suggestion": "551",
+                    },
+                    {
+                        "identifier": "BANAANI",
+                        "name": "Banaani",
+                        "unit_price": decimal.Decimal("2.4900"),
+                        "vat_percentage": {
+                            "percentage": decimal.Decimal("22"),
+                            "code": "KOMY",
+                        },
+                        "quantity": decimal.Decimal("1"),
+                        "discount_percentage": decimal.Decimal("0"),
+                        "free_text": None,
+                        "vat_sum": decimal.Decimal("0.5478"),
+                        "sum": decimal.Decimal("3.0378"),
+                        "accounting_account_suggestion": "551",
+                    },
+                ],
+            },
+        ]
+
     def test_get_minimal(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?NetvisorKey=5",
             body=get_response_content("GetSalesInvoiceMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -148,7 +291,7 @@ class TestSalesInvoiceService(object):
     def test_get_raises_error_if_sales_invoice_not_found(self, netvisor, responses):
         responses.add(
             method="GET",
-            url=("http://koulutus.netvisor.fi/GetSalesInvoice.nv?" "NetvisorKey=123"),
+            url="https://koulutus.netvisor.fi/GetSalesInvoice.nv?" "NetvisorKey=123",
             body=get_response_content("GetSalesInvoiceNotFound.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -164,7 +307,7 @@ class TestSalesInvoiceService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/SalesInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv",
             body=get_response_content("SalesInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -200,7 +343,7 @@ class TestSalesInvoiceService(object):
     def test_empty_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/SalesInvoiceList.nv",
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv",
             body=get_response_content("SalesInvoiceListEmpty.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -212,7 +355,7 @@ class TestSalesInvoiceService(object):
         responses.add(
             method="GET",
             url=(
-                "http://koulutus.netvisor.fi/SalesInvoiceList.nv?"
+                "https://koulutus.netvisor.fi/SalesInvoiceList.nv?"
                 "InvoicesAboveNetvisorKey=1000"
             ),
             body=get_response_content("SalesInvoiceListEmpty.xml"),
@@ -225,7 +368,7 @@ class TestSalesInvoiceService(object):
     def test_list_with_invoice_number(self, netvisor, responses):
         responses.add(
             method="GET",
-            url=("http://koulutus.netvisor.fi/SalesInvoiceList.nv?" "InvoiceNumber=5"),
+            url="https://koulutus.netvisor.fi/SalesInvoiceList.nv?" "InvoiceNumber=5",
             body=get_response_content("SalesInvoiceList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -235,7 +378,7 @@ class TestSalesInvoiceService(object):
     def test_create(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=add",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=add",
             body=get_response_content("SalesInvoiceCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -246,6 +389,8 @@ class TestSalesInvoiceService(object):
                 "date": date(2008, 12, 12),
                 "value_date": date(2008, 11, 30),
                 "delivery_date": date(2008, 7, 25),
+                "due_date": date(2023, 6, 6),
+                "event_date": date(2008, 12, 1),
                 "reference_number": "1070",
                 "amount": decimal.Decimal("244.00"),
                 "currency": "EUR",
@@ -268,6 +413,7 @@ class TestSalesInvoiceService(object):
                 "payment_term_net_days": 14,
                 "payment_term_cash_discount_days": 5,
                 "payment_term_cash_discount": decimal.Decimal("9"),
+                "print_channel_format": dict(identifier="2", type="netvisor"),
                 "invoice_lines": [
                     {
                         "identifier": dict(identifier="1697", type="netvisor"),
@@ -284,6 +430,16 @@ class TestSalesInvoiceService(object):
                         "discount_percentage": decimal.Decimal("0"),
                         "free_text": "Punainen",
                         "accounting_account_suggestion": "3000",
+                        "dimension": [
+                            {
+                                "dimension_item": "Example Dimension Item",
+                                "dimension_name": "Example Dimension",
+                            },
+                            {
+                                "dimension_item": "Example Dimension 2 Item",
+                                "dimension_name": "Example Dimension 2",
+                            },
+                        ],
                     },
                     {
                         "identifier": dict(identifier="1697", type="netvisor"),
@@ -321,7 +477,7 @@ class TestSalesInvoiceService(object):
     def test_create_minimal(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=add",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=add",
             body=get_response_content("SalesInvoiceCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -373,7 +529,7 @@ class TestSalesInvoiceService(object):
     def test_update(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/salesinvoice.nv?method=edit&id=8",
+            url="https://koulutus.netvisor.fi/salesinvoice.nv?method=edit&id=8",
             body=get_response_content("SalesInvoiceEdit.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -383,6 +539,8 @@ class TestSalesInvoiceService(object):
             "date": date(2008, 12, 12),
             "value_date": date(2008, 11, 30),
             "delivery_date": date(2008, 7, 25),
+            "due_date": date(2023, 6, 6),
+            "event_date": date(2008, 12, 1),
             "reference_number": "1070",
             "amount": decimal.Decimal("244.00"),
             "currency": "EUR",
@@ -405,6 +563,7 @@ class TestSalesInvoiceService(object):
             "payment_term_net_days": 14,
             "payment_term_cash_discount_days": 5,
             "payment_term_cash_discount": decimal.Decimal("9"),
+            "print_channel_format": dict(identifier="2", type="netvisor"),
             "invoice_lines": [
                 {
                     "identifier": dict(identifier="1697", type="netvisor"),
@@ -418,6 +577,16 @@ class TestSalesInvoiceService(object):
                     "discount_percentage": decimal.Decimal("0"),
                     "free_text": "Punainen",
                     "accounting_account_suggestion": "3000",
+                    "dimension": [
+                        {
+                            "dimension_item": "Example Dimension Item",
+                            "dimension_name": "Example Dimension",
+                        },
+                        {
+                            "dimension_item": "Example Dimension 2 Item",
+                            "dimension_name": "Example Dimension 2",
+                        },
+                    ],
                 },
                 {
                     "identifier": dict(identifier="1697", type="netvisor"),

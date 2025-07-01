@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+    </ResponseStatus>
+    <PurchaseInvoiceList>
+        <PurchaseInvoice>
+            <NetvisorKey>1</NetvisorKey>
+            <InvoiceNumber>123</InvoiceNumber>
+            <InvoiceDate format="ansi">2017-11-16</InvoiceDate>
+            <Vendor>Simon Supplier</Vendor>
+            <VendorOrganizationIdentifier>1234567-8</VendorOrganizationIdentifier>
+            <Sum>25</Sum>
+            <Payments>25</Payments>
+            <OpenSum>0</OpenSum>
+            <Uri>https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*</Uri>
+        </PurchaseInvoice>
+        <PurchaseInvoice>
+            <NetvisorKey>2</NetvisorKey>
+            <InvoiceNumber>234</InvoiceNumber>
+            <InvoiceDate format="ansi">2017-11-23</InvoiceDate>
+            <Vendor>Simon Supplier</Vendor>
+            <VendorOrganizationIdentifier>1234567-8</VendorOrganizationIdentifier>
+            <Sum>30</Sum>
+            <Payments>0</Payments>
+            <OpenSum>30</OpenSum>
+            <Uri>https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*</Uri>
+        </PurchaseInvoice>
+        <PurchaseInvoice>
+            <NetvisorKey>3</NetvisorKey>
+            <InvoiceNumber>345</InvoiceNumber>
+            <InvoiceDate format="ansi">2017-11-16</InvoiceDate>
+            <Vendor>Sara Supplier</Vendor>
+            <VendorOrganizationIdentifier/>
+            <Sum>30</Sum>
+            <Payments>0</Payments>
+            <OpenSum>30</OpenSum>
+            <Uri>https://*****.*****.**/getpurchaseinvoice.nv?netvisorkey=*</Uri>
+        </PurchaseInvoice>
+    </PurchaseInvoiceList>
+</Root>

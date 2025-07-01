@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+    </ResponseStatus>
+    <Customerlist>
+        <Customer>
+            <Netvisorkey>165</Netvisorkey>
+            <Name>Anni Asiakas</Name>
+            <Code>AA</Code>
+            <OrganisationIdentifier>12345678-9</OrganisationIdentifier>
+            <Uri>https://koulutus.netvisor.fi/getcustomer.nv?id=165</Uri>
+        </Customer>
+        <Customer>
+            <Netvisorkey>166</Netvisorkey>
+            <Name>Matti Mallikas</Name>
+            <Code></Code>
+            <OrganisationIdentifier></OrganisationIdentifier>
+            <Uri>https://koulutus.netvisor.fi/getcustomer.nv?id=166</Uri>
+        </Customer>
+    </Customerlist>
+</Root>

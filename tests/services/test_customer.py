@@ -13,7 +13,7 @@ class TestCustomerService(object):
     def test_get(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=5",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=5",
             body=get_response_content("GetCustomer.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -31,6 +31,7 @@ class TestCustomerService(object):
                 "city": "Lappeenranta",
                 "post_number": "53100",
                 "country": "FI",
+                "netvisor_key": 5,
                 "phone_number": "040 12157 988",
                 "fax_number": "(015) 123 4567",
                 "email": "maija.mallikas@netvisor.fi",
@@ -63,10 +64,110 @@ class TestCustomerService(object):
             },
         }
 
+    def test_getlist(self, netvisor, responses):
+        responses.add(
+            method="GET",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?idlist=5,6",
+            body=get_response_content("GetCustomerList.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
+        )
+        customers = netvisor.customers.detail_list([5, 6])
+        assert customers == [
+            {
+                "customer_base_information": {
+                    "internal_identifier": "MM",
+                    "external_identifier": "1234567-8",
+                    "customer_group_netvisor_key": 1,
+                    "customer_group_name": "Asiakasryhm\xe4 1",
+                    "name": "Maija Mallikas",
+                    "name_extension": "toimitusjohtaja",
+                    "netvisor_key": 5,
+                    "street_address": "Pajukuja 2",
+                    "city": "Lappeenranta",
+                    "post_number": "53100",
+                    "country": "FI",
+                    "phone_number": "040 12157 988",
+                    "fax_number": "(015) 123 4567",
+                    "email": "maija.mallikas@netvisor.fi",
+                    "email_invoicing_address": "matti.mallikas@netvisor.fi",
+                    "home_page_uri": "www.netvisor.fi",
+                    "is_active": True,
+                },
+                "customer_finvoice_details": {
+                    "finvoice_address": "FI002316574613249",
+                    "finvoice_router_code": "PSPBFIHH",
+                },
+                "customer_delivery_details": {
+                    "delivery_name": "Matti",
+                    "delivery_street_address": "Pajukuja 90",
+                    "delivery_post_number": "53100",
+                    "delivery_city": "Lappeenranta",
+                },
+                "customer_contact_details": {
+                    "contact_person": "Perttu",
+                    "contact_person_email": "perttu@netvisor.fi",
+                    "contact_person_phone": "040 21578 999",
+                },
+                "customer_additional_information": {
+                    "comment": "Great customer!",
+                    "reference_number": "1070",
+                    "balance_limit": decimal.Decimal("200.3"),
+                    "your_default_reference": "Default reference",
+                    "default_text_before_invoice_lines": "Default test before invoice lines",
+                    "default_text_after_invoice_lines": "Default test after invoice lines",
+                },
+            },
+            {
+                "customer_base_information": {
+                    "internal_identifier": "MM2",
+                    "external_identifier": "2234567-8",
+                    "customer_group_netvisor_key": 1,
+                    "customer_group_name": "Asiakasryhm\xe4 2",
+                    "name": "Maija Mallikas 2",
+                    "name_extension": "toimitusjohtaja 2",
+                    "netvisor_key": 6,
+                    "street_address": "Pajukuja 2",
+                    "city": "Lappeenranta",
+                    "post_number": "53100",
+                    "country": "FI",
+                    "phone_number": "040 12157 988",
+                    "fax_number": "(015) 123 4567",
+                    "email": "maija.mallikas@netvisor.fi",
+                    "email_invoicing_address": "matti.mallikas@netvisor.fi",
+                    "home_page_uri": "www.netvisor.fi",
+                    "is_active": True,
+                },
+                "customer_finvoice_details": {
+                    "finvoice_address": "FI002316574613249",
+                    "finvoice_router_code": "PSPBFIHH",
+                },
+                "customer_delivery_details": {
+                    "delivery_name": "Matti",
+                    "delivery_street_address": "Pajukuja 90",
+                    "delivery_post_number": "53100",
+                    "delivery_city": "Lappeenranta",
+                },
+                "customer_contact_details": {
+                    "contact_person": "Perttu",
+                    "contact_person_email": "perttu@netvisor.fi",
+                    "contact_person_phone": "040 21578 999",
+                },
+                "customer_additional_information": {
+                    "comment": "Great customer!",
+                    "reference_number": "1070",
+                    "balance_limit": decimal.Decimal("200.3"),
+                    "your_default_reference": "Default reference",
+                    "default_text_before_invoice_lines": "Default test before invoice lines",
+                    "default_text_after_invoice_lines": "Default test after invoice lines",
+                },
+            },
+        ]
+
     def test_get_with_minimal_customer(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=5",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=5",
             body=get_response_content("GetCustomerMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -116,7 +217,7 @@ class TestCustomerService(object):
     def test_get_raises_error_if_customer_not_found(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/GetCustomer.nv?id=123",
+            url="https://koulutus.netvisor.fi/GetCustomer.nv?id=123",
             body=get_response_content("GetCustomerNotFound.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -131,7 +232,7 @@ class TestCustomerService(object):
     def test_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv",
+            url="https://koulutus.netvisor.fi/CustomerList.nv",
             body=get_response_content("CustomerList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -155,7 +256,7 @@ class TestCustomerService(object):
     def test_list_with_zero_customers(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv",
+            url="https://koulutus.netvisor.fi/CustomerList.nv",
             body=get_response_content("CustomerListMinimal.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -166,7 +267,7 @@ class TestCustomerService(object):
     def test_list_with_query(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/CustomerList.nv?Keyword=anni",
+            url="https://koulutus.netvisor.fi/CustomerList.nv?Keyword=anni",
             body=get_response_content("CustomerList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -190,7 +291,7 @@ class TestCustomerService(object):
     def test_create(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=add",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=add",
             body=get_response_content("CustomerCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -249,7 +350,7 @@ class TestCustomerService(object):
     def test_create_with_minimal_data(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=add",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=add",
             body=get_response_content("CustomerCreate.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
@@ -279,7 +380,7 @@ class TestCustomerService(object):
     def test_update(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Customer.nv?method=edit&id=8",
+            url="https://koulutus.netvisor.fi/Customer.nv?method=edit&id=8",
             body=get_response_content("CustomerEdit.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

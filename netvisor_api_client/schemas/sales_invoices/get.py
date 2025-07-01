@@ -1,10 +1,11 @@
 """
-    netvisor.schemas.sales_invoices.get
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.schemas.sales_invoices.get
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from marshmallow import Schema, fields, post_load
 
 from ..common import DateSchema, DecimalSchema, StringSchema
@@ -45,6 +46,7 @@ class InvoiceLineSchema(Schema):
     def preprocess_invoice_line(self, input_data):
         if input_data:
             return input_data["product_lines"]
+        return None
 
 
 class InvoiceLinesSchema(Schema):
@@ -54,6 +56,7 @@ class InvoiceLinesSchema(Schema):
     def preprocess_invoice_lines(self, input_data):
         if input_data:
             return input_data["invoice_line"]
+        return None
 
 
 class GetSalesInvoiceSchema(Schema):
@@ -65,6 +68,7 @@ class GetSalesInvoiceSchema(Schema):
     due_date = fields.Nested(
         DateSchema, required=True, load_from="sales_invoice_due_date"
     )
+    value_date = fields.Nested(DateSchema, load_from="sales_invoice_value_date")
     reference_number = fields.String(
         required=True, load_from="sales_invoice_referencenumber"
     )
@@ -111,6 +115,16 @@ class GetSalesInvoiceSchema(Schema):
     invoice_status = fields.Nested(StringSchema)
     invoice_lines = fields.Nested(InvoiceLinesSchema)
 
-    # TODO: Parsing response when using language other than EN will throw -> language support should be implemented
+    # TODO: Parsing response when using language other than EN will throw -> language support
     #       i.e. when using language FI, the values for true and false are Kyllä and Ei respectively
     match_partial_payments_by_default = Boolean(true="Yes", false="No")
+
+
+class GetSalesInvoiceListSchema(Schema):
+    sales_invoices = List(
+        fields.Nested(GetSalesInvoiceSchema), load_from="sales_invoice"
+    )
+
+    @post_load
+    def preprocess_sales_invoice_list(self, input_data):
+        return input_data["sales_invoices"] if input_data else []

@@ -1,4 +1,4 @@
-from ..requests.purchase_invoice import (
+from ..requestmodels.purchase_invoice import (
     GetPurchaseInvoiceRequest,
     PurchaseInvoiceListRequest,
 )

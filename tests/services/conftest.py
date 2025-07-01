@@ -16,7 +16,7 @@ def netvisor():
         language="EN",
     )
 
-    return Netvisor(host="http://koulutus.netvisor.fi", **kwargs)
+    return Netvisor(host="https://koulutus.netvisor.fi", **kwargs)
 
 
 @pytest.yield_fixture(autouse=True)

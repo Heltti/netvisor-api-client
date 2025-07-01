@@ -1,10 +1,11 @@
 """
-    netvisor.auth
-    ~~~~~~~~~~~~~
+netvisor.auth
+~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from __future__ import absolute_import
 
 import datetime

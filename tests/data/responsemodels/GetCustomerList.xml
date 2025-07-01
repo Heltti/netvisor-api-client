@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+  <ResponseStatus>
+    <Status>OK</Status>
+    <TimeStamp>7.4.2009 15:53:44</TimeStamp>
+  </ResponseStatus>
+  <Customers>
+    <Customer>
+      <CustomerBaseInformation>
+        <NetvisorKey>5</NetvisorKey>
+        <InternalIdentifier>MM</InternalIdentifier>
+        <ExternalIdentifier>1234567-8</ExternalIdentifier>
+        <CustomerGroupNetvisorKey>1</CustomerGroupNetvisorKey>
+        <CustomerGroupName>Asiakasryhmä 1</CustomerGroupName>
+        <Name>Maija Mallikas</Name>
+        <NameExtension>toimitusjohtaja</NameExtension>
+        <StreetAddress>Pajukuja 2</StreetAddress>
+        <City>Lappeenranta</City>
+        <PostNumber>53100</PostNumber>
+        <Country type="ISO-3166">FI</Country>
+        <PhoneNumber>040 12157 988</PhoneNumber>
+        <FaxNumber>(015) 123 4567</FaxNumber>
+        <Email>maija.mallikas@netvisor.fi</Email>
+        <EmailInvoicingAddress>matti.mallikas@netvisor.fi</EmailInvoicingAddress>
+        <HomePageUri>www.netvisor.fi</HomePageUri>
+        <IsActive>1</IsActive>
+      </CustomerBaseInformation>
+      <CustomerFinvoiceDetails>
+        <FinvoiceAddress>FI002316574613249</FinvoiceAddress>
+        <FinvoiceRouterCode>PSPBFIHH</FinvoiceRouterCode>
+      </CustomerFinvoiceDetails>
+      <CustomerDeliveryDetails>
+        <DeliveryName>Matti</DeliveryName>
+        <DeliveryStreetAddress>Pajukuja 90</DeliveryStreetAddress>
+        <DeliveryCity>Lappeenranta</DeliveryCity>
+        <DeliveryPostNumber>53100</DeliveryPostNumber>
+      </CustomerDeliveryDetails>
+      <CustomerContactDetails>
+        <ContactPerson>Perttu</ContactPerson>
+        <ContactPersonEmail>perttu@netvisor.fi</ContactPersonEmail>
+        <ContactPersonPhone>040 21578 999</ContactPersonPhone>
+      </CustomerContactDetails>
+      <CustomerAdditionalInformation>
+        <Comment>Great customer!</Comment>
+        <ReferenceNumber>1070</ReferenceNumber>
+        <BalanceLimit>200,3</BalanceLimit>
+        <YourDefaultReference>Default reference</YourDefaultReference>
+        <DefaultTextBeforeInvoiceLines>Default test before invoice lines</DefaultTextBeforeInvoiceLines>
+        <DefaultTextAfterInvoiceLines>Default test after invoice lines</DefaultTextAfterInvoiceLines>
+      </CustomerAdditionalInformation>
+    </Customer>
+    <Customer>
+      <CustomerBaseInformation>
+        <NetvisorKey>6</NetvisorKey>
+        <InternalIdentifier>MM2</InternalIdentifier>
+        <ExternalIdentifier>2234567-8</ExternalIdentifier>
+        <CustomerGroupNetvisorKey>1</CustomerGroupNetvisorKey>
+        <CustomerGroupName>Asiakasryhmä 2</CustomerGroupName>
+        <Name>Maija Mallikas 2</Name>
+        <NameExtension>toimitusjohtaja 2</NameExtension>
+        <StreetAddress>Pajukuja 2</StreetAddress>
+        <City>Lappeenranta</City>
+        <PostNumber>53100</PostNumber>
+        <Country type="ISO-3166">FI</Country>
+        <PhoneNumber>040 12157 988</PhoneNumber>
+        <FaxNumber>(015) 123 4567</FaxNumber>
+        <Email>maija.mallikas@netvisor.fi</Email>
+        <EmailInvoicingAddress>matti.mallikas@netvisor.fi</EmailInvoicingAddress>
+        <HomePageUri>www.netvisor.fi</HomePageUri>
+        <IsActive>1</IsActive>
+      </CustomerBaseInformation>
+      <CustomerFinvoiceDetails>
+        <FinvoiceAddress>FI002316574613249</FinvoiceAddress>
+        <FinvoiceRouterCode>PSPBFIHH</FinvoiceRouterCode>
+      </CustomerFinvoiceDetails>
+      <CustomerDeliveryDetails>
+        <DeliveryName>Matti</DeliveryName>
+        <DeliveryStreetAddress>Pajukuja 90</DeliveryStreetAddress>
+        <DeliveryCity>Lappeenranta</DeliveryCity>
+        <DeliveryPostNumber>53100</DeliveryPostNumber>
+      </CustomerDeliveryDetails>
+      <CustomerContactDetails>
+        <ContactPerson>Perttu</ContactPerson>
+        <ContactPersonEmail>perttu@netvisor.fi</ContactPersonEmail>
+        <ContactPersonPhone>040 21578 999</ContactPersonPhone>
+      </CustomerContactDetails>
+      <CustomerAdditionalInformation>
+        <Comment>Great customer!</Comment>
+        <ReferenceNumber>1070</ReferenceNumber>
+        <BalanceLimit>200,3</BalanceLimit>
+        <YourDefaultReference>Default reference</YourDefaultReference>
+        <DefaultTextBeforeInvoiceLines>Default test before invoice lines</DefaultTextBeforeInvoiceLines>
+        <DefaultTextAfterInvoiceLines>Default test after invoice lines</DefaultTextAfterInvoiceLines>
+      </CustomerAdditionalInformation>
+    </Customer>
+  </Customers>
+</Root>

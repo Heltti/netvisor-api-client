@@ -7,11 +7,11 @@ def get_data_dir():
 
 
 def get_responses_dir():
-    return os.path.join(get_data_dir(), "responses")
+    return os.path.join(get_data_dir(), "responsemodels")
 
 
 def get_requests_dir():
-    return os.path.join(get_data_dir(), "requests")
+    return os.path.join(get_data_dir(), "requestmodels")
 
 
 def read_file(filename):

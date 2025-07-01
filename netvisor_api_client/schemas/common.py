@@ -1,10 +1,11 @@
 """
-    netvisor.schemas.common
-    ~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.schemas.common
+~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
+
 from marshmallow import (
     MarshalResult,
     Schema,
@@ -14,7 +15,7 @@ from marshmallow import (
     pre_load,
 )
 
-from .fields import Decimal
+from .fields import Decimal, FinnishDate
 
 
 class RejectUnknownFieldsSchema(Schema):
@@ -43,6 +44,10 @@ class FlattenElementSchema(Schema):
 
 class DateSchema(FlattenElementSchema):
     text = fields.Date(load_from="#text")
+
+
+class FinnishDateSchema(FlattenElementSchema):
+    text = FinnishDate(load_from="#text")
 
 
 class StringSchema(FlattenElementSchema):

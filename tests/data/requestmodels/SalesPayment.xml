@@ -1,0 +1,9 @@
+<Root>
+  <Salespayment>
+    <Sum currency="EUR">10,15</Sum>
+    <PaymentDate>2014-02-07</PaymentDate>
+    <TargetIdentifier type="netvisor" targettype="invoice">1070</TargetIdentifier>
+    <SourceName>Matti Mallikas</SourceName>
+    <PaymentMethod type="alternative">pankkikortti</PaymentMethod>
+  </Salespayment>
+</Root>

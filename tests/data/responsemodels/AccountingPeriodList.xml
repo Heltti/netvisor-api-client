@@ -1,0 +1,31 @@
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+    </ResponseStatus>
+    <AccountingPeriodList>
+        <PeriodLockInformation>
+            <AccountingPeriodLockDate format="ansi">31.12.2015</AccountingPeriodLockDate>
+            <VatPeriodLockDate format="ansi">3.1.2017</VatPeriodLockDate>
+            <PurchaseLockDate format="ansi">31.12.2015</PurchaseLockDate>
+        </PeriodLockInformation>
+        <Period>
+            <NetvisorKey>3</NetvisorKey>
+            <Name>2016</Name>
+            <BeginDate format="ansi">1.1.2016</BeginDate>
+            <EndDate format="ansi">31.12.2016</EndDate>
+        </Period>
+        <Period>
+            <NetvisorKey>1</NetvisorKey>
+            <Name>2017</Name>
+            <BeginDate format="ansi">1.1.2017</BeginDate>
+            <EndDate format="ansi">31.12.2017</EndDate>
+        </Period>
+        <Period>
+            <NetvisorKey>2</NetvisorKey>
+            <Name>2018</Name>
+            <BeginDate format="ansi">1.1.2018</BeginDate>
+            <EndDate format="ansi">31.12.2018</EndDate>
+        </Period>
+    </AccountingPeriodList>
+</Root>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+    </ResponseStatus>
+    <SalesInvoiceList>
+        <SalesInvoice>
+            <NetvisorKey>165</NetvisorKey>
+            <InvoiceNumber>5</InvoiceNumber>
+            <Invoicedate format="ansi">2013-11-09</Invoicedate>
+            <InvoiceStatus>open</InvoiceStatus>
+            <CustomerCode>MM</CustomerCode>
+            <CustomerName>Matti Meikäläinen</CustomerName>
+            <ReferenceNumber>1070</ReferenceNumber>
+            <InvoiceSum>123,45</InvoiceSum>
+            <OpenSum>45,67</OpenSum>
+            <Uri>https://koulutus.netvisor.fi/getsalesinvoice.nv?netvisorkey=165</Uri>
+        </SalesInvoice>
+    </SalesInvoiceList>
+</Root>

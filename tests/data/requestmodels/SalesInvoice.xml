@@ -1,0 +1,73 @@
+<Root>
+  <SalesInvoice>
+    <SalesInvoiceNumber>107</SalesInvoiceNumber>
+    <SalesInvoiceDate>2008-12-12</SalesInvoiceDate>
+    <SalesInvoiceEventDate>2008-12-01</SalesInvoiceEventDate>
+    <SalesInvoiceDueDate>2023-06-06</SalesInvoiceDueDate>
+    <SalesInvoiceValueDate>2008-11-30</SalesInvoiceValueDate>
+    <SalesInvoiceDeliveryDate>2008-07-25</SalesInvoiceDeliveryDate>
+    <SalesInvoiceReferenceNumber>1070</SalesInvoiceReferenceNumber>
+    <SalesInvoiceAmount iso4217currencycode="EUR">244,00</SalesInvoiceAmount>
+    <SellerIdentifier type="netvisor">32</SellerIdentifier>
+    <SalesInvoiceStatus type="netvisor">unsent</SalesInvoiceStatus>
+    <InvoicingCustomerIdentifier type="netvisor">1</InvoicingCustomerIdentifier>
+    <InvoicingCustomerName>Matti Mallikas</InvoicingCustomerName>
+    <InvoicingCustomerNameExtension>Masa</InvoicingCustomerNameExtension>
+    <InvoicingCustomerAddressLine>Pajukuja 1</InvoicingCustomerAddressLine>
+    <InvoicingCustomerAdditionalAddressLine></InvoicingCustomerAdditionalAddressLine>
+    <InvoicingCustomerPostNumber>53100</InvoicingCustomerPostNumber>
+    <InvoicingCustomerTown>Lappeenranta</InvoicingCustomerTown>
+    <InvoicingCustomerCountryCode>FI</InvoicingCustomerCountryCode>
+    <DeliveryAddressName>Netvisor Oy</DeliveryAddressName>
+    <DeliveryAddressNameExtension>Ohjelmistokehitys ja tuotanto</DeliveryAddressNameExtension>
+    <DeliveryAddressLine>Snelmanninkatu 12</DeliveryAddressLine>
+    <DeliveryAddressPostNumber>53100</DeliveryAddressPostNumber>
+    <DeliveryAddressTown>LPR</DeliveryAddressTown>
+    <DeliveryAddressCountryCode>FI</DeliveryAddressCountryCode>
+    <PaymentTermNetDays>14</PaymentTermNetDays>
+    <PaymentTermCashDiscountDays>5</PaymentTermCashDiscountDays>
+    <PaymentTermCashDiscount type="percentage">9</PaymentTermCashDiscount>
+    <PrintChannelFormat type="netvisor">2</PrintChannelFormat>
+    <InvoiceLines>
+      <InvoiceLine>
+        <SalesInvoiceProductLine>
+          <ProductIdentifier type="netvisor">1697</ProductIdentifier>
+          <ProductName>Omena</ProductName>
+          <ProductUnitPrice type="net">6,90</ProductUnitPrice>
+          <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+          <SalesInvoiceProductLineQuantity>2</SalesInvoiceProductLineQuantity>
+          <SalesInvoiceProductLineDiscountPercentage>0</SalesInvoiceProductLineDiscountPercentage>
+          <SalesInvoiceProductLineFreeText>Punainen</SalesInvoiceProductLineFreeText>
+          <AccountingAccountSuggestion>3000</AccountingAccountSuggestion>
+          <Dimension>
+            <DimensionName>Example Dimension</DimensionName>
+            <DimensionItem>Example Dimension Item</DimensionItem>
+          </Dimension>
+          <Dimension>
+            <DimensionName>Example Dimension 2</DimensionName>
+            <DimensionItem>Example Dimension 2 Item</DimensionItem>
+          </Dimension>
+        </SalesInvoiceProductLine>
+      </InvoiceLine>
+      <InvoiceLine>
+        <SalesInvoiceProductLine>
+          <ProductIdentifier type="netvisor">1697</ProductIdentifier>
+          <ProductName>Banaani</ProductName>
+          <ProductUnitPrice type="net">100,00</ProductUnitPrice>
+          <ProductVatPercentage vatcode="KOMY">22</ProductVatPercentage>
+          <SalesInvoiceProductLineQuantity>1</SalesInvoiceProductLineQuantity>
+          <SalesInvoiceProductLineFreeText>Keltainen</SalesInvoiceProductLineFreeText>
+          <AccountingAccountSuggestion>3200</AccountingAccountSuggestion>
+        </SalesInvoiceProductLine>
+      </InvoiceLine>
+    </InvoiceLines>
+    <SalesInvoiceAttachments>
+      <SalesInvoiceAttachment>
+        <MimeType>application/pdf</MimeType>
+        <AttachmentDescription>This is a file</AttachmentDescription>
+        <Filename>invoice-attachment.pdf</Filename>
+        <DocumentData type="pdf">SSdtIG5vdCBtYWRlIGJ5IGRlc2lnbg==</DocumentData>
+      </SalesInvoiceAttachment>
+    </SalesInvoiceAttachments>
+  </SalesInvoice>
+</Root>

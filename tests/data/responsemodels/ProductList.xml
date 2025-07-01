@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>1.10.2009 16:03:24</TimeStamp>
+    </ResponseStatus>
+    <ProductList>
+        <Product>
+            <NetvisorKey>165</NetvisorKey>
+            <ProductCode>TT</ProductCode>
+            <Name>Testituote</Name>
+            <UnitPrice>1,96</UnitPrice>
+            <Uri>https://koulutus.netvisor.fi/getproduct.nv?id=165</Uri>
+        </Product>
+    </ProductList>
+</Root>

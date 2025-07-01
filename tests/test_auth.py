@@ -45,13 +45,15 @@ class TestNetvisorAuth(object):
             flexmock(auth)
             .should_receive("make_mac")
             .with_args(
-                "http://integrationdemo.netvisor.fi/accounting.nv",
+                "https://integrationdemo.netvisor.fi/accounting.nv",
                 "2009-01-12 15:49:12.221",
                 "123456",
             )
             .and_return("6b2783906969630c1b6649bf5b0e6620")
         )
-        r = flexmock(headers={}, url="http://integrationdemo.netvisor.fi/accounting.nv")
+        r = flexmock(
+            headers={}, url="https://integrationdemo.netvisor.fi/accounting.nv"
+        )
         return auth(r)
 
     def test_constructor_sets_sender(self, auth):
@@ -146,8 +148,8 @@ class TestNetvisorAuth(object):
 
     def test_make_mac(self, auth):
         mac = auth.make_mac(
-            "http://integrationdemo.netvisor.fi/accounting.nv",
+            "https://integrationdemo.netvisor.fi/accounting.nv",
             "2009-01-12 15:49:12.221",
             "123456",
         )
-        assert mac == "6b2783906969630c1b6649bf5b0e6620"
+        assert mac == "af7ce7e1384669c607e04cb4ccbb130c"

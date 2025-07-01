@@ -6,12 +6,11 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1)](https://pycqa.github.io/isort/)
 
-___
-
+---
 
 Python client for the Netvisor API.
 
-___
+---
 
 ## Installation
 
@@ -21,7 +20,7 @@ You can install netvisor with pip::
 
 ## Usage example
 
-````python
+```python
 from netvisor_api_client import Netvisor
 from datetime import date, timedelta
 
@@ -42,10 +41,14 @@ invoices = client.sales_invoices.list(start_date=date.today() - timedelta(days=1
 
 # Get detailed information for the first invoice
 invoice_details = client.sales_invoices.get(invoices[0]['netvisor_key'])
-````
+```
 
-Known issues
-------------
+## Running tests
+
+Run tests locally using pytest or by running docker
+`docker run --rm -it $(docker build -f tests.dockerfile -q .)`
+
+## Known issues
 
 ### Language
 
@@ -53,18 +56,17 @@ Using language other than `EN` can cause failures when parsing responses contain
 
 Example: `"Yes"` and `"No"` parsed to bool `True` and `False` fails when language is FI
 
-````python
+```python
 from netvisor_api_client.schemas.fields import Boolean
 
 # Current schema
 match_partial_payments_by_default = Boolean(true="Yes", false="No")
 
-# i.e. for FI this should be 
+# i.e. for FI this should be
 match_partial_payments_by_default = Boolean(true="Kyllä", false="Ei")
-````
+```
 
-Resources
----------
+## Resources
 
-* Bug Tracker <https://github.com/Heltti/netvisor-api-client/issues>
-* Code <https://github.com/Heltti/netvisor-api-client>
+- Bug Tracker <https://github.com/Heltti/netvisor-api-client/issues>
+- Code <https://github.com/Heltti/netvisor-api-client>

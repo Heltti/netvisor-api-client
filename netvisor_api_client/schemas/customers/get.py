@@ -1,17 +1,19 @@
 """
-    netvisor.schemas.customers.get
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.schemas.customers.get
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
-from marshmallow import Schema, fields
+
+from marshmallow import Schema, fields, post_load
 
 from ..common import StringSchema
 from ..fields import Decimal
 
 
 class CustomerBaseInformationSchema(Schema):
+    netvisor_key = fields.Integer()
     internal_identifier = fields.String(allow_none=True)
     external_identifier = fields.String(allow_none=True)
     name = fields.String()
@@ -25,6 +27,7 @@ class CustomerBaseInformationSchema(Schema):
     home_page_uri = fields.String(allow_none=True)
     is_active = fields.Boolean()
     street_address = fields.String(allow_none=True)
+    additional_street_address = fields.String(allow_none=True)
     city = fields.String(allow_none=True)
     post_number = fields.String(allow_none=True)
     country = fields.Nested(StringSchema, allow_none=True)
@@ -63,3 +66,11 @@ class GetCustomerSchema(Schema):
     customer_contact_details = fields.Nested(CustomerContactDetailsSchema)
     customer_finvoice_details = fields.Nested(CustomerFinvoiceDetailsSchema)
     customer_delivery_details = fields.Nested(CustomerDeliveryDetailsSchema)
+
+
+class GetCustomerListSchema(Schema):
+    customers = fields.List(fields.Nested(GetCustomerSchema), load_from="customer")
+
+    @post_load
+    def preprocess_customer_list(self, input_data):
+        return input_data["customers"] if input_data else []

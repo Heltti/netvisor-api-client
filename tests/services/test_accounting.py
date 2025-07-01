@@ -8,15 +8,113 @@ from tests.utils import get_request_content, get_response_content
 
 
 class TestAccountingService(object):
-    def test_list(self, netvisor, responses):
+    def test_account_list(self, netvisor, responses):
         responses.add(
             method="GET",
-            url="http://koulutus.netvisor.fi/AccountingLedger.nv",
-            body=get_response_content("AccountingList.xml"),
+            url="https://koulutus.netvisor.fi/accountlist.nv",
+            body=get_response_content("AccountList.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        accounting = netvisor.accounting.list()
+        response = netvisor.accounting.account_list()
+        assert response == {
+            "accounts": [
+                {
+                    "netvisor_key": 1,
+                    "number": None,
+                    "name": "Vastaavaa",
+                    "account_type": "accountgroup",
+                    "father_netvisor_key": 0,
+                    "is_active": 1,
+                    "is_cumulative": 1,
+                    "sort": 0,
+                    "end_sort": 279,
+                    "is_natural_negative": 1,
+                },
+                {
+                    "netvisor_key": 2,
+                    "number": 1234,
+                    "name": "PYSYVÄT VASTAAVAT",
+                    "account_type": "accountgroup",
+                    "father_netvisor_key": 1,
+                    "is_active": 1,
+                    "is_cumulative": 1,
+                    "sort": 1,
+                    "end_sort": 5,
+                    "is_natural_negative": 1,
+                },
+            ],
+            "company_default_accounts": {
+                "advance_payments": 2861,
+                "collection": 9170,
+                "inventory": 1521,
+                "purchase_domestic_default": 4000,
+                "purchase_eu_default": 4110,
+                "purchase_invoice_accrual": 1849,
+                "purchase_outside_eu_default": 4130,
+                "purchase_vat_receivable": 1763,
+                "purchases_discounts": 4230,
+                "purchases_exchange_rate_differences": 4370,
+                "rounding_off_difference": 8570,
+                "sales_discount": 3500,
+                "sales_domestic_default": 3010,
+                "sales_eu_default": 3360,
+                "sales_exchange_rate_differences": 3580,
+                "sales_invoice_accrual": 1701,
+                "sales_outside_eu_default": 3380,
+                "sales_receivables": 1702,
+                "sales_vat_debt": 2939,
+                "tax_account": 2948,
+                "trade_payables": 2871,
+            },
+        }
+
+    def test_account_period_list(self, netvisor, responses):
+        responses.add(
+            method="GET",
+            url="https://koulutus.netvisor.fi/accountingperiodlist.nv",
+            body=get_response_content("AccountingPeriodList.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
+        )
+        response = netvisor.accounting.period_list()
+        assert response == {
+            "period_lock_information": {
+                "accounting_period_lock_date": date(2015, 12, 31),
+                "purchase_lock_date": date(2015, 12, 31),
+                "vat_period_lock_date": date(2017, 1, 3),
+            },
+            "periods": [
+                {
+                    "begin_date": date(2016, 1, 1),
+                    "end_date": date(2016, 12, 31),
+                    "name": "2016",
+                    "netvisor_key": 3,
+                },
+                {
+                    "begin_date": date(2017, 1, 1),
+                    "end_date": date(2017, 12, 31),
+                    "name": "2017",
+                    "netvisor_key": 1,
+                },
+                {
+                    "begin_date": date(2018, 1, 1),
+                    "end_date": date(2018, 12, 31),
+                    "name": "2018",
+                    "netvisor_key": 2,
+                },
+            ],
+        }
+
+    def test_ledger(self, netvisor, responses):
+        responses.add(
+            method="GET",
+            url="https://koulutus.netvisor.fi/AccountingLedger.nv",
+            body=get_response_content("AccountingLedger.xml"),
+            content_type="text/html; charset=utf-8",
+            match_querystring=True,
+        )
+        accounting = netvisor.accounting.ledger()
         assert accounting == [
             {
                 "status": "valid",
@@ -117,15 +215,15 @@ class TestAccountingService(object):
     )
     def test_date_parameters(self, netvisor, responses, parameter, key):
         value = date(2000, 1, 2)
-        url = "http://koulutus.netvisor.fi/AccountingLedger.nv?%s=2000-01-02" % key
+        url = "https://koulutus.netvisor.fi/AccountingLedger.nv?%s=2000-01-02" % key
         responses.add(
             method="GET",
             url=url,
-            body=get_response_content("AccountingList.xml"),
+            body=get_response_content("AccountingLedger.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(**{parameter: value}) is not None
+        assert netvisor.accounting.ledger(**{parameter: value}) is not None
         request = responses.calls[0].request
         assert request.url == url
 
@@ -139,38 +237,38 @@ class TestAccountingService(object):
     )
     def test_integer_parameters(self, netvisor, responses, parameter, key):
         value = 1
-        url = "http://koulutus.netvisor.fi/AccountingLedger.nv?%s=1" % key
+        url = "https://koulutus.netvisor.fi/AccountingLedger.nv?%s=1" % key
         responses.add(
             method="GET",
             url=url,
-            body=get_response_content("AccountingList.xml"),
+            body=get_response_content("AccountingLedger.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(**{parameter: value}) is not None
+        assert netvisor.accounting.ledger(**{parameter: value}) is not None
         request = responses.calls[0].request
         assert request.url == url
 
     def test_netvisor_key_list_parameter(self, netvisor, responses):
         url = (
-            "http://koulutus.netvisor.fi/AccountingLedger.nv?"
+            "https://koulutus.netvisor.fi/AccountingLedger.nv?"
             "NetvisorKeyList=1%2C2%2C3"
         )
         responses.add(
             method="GET",
             url=url,
-            body=get_response_content("AccountingList.xml"),
+            body=get_response_content("AccountingLedger.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,
         )
-        assert netvisor.accounting.list(netvisor_key_list=[1, 2, 3]) is not None
+        assert netvisor.accounting.ledger(netvisor_key_list=[1, 2, 3]) is not None
         request = responses.calls[0].request
         assert request.url == url
 
     def test_create_voucher(self, netvisor, responses):
         responses.add(
             method="POST",
-            url="http://koulutus.netvisor.fi/Accounting.nv",
+            url="https://koulutus.netvisor.fi/Accounting.nv",
             body=get_response_content("AccountingCreateVoucher.xml"),
             content_type="text/html; charset=utf-8",
             match_querystring=True,

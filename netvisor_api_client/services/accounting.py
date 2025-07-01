@@ -1,16 +1,22 @@
 """
-    netvisor.services.accounting
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.services.accounting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
-from ..requests.accounting import AccountingListRequest, CreateAccountingRequest
+
+from ..requestmodels.accounting import (
+    AccountingLedgerRequest,
+    AccountingPeriodListRequest,
+    AccountListRequest,
+    CreateAccountingRequest,
+)
 from .base import Service
 
 
 class AccountingService(Service):
-    def list(
+    def ledger(
         self,
         start_date=None,
         end_date=None,
@@ -41,10 +47,17 @@ class AccountingService(Service):
             query["Voucherstatus"] = voucherstatus
         if changed_since is not None:
             query["ChangedSince"] = changed_since.isoformat()
-        request = AccountingListRequest(self.client, params=query)
+        request = AccountingLedgerRequest(self.client, params=query)
+        return request.make_request()
+
+    def account_list(self):
+        request = AccountListRequest(self.client)
         return request.make_request()
 
     def create(self, data):
         request = CreateAccountingRequest(self.client, data=data)
+        return request.make_request()
 
+    def period_list(self):
+        request = AccountingPeriodListRequest(self.client)
         return request.make_request()

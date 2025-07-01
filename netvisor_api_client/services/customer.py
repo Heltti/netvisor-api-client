@@ -1,13 +1,15 @@
 """
-    netvisor.services.customer
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+netvisor.services.customer
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
-    :license: MIT, see LICENSE for more details.
+:copyright: (c) 2013-2016 by Fast Monkeys Oy | 2019- by Heltti Oy
+:license: MIT, see LICENSE for more details.
 """
-from ..requests.customer import (
+
+from ..requestmodels.customer import (
     CreateCustomerRequest,
     CustomerListRequest,
+    GetCustomerListRequest,
     GetCustomerRequest,
     UpdateCustomerRequest,
 )
@@ -15,9 +17,15 @@ from .base import Service
 
 
 class CustomerService(Service):
-    def get(self, id):
+    def get(self, id: int):
         request = GetCustomerRequest(self.client, params={"id": id})
 
+        return request.make_request()
+
+    def detail_list(self, id_list: list[int]):
+        request = GetCustomerListRequest(
+            self.client, params={"idlist": ",".join(str(id) for id in id_list)}
+        )
         return request.make_request()
 
     def list(self, query=None):
@@ -32,7 +40,7 @@ class CustomerService(Service):
 
         return request.make_request()
 
-    def update(self, id, data):
+    def update(self, id: int, data):
         request = UpdateCustomerRequest(
             self.client, params={"id": id, "method": "edit"}, data=data
         )

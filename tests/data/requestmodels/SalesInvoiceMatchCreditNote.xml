@@ -1,0 +1,6 @@
+<Root>
+    <MatchCreditNote>
+        <CreditNoteNetvisorKey>6</CreditNoteNetvisorKey>
+        <InvoiceNetvisorKey>5</InvoiceNetvisorKey>
+    </MatchCreditNote>
+</Root>
