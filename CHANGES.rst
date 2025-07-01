@@ -1,7 +1,32 @@
 Changelog
 ---------
 
-Here you can see the full list of changes between each release
+Here you can see the most important changes between each release
+
+0.9.5 (July 1st, 2025)
+^^^^^^^^^^^^^^^^^^^^^^
+
+PR #12 by @vsalomaki, including changes from @jarmokortetjarvi
+
+Changes
+
+- The tests are in working order and being run in github-actions, to ease up the update of marshmallow-update task if anyone is up for it.
+- Multiple changes from @jarmokortetjarvi s branch
+- Rename requests to requestmodels and responses to responsemodels for clarity
+- black format applied
+
+Added endpoints
+
+- AccountingLedger.nv
+- accountlist.nv
+- Accounting.nv
+- accountingperiodlist.nv
+- GetCustomer.nv (CustomerList)
+- GetSalesInvoice.nv
+- updatesalesinvoicestatus.nv
+- matchcreditnote.nv
+- SalesPaymentList.nv
+- SalesPayment.nv
 
 0.9.4 (January 12th, 2023)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
