@@ -17,4 +17,4 @@ class SalesPaymentListResponse(Response):
 
 class SalesPaymentCreateResponse(Response):
     schema_cls = RepliesSchema
-    tag_name = 'replies'
+    tag_name = "replies"
