@@ -3,6 +3,13 @@ Changelog
 
 Here you can see the most important changes between each release
 
+0.9.6 (July 30th, 2025)
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Add support for HMACSHA256 hash and related authentication headers
+- Update supported python versions to 3.11, 3.12, 3.13
+
+
 0.9.5 (July 1st, 2025)
 ^^^^^^^^^^^^^^^^^^^^^^
 
