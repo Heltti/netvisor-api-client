@@ -12,7 +12,7 @@ import hashlib
 import hmac
 import time
 import uuid
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 
 from requests.auth import AuthBase
 
@@ -28,7 +28,9 @@ class NetvisorAuth(AuthBase):
     VALID_LANGUAGES = ("EN", "FI", "SE")
     VALID_ALGORITHMS = (
         ALGORITHM_HMACSHA256,
-        ALGORITHM_MD5,  # Deprecated - Netvisor will soon drop support (https://support.netvisor.fi/fi/support/discussions/topics/77000290155)
+        # MD5 hash is deprecated, Netvisor will soon drop support
+        # https://support.netvisor.fi/fi/support/discussions/topics/77000290155
+        ALGORITHM_MD5,
     )
 
     def __init__(

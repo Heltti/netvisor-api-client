@@ -178,7 +178,20 @@ class TestNetvisorAuth(object):
             transaction_id = result.headers["X-Netvisor-Authentication-TransactionId"]
 
             hmac_key = "customerkey&partnerkey"
-            hmac_msg = f"{url}&Testiclient&customerid&{timestamp}&FI&orgid&{transaction_id}&{self.REFERENCE_TIME}&customerkey&partnerkey"
+            hmac_msg = "&".join(
+                [
+                    url,
+                    "Testiclient",
+                    "customerid",
+                    timestamp,
+                    "FI",
+                    "orgid",
+                    transaction_id,
+                    str(self.REFERENCE_TIME),
+                    "customerkey",
+                    "partnerkey",
+                ]
+            )
             expected_mac = hmac.new(
                 key=hmac_key.encode("ISO-8859-1"),
                 msg=hmac_msg.encode("ISO-8859-1"),
